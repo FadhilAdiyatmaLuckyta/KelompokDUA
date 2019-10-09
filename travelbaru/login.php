@@ -8,15 +8,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<head>
+
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <!--<a class="navbar-brand" href="#">Logo</a>-->
+  <img src="img/logo.png" class="navbar-brand rounded-circle" alt="Cinque Terre" width="40px" height="50px">
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="home.php"style="font-size:100%;">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"style="font-size:100%;">Profil Kami</a>
+	</li>
+	<li class="nav-item">
+      <a class="nav-link" href="#"style="font-size:100%;">Galeri</a>
+	</li>
+	<li class="nav-item">
+      <a class="nav-link" href="#"style="font-size:100%;">Kontak Kami</a>
+    </li>
+  </ul>
+</nav>
+
 	<div class="kotak_login">
 		<table width="300" align="center">
 			<form name="form1" method="post" action="ceklogin.php">
 			
 			<tr>
  
-				<td colspan="3"><strong>Form Login</strong></td>
+				<td colspan="3" align="center"><strong>Form Login</strong></td>
 			</tr>
-            
+
 			<tr>
 				<td>Email</td>
 				<td>:</td>
