@@ -26,7 +26,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM tb_user ORDER BY email DESC");
         echo "<td>".$user_data['alamat']."</td>";
         echo "<td>".$user_data['email']."</td>";
         echo "<td>".$user_data['password']."</td>";    
-        echo "<td><a href='edit.php?email=$user_data[email]'>Edit</a> | <a href='hapus.php?email=$user_data[email]'>Hapus</a></td></tr>";        
+        echo "<td><a href='edit.php?email=$user_data[email]'>Edit</a> | <a href='hapus.php?email=$user_data[email]'>hapus</a></td></tr>";        
     }
     ?>
     </table>
