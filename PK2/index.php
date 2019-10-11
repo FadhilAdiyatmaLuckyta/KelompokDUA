@@ -22,14 +22,7 @@
 </head>
 <body>
 
-<!--<div id='cssmenu'>
-<ul>
-   <li class='active'><a href='index.php'>Home</a></li>
-   <li><a href='input.php'>Input Penjualan</a></li>
-   <li><a href='tampil.php'>Tampil PMB</a></li>
-   <li><a href='prediksi.php'>Prediksi</a></li>
-</ul>
-</div>-->
+
 
 <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
   <ul class="navbar-nav">
