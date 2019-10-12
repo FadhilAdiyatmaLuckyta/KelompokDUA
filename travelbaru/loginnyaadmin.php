@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat Login Dengan PHP dan MySQLi - WWW.MALASNGODING.COM</title>
+	<title>Login Admin</title>
     
 </head>
 <body>
-	<h2>Login - www.malasngoding.com</h2>
+	<h2>Loginnya Admin ya....</h2>
 	<br/>
 	<!-- cek pesan notifikasi -->
 	<?php 
