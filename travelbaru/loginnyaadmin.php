@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
-    <link rel="stylesheet" type="text/css" href="gaya.css">
-</head>
+	<title>Membuat Login Dengan PHP dan MySQLi - WWW.MALASNGODING.COM</title>
+    
 </head>
 <body>
-	<h2>Loginnya User</h2>
+	<h2>Login - www.malasngoding.com</h2>
 	<br/>
 	<!-- cek pesan notifikasi -->
 	<?php 
@@ -22,12 +21,12 @@
 	?>
 	<br/>
 	<br/>
-	<form method="post" action="login_cek.php">
+	<form method="post" action="cek_loginnyaadmin.php">
 		<table>
 			<tr>
-				<td>Email</td>
+				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="email" placeholder="Masukkan Email"></td>
+				<td><input type="text" name="email" placeholder="Masukkan Username"></td>
 			</tr>
 			<tr>
 				<td>Password</td>
