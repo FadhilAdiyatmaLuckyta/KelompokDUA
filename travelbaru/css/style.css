@@ -69,7 +69,31 @@ section{
     transform: translate(0,0);
 }
    
+.tulisan_login{
+	text-align: center;
+	/*membuat semua huruf menjadi kapital*/
+	text-transform: uppercase;
+}
+
+.kotak_login{
+	width: 350px;
+	background: white;
+	/*meletakkan form ke tengah*/
+	margin: 80px auto;
+	padding: 30px 20px;
+	box-shadow: 0px 0px 100px 4px #d6d6d6;
+}
+
+.tombol_login{
+	background: #215066;
+	color: white;
+	font-size: 11pt;
+    width: 100%;
+	border: none;
+	border-radius: 3px;
+    padding: 10px 20px;
     
+}   
 
 
 
