@@ -63,8 +63,8 @@
                                             <select name="bulan_pk" id="bulan_pk" class="form-control">
                                               <?php
                                               $now = date('m');
-                                              for ($i = $now; $i >= 0; $i--) {
-                                                echo "<option value='".$i."/".($i+1)."'>".$i."/".($i+1)."</option>"
+                                              for ($i = $now; $i >= 1; $i--) {
+                                                echo "<option value='".$i."'>".$i."</option>"
                                                 ;
                                               }
                                               ?>
