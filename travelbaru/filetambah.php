@@ -2,37 +2,39 @@
 <html>
 <head>
     <title>Add Users</title>
+    <link rel="stylesheet" type="text/css" href="css_daftar.css">
 </head>
 
 <body>
-    <a href="formtambah.php">Go to Home</a>
+    
     <br/><br/>
-
+    <div class ="kotaklogin">
+	<p class="tulisan_login">Silahkan Daftar</p>
     <form action="filetambah.php" method="post" name="form1">
         <table width="25%" border="0">
             <tr> 
                 <td>Nama</td>
-                <td><input type="text" name="nama_user"></td>
+                <td><input type="text" class="form_login" name="nama_user"></td>
             </tr>
             <tr> 
                 <td>Telp</td>
-                <td><input type="text" name="telp"></td>
+                <td><input type="text" class="form_login" name="telp"></td>
             </tr>
             <tr> 
                 <td>Alamat</td>
-                <td><input type="text" name="alamat"></td>
+                <td><input type="text" class="form_login" name="alamat"></td>
             </tr>
             <tr> 
                 <td>Email</td>
-                <td><input type="text" name="email"></td>
+                <td><input type="text" class="form_login" name="email"></td>
             </tr>
             <tr> 
                 <td>Password</td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" class="form_login" name="password"></td>
             </tr>
             <tr> 
                 <td></td>
-                <td><input type="submit" name="Submit" value="Add"></td>
+                <td><input type="submit" name="Submit" class="tombol_login" value="Daftar"> </td> 
             </tr>
         </table>
     </form>
@@ -55,7 +57,7 @@
         $result = mysqli_query($mysqli, "INSERT INTO tb_user(nama_user,telp,alamat,email,password) VALUES('$nama_user','$telp','$alamat','$email','$password')");
 
         // Show message when user added
-        echo "User added successfully. <a href='formtambah.php'>Lihat</a>";
+        echo "Selamat anda telah mendaftar, silahkan <a href='login.php'>login</a> kembali";
     }
     ?>
 </body>

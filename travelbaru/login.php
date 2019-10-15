@@ -2,14 +2,14 @@
 <html>
 <head>
 	<title>Login</title>
-    <link rel="stylesheet" type="text/css" href="gaya.css">
+    <link rel="stylesheet" type="text/css" href="css_login.css">
 </head>
 </head>
 <body>
-	<h2>Loginnya User</h2>
+	
 	<br/>
 	<!-- cek pesan notifikasi -->
-	<?php 
+	<?php
 	if(isset($_GET['pesan'])){
 		if($_GET['pesan'] == "gagal"){
 			echo "Login gagal! email dan password salah!";
@@ -22,24 +22,29 @@
 	?>
 	<br/>
 	<br/>
+	<div class ="kotaklogin">
+	<p class="tulisan_login">Silahkan login</p>
 	<form method="post" action="login_cek.php">
 		<table>
 			<tr>
 				<td>Email</td>
 				<td>:</td>
-				<td><input type="text" name="email" placeholder="Masukkan Email"></td>
+				<td><input type="text" name="email" class="form_login" placeholder="Masukkan Email"></td>
 			</tr>
 			<tr>
 				<td>Password</td>
 				<td>:</td>
-				<td><input type="password" name="password" placeholder="Masukkan password"></td>
+				<td><input type="password" name="password" class="form_login" placeholder="Masukkan password"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
-				<td><input type="submit" value="LOGIN"></td>
+				<td><input type="submit" class="tombol_login" value="LOGIN"></td>
 			</tr>
-		</table>			
+		</table>	
+		<center><a href="filetambah.php">Daftar</a></center>
+
 	</form>
+	</div>	
 </body>
 </html>
