@@ -61,5 +61,17 @@ div.data{
 	</form>
 </div>
 
+<footer>
+	<div class="footer">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm-12">
+            <p>&copy; copyright 2019 | built by Kelompok 2.</p>
+          </div>
+        </div>
+	  </div>
+</div>
+	</footer>
+
 </body>
 </html>
