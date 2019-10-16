@@ -22,7 +22,7 @@
 	<br/>
 	<br/>
 	<div class ="kotaklogin">
-	<p class="tulisan_login">Silahkan login Admin</p>
+	<p class="tulisan_login">Silakan login Admin</p>
 	<form method="post" action="cek_loginnyaadmin.php">
 		<table>
 			<tr>

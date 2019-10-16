@@ -41,7 +41,8 @@
 				<td></td>
 				<td><input type="submit" class="tombol_login" value="LOGIN"></td>
 			</tr>
-		</table>	
+		</table>
+		<br>	
 		<center><a href="filetambah.php">Daftar</a></center>
 
 	</form>
