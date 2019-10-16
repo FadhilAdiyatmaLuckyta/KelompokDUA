@@ -59,13 +59,13 @@
                                           <div class="form-group text-center">
                                           </div>
                                           <div class="form-group">
-                                            <label for="bulan_pk" class="control-label mb-1">Bulan Penjualan</label>
-                                            <select name="bulan_pk" id="bulan_pk" class="form-control">
+                                          <label>Bulan Penjualan</label>
+                                            <input id="bulan_pk" name="bulan_pk" type="char" class="form-control" value="">
+                                           
                                               <?php
                                               $now = date('m');
                                               for ($i = $now; $i >= 1; $i--) {
-                                                echo "<option value='".$i."'>".$i."</option>"
-                                                ;
+                  
                                               }
                                               ?>
                                             </select>

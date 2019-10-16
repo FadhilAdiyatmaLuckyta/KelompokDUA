@@ -124,7 +124,7 @@
                             <td colspan="2"></td>
                           </tr>
                           <tr>
-                            <td colspan="2">B1</td>
+                            <td colspan="2">b</td>
                             <td colspan="6">
                               <?php
                               $b1 = ($jumlah_xy - (($jumlah_x * $jumlah_y) / $x)) / ($jumlah_xx - ($jumlah_x * $jumlah_x) / $x);
@@ -133,7 +133,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="2">B0</td>
+                            <td colspan="2">a</td>
                               <td colspan="6">
                                 <?php
                                 $b0 = $rata2_y - $b1 * $rata2_x;
