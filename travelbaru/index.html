@@ -2,8 +2,12 @@
 <html lang="en" id="home">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="login.css" rel="stylesheet"> 
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Lansa Trans</title>
 
@@ -30,21 +34,24 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-            <a href="#home" class="navbar-brand page-scroll ">Lansa Trans</a>
+            <a href="#home" class="navbar-brand page-scroll " style="font-family:Berlin Sans FB">Lansa Trans</a>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="#about" class="page-scroll">Profil Kami</a></li>
-              <li><a href="#portfolio" class="page-scroll">Galeri</a></li>
-              <li><a href="#contact" class="page-scroll">Kontak Kami</a></li>
+            <ul class="nav navbar-nav ">
+              <li><a href="#about" class="page-scroll" style="font-family:Berlin Sans FB">Profil Kami</a></li>
+              <li><a href="#portfolio" class="page-scroll" style="font-family:Berlin Sans FB">Galeri</a></li>
+              <li><a href="#contact" class="page-scroll" style="font-family:Berlin Sans FB">Kontak Kami</a></li>
               </ul>
-              <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="#login" class="page-scroll"><a href="login.php">Login</a></li>
-                </ul>
+              <div class="dropdown" style="float:right;">
+                <button class="dropbtn" style="font-family:Berlin Sans FB">Login</button>
+                <div class="dropdown-content">
+                <a href="loginnyaadmin.php" style="font-family:Berlin Sans FB">Login Admin</a>
+                <a href="login.php" style="font-family:Berlin Sans FB">Login User</a>
+                </div>
           </div>
+          
         </div>
     </nav>
 
