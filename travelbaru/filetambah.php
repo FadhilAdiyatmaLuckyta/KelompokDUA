@@ -14,7 +14,7 @@
         <table width="25%" border="0">
             <tr> 
                 <td>Nama</td>
-                <td><input type="text" class="form_login" name="nama_user"></td>
+                <td><input type="text" class="form_login" name="nama_pelanggan"></td>
             </tr>
             <tr> 
                 <td>Telp</td>
@@ -43,18 +43,20 @@
 
     // Check If form submitted, insert form data into users table.
     if(isset($_POST['Submit'])) {
-        $nama_user = $_POST['nama_user'];
+        
+        $nama_pengguna = $_POST['nama_pengguna'];
         $telp = $_POST['telp'];
         $alamat = $_POST['alamat'];
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
+        $level = $_POST['level'];
 
 
         // include database connection file
         include_once("config.php");
 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO tb_user(nama_user,telp,alamat,email,password) VALUES('$nama_user','$telp','$alamat','$email','$password')");
+        $result = mysqli_query($mysqli, "INSERT INTO tb_penguna(id_pengguna,nama_pengguna,telp,alamat,email,password,level) VALUES('id_pengguna','$nama_pengguna','$telp','$alamat','$username','$password','$level')");
 
         // Show message when user added
         echo "Selamat anda telah mendaftar, silahkan <a href='login.php'>login</a> kembali";

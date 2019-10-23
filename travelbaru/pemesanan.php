@@ -1,80 +1,87 @@
-<?php 
-include('config.php');
- if(!isset($_SESSION)){
- 	session_start();
- }
- if (empty($_SESSION['username'])) {
- 	header('Location:login.php');
- }
-$no = 1;
-$sql = "SELECT * FROM tb_pemesanan ORDER BY id_pesan DESC limit 1"; 
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+
+<html>
+<head>
+    <title>Pemesanan</title>
+    <link rel="stylesheet" type="text/css" href="css_pemesanan.css">
+</head>
+
+<body>
+<?php
+
+  require_once 'config.php';
+
+  $query1 = "SELECT * FROM tb_jurusan ORDER BY id_jurusan DESC";
+
+  $result = mysqli_query($mysqli, $query1);
+  
+  
+
+  ?>
+    
+    <br/><br/>
+    <div class ="kotaklogin">
+	<p class="tulisan_login">Silahkan Pesan</p>
+    <form action="pemesanan.php" method="post" name="form1">
+        <table width="25%" border="0">
+           <tr> 
+                <td>Email</td>
+                <td><input type="text" class="form_login" name="email"></td>
+            </tr>
+            <tr> 
+                <td>Jurusan</td>
+                <td><select > <?php while($data = mysqli_fetch_assoc($result) ){?>
+
+                    <option value="<?php echo $data['id_jurusan']; ?>"><?php echo $data['jurusan']; ?></option>
+                
+                   <?php } ?>
+                
+                </select></td>
+            </tr>
+            <tr> 
+                <td>Harga</td>
+                <td><input type="text" class="form_login" name="harga"></td>
+            </tr>
+            
+            <tr> 
+                <td>Keberangkatan</td>
+                <td><input type="date" min="2019-10-16"  class="form_pesan"  name="tgl_berangkat"><td>
+            </tr>
+            <tr> 
+                <td>Jumlah</td>
+                <td><input type="number" min="1" max="5"  class="form_iyo"  name="jumlah" /><td>
+            </tr>
+            <tr> 
+                <td>Alamat Jemput</td>
+                <td><textarea class="form-control" rows="5"  name="alamat_jemput"></textarea></td>
+            </tr>
+            <tr> 
+                <td></td>
+                <td><input type="submit" name="Submit" class="tombol_login" value="Pesan"> </td> 
+            </tr>
+        </table>
+    </form>
+
+    <?php
+
+    // Check If form submitted, insert form data into users table.
+    if(isset($_POST['Submit'])) {
+        $email = $_POST['email'];
+        $jurusan= $_POST['jurusan'];
+        $harga = $_POST['harga'];
+        $tgl_berangkat = $_POST['tgl_berangkat'];
+        $jumlah = $_POST['jumlah'];
+        $alamat_jemput = $_POST['alamat_jemput'];
 
 
+        // include database connection file
+        include_once("config.php");
 
-$sql2 = "SELECT * FROM tbl_konsumen ORDER BY no_identitas ASC"; 
-$konsumen=mysqli_query($conn,$sql2) or die(mysqli_error());
+        // Insert user data into table
+        $result = mysqli_query($mysqli, "INSERT INTO tb_pemesanan(id_pesan,email,jurusan,tgl_berangkat,harga,jumlah,alamat_jemput) VALUES('$id_pesan','$email','$jurusan','$harga','$tgl_berangkat','$jumlah', '$alamat_jemput')");
 
-?>
-
-<div id="main">
-	<div class="content">
-		<h3>Entry Tiket</h3>
-		<form action="inserttiket.php" method="POST">
-
-			<div class="input-group">
-				<select name="no_konsumen" id="" style="width: 250px;">
-					<option value='0'>-Pilih Konsumen-</option>
-					<?php while($rows=mysqli_fetch_array($konsumen)){
-						echo "<option value='". $rows['no_identitas']."'>". $rows['no_identitas']."</option>"; 
-					}?>
-
-				</select>
-
-			</div>
-
-			<div class="input-group">
-				<input type="text" placeholder="Nomor Tiket" value="DM0000<?php while($rows=mysqli_fetch_array($hasil)){ $dat = $rows['no_tiket']; $num = substr($dat,5)+$no; echo $num; }?>" name="no_tiket" style="width: 228px;">
-			</div>
-
-			<div class="input-group">
-				<input type="date" name="tgl_berangkat">
-				<select name="hari_berangkat" id="">
-					<option value="0">-Pilih hari Berangkat-</option>
-					<option value="Senin">Senin</option>
-					<option value="Selasa">Selasa</option>
-					<option value="Rabu">Rabu</option>
-					<option value="Kamis">Kamis</option>
-					<option value="Jum'at">Jum'at</option>
-					<option value="Sabtu">Sabtu</option>
-					<option value="Minggu">Minggu</option>
-				</select>
-				<input type="time" placeholder="Waktu keberangkatan" name="waktu_berangkat">
-			</div>
-			<div class="input-group">
-				<select name="no_tujuan" id="" style="width: 250px;">
-					<option value="0">-Pilih Kota Tujuan-</option>
-					<?php 
-					$sql = "SELECT * FROM tbl_tujuan ORDER BY no_tujuan DESC"; 
-					$hasil=mysqli_query($conn,$sql) or die(mysqli_error());
-					while($rows=mysqli_fetch_array($hasil)){
-						echo "<option value='". $rows['no_tujuan']."'>". $rows['kota_tujuan']."</option>"; 
-					}
-					?>
-				</select>
-			</div>
-			<div class="input-group">
-				<button type="submit" class="btn">Kirim</button>
-				<button type="reset" class="btn">Hapus</button>
-			</div>
-
-		</form>
-
-		<hr/>
-		<h3>Data Tiket</h3>
-		<?php include('data/data_tiket.php'); ?>
-	</div>
-</div>
-
-
-<?php include('template/footer.php'); ?>
+        // Show message when user added
+        echo "Selamat anda telah berhasil melakukan pemesanan, silahkan <a href='login.php'>pembayaran</a>";
+    }
+    ?>
+</body>
+</html>

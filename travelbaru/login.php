@@ -12,7 +12,7 @@
 	<?php
 	if(isset($_GET['pesan'])){
 		if($_GET['pesan'] == "gagal"){
-			echo "Login gagal! email dan password salah!";
+			echo "Login gagal! Username dan password salah!";
 		}else if($_GET['pesan'] == "logout"){
 			echo "Anda telah berhasil logout";
 		}else if($_GET['pesan'] == "belum_login"){
@@ -27,9 +27,9 @@
 	<form method="post" action="login_cek.php">
 		<table>
 			<tr>
-				<td>Email</td>
+				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="email" class="form_login" placeholder="Masukkan Email"></td>
+				<td><input type="text" name="username" class="form_login" placeholder="Masukkan Username"></td>
 			</tr>
 			<tr>
 				<td>Password</td>

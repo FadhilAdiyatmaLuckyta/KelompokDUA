@@ -10,9 +10,6 @@
 
     <form action="filetambahadmin.php" method="post" name="form1">
         <table width="25%" border="0">
-             <tr> 
-                <td>Id Admin</td>
-                <td><input type="text" name="id_admin"></td>
             </tr>
             <tr> 
                 <td>Nama</td>
@@ -45,7 +42,6 @@
 
     // Check If form submitted, insert form data into users table.
     if(isset($_POST['Submit'])) {
-        $id_admin = $_POST['id_admin'];
         $nama_admin = $_POST['nama_admin'];
         $telp = $_POST['telp'];
         $alamat = $_POST['alamat'];
@@ -57,7 +53,7 @@
         include_once("config.php");
 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO tb_admin(id_admin,nama_admin,telp,alamat,username,password) VALUES('$id_admin','$nama_admin','$telp','$alamat','$username','$password')");
+        $result = mysqli_query($mysqli, "INSERT INTO tb_admin(nama_admin,telp,alamat,username,password) VALUES('$nama_admin','$telp','$alamat','$username','$password')");
 
         // Show message when user added
         echo "Admin added successfully. <a href='formtambahadmin.php'>Lihat</a>";
