@@ -155,12 +155,12 @@
               </div>
               <?php
               if (isset($_POST['prediksi'])) {
-                $periode_pmb = $_POST['bulan_pk'];
-                $thn = ($x - 1) + $periode_pmb;
+                $periode_pk = $_POST['bulan_pk'];
+                $thn = ($x - 1) + $periode_pk;
                 $prediksi = $b0 + ($b1 * $thn);
                 ?>
                 <div>
-                  Prediksi Penjualan untuk <?=$periode_pmb;?> bulan berikutnya adalah <?=$prediksi;?>
+                  Prediksi Penjualan untuk <?=$periode_pk;?> bulan berikutnya adalah <?=$prediksi;?>
                 </div>
                 <?php
               }
