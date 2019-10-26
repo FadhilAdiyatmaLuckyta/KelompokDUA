@@ -6,6 +6,8 @@
 </head>
 </head>
 <body>
+
+
 	
 	<br/>
 	<!-- cek pesan notifikasi -->
@@ -29,12 +31,12 @@
 			<tr>
 				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="username" class="form_login" placeholder="Masukkan Username"></td>
+				<td><input type="text" name="username"  class="form_login" placeholder="Masukkan Username" required></td>
 			</tr>
 			<tr>
 				<td>Password</td>
 				<td>:</td>
-				<td><input type="password" name="password" class="form_login" placeholder="Masukkan password"></td>
+				<td><input type="password" name="password" class="form_login" placeholder="Masukkan password" required></td>
 			</tr>
 			<tr>
 				<td></td>
