@@ -37,23 +37,53 @@
         <table width="25%" border="0">
             <tr> 
                 <td>Nama</td>
-                <td><input type="text"  class="form_login" id ="nama" name="nama_pengguna" required></td>
+                <td><input type="text"  class="form_login" id ="nama" name="nama" autocomplete="off" required></td>
             </tr>
             <tr> 
-                <td>Telp</td>
-                <td><input type="text"  class="form_login" id="telp" name="telp" required></td>
+                <td>Tempat Lahir</td>
+                <td><input type="text"  class="form_login" id="tmpt" name="tempat_lahir" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Tanggal Lahir</td>
+                <td><input type="date"  class="form_login" id="tgl" name="tanggal_lahir" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Jenis Kelamin</td>
+                <td><input type="radio" name="jekel"
+                    <?php if (isset($jekel) && $jekel=="Perempuan") echo "checked";?>
+                        value="Perempuan">Perempuan
+                    <input type="radio" name="jekel"
+                    <?php if (isset($jekel) && $jekel=="Laki-laki") echo "checked";?>
+                    value="Laki-laki">Laki-laki</td>
+            </tr>
+            <tr> 
+                <td>ID</td>
+                <td><select name="tipe_id">
+                    <option value="KTP">KTP</option>
+                    <option value="SIM">SIM</option>
+                    <option value="Paspor">Paspor</option>
+                   
+                </select></td>
+            </tr>
+            <tr> 
+                <td>Nomer ID</td>
+                <td><input type="text"  class="form_login" id="tgl" name="nomer_id" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Telepon</td>
+                <td><input type="text"  class="form_login" id="telepon" name="telepon" autocomplete="off"  required></td>
             </tr>
             <tr> 
                 <td>Alamat</td>
-                <td><input type="text"  class="form_login" id="alamat" name="alamat" required></td>
+                <td><input type="text"  class="form_login" id="alamat" name="alamat" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Username</td>
-                <td><input type="text"  class="form_login" id="username" name="username" required></td>
+                <td><input type="text"  class="form_login" id="username" name="username" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Password</td>
-                <td><input type="password"  class="form_login" id="password" name="password" required></td>
+                <td><input type="password"  class="form_login" id="password" name="password" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td></td>
@@ -75,11 +105,17 @@
     // Check If form submitted, insert form data into users table.
     if(isset($_POST['Submit'])) {
         
-        $nama_pengguna = $_POST['nama_pengguna'];
-        $telp = $_POST['telp'];
+        $nama= $_POST['nama'];
+        $tempat_lahir = $_POST['tempat_lahir'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $jekel = $_POST['jekel'];
+        $tipe_id = $_POST['tipe_id'];
+        $nomer_id = $_POST['nomer_id'];
+        $telepon = $_POST['telepon'];
         $alamat = $_POST['alamat'];
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $password = md5($password) ;
         $level = $_POST['level'];
 
 
@@ -87,34 +123,19 @@
         include_once("config.php");
 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO tb_pengguna(id_pengguna,nama_pengguna,telp,alamat,username,password,level) VALUES('id_pengguna','$nama_pengguna','$telp','$alamat','$username','$password','$level')");
+        $result = mysqli_query($mysqli, "INSERT INTO users(id_user,nama,tempat_lahir,tanggal_lahir,jekel,tipe_id,nomer_id,telepon,alamat,username,password,level) VALUES('id_user','$nama','$tempat_lahir','$tanggal_lahir','$jekel','$tipe_id','$nomer_id','$telepon','$alamat','$username','$password','$level')");
 
         // Show message when user added
         echo "Selamat anda telah mendaftar, silahkan <a href='login.php'>login</a> kembali";
 
         
-    }
     
+    
+    }
     ?>
     
     
    
-<script type="text/javascript">
-	function validasi() {
-		var nama = document.getElementById("nama").value;
-		var telp = document.getElementById("telp").value;
-		var alamat = document.getElementById("alamat").value;
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        var setuju = document.getElementById("setuju").value;
-
-		if (nama != "" && telp!="" && alamat !="" && username !="" && password !="") {
-			return true;
-		}else{
-			alert('Anda harus mengisi data dengan lengkap !');
-		}
-	}
-</script>
 
     
 </body>

@@ -1,5 +1,5 @@
 <?php 
-$koneksi = mysqli_connect("localhost","root","","lansa_trans");
+$koneksi = mysqli_connect("localhost","root","","bismillahyaallah");
  
 // Check connection
 if (mysqli_connect_error()){

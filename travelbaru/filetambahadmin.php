@@ -47,6 +47,7 @@
         $alamat = $_POST['alamat'];
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $password = md5($password) ;
 
 
         // include database connection file

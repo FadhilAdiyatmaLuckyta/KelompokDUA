@@ -9,28 +9,28 @@
     
     <br/><br/>
     <div class ="kotakjurusan">
-	<p class="tulisan_jurusan">Silahkan Daftar</p>
+	<p class="tulisan_jurusan">Silahkan Tambah Jurusan</p>
     <form action="filejurusan.php" method="post" name="form1">
         <table width="25%" border="0">
             <tr> 
                 <td>ID Jurusan</td>
-                <td><input type="text" class="form_jurusan" name="id_jurusan"></td>
+                <td><input type="text" class="form_jurusan" name="id_jurusan" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Jurusan</td>
-                <td><input type="text" class="form_jurusan" name="jurusan"></td>
+                <td><input type="text" class="form_jurusan" name="jurusan" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Jam</td>
-                <td><input type="text" class="form_jurusan" name="jam"></td>
+                <td><input type="text" class="form_jurusan" name="jam" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Harga</td>
-                <td><input type="text" class="form_jurusan" name="harga"></td>
+                <td><input type="text" class="form_jurusan" name="harga" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td></td>
-                <td><input type="submit" name="Submit" class="tombol_tambahkan" value="Tambahkan"> </td> 
+                <td><input type="submit" name="Submit" class="tombol_tambahkan" value="Tambahkan" required> </td> 
             </tr>
         </table>
     </form>

@@ -2,7 +2,7 @@
 include_once("config.php");
 
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT * FROM tb_pengguna ORDER BY id_pengguna DESC");
+$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id_user DESC");
 ?>
 
 <html>
@@ -16,19 +16,24 @@ $result = mysqli_query($mysqli, "SELECT * FROM tb_pengguna ORDER BY id_pengguna 
     <table width='80%' border=1>
 
     <tr>
-         <th>ID Pengguna</th>    <th>Nama</th> <th>telp</th> <th>alamat</th>  <th>username</th>  <th>password</th>  <th>level</th>  <th>Update</th>
+         <th>ID Pengguna</th>    <th>Nama</th> <th>tempat lahir</th> <th>Tanggal lahir</th>  <th>Jenis Kelamin</th>  <th>Tipe ID</th>  <th>Nomer ID</th>  <th>Telepon</th> <th>Alamat</th> <th>Username</th> <th>Password</th> <th>Level</th> <th>Update</th>
     </tr>
     <?php  
     while($user_data = mysqli_fetch_array($result)) {         
         echo "<tr>";
-        echo "<td>".$user_data['id_pengguna']."</td>";
-        echo "<td>".$user_data['nama_pengguna']."</td>";
-        echo "<td>".$user_data['telp']."</td>";
-        echo "<td>".$user_data['alamat']."</td>";
-        echo "<td>".$user_data['username']."</td>";
+        echo "<td>".$user_data['id_user']."</td>";
+        echo "<td>".$user_data['nama']."</td>";
+        echo "<td>".$user_data['tempat_lahir']."</td>";
+        echo "<td>".$user_data['tanggal_lahir']."</td>";
+        echo "<td>".$user_data['jekel']."</td>";
+        echo "<td>".$user_data['tipe_id']."</td>";
+        echo "<td>".$user_data['nomer_id']."</td>";
+        echo "<td>".$user_data['telepon']."</td>"; 
+        echo "<td>".$user_data['alamat']."</td>"; 
+        echo "<td>".$user_data['username']."</td>";    
         echo "<td>".$user_data['password']."</td>";
-        echo "<td>".$user_data['level']."</td>";    
-        echo "<td><a href='edit.php?email=$user_data[id_pengguna]'>Edit</a> | <a href='hapus.php?email=$user_data[id_pengguna]'>hapus</a></td></tr>";        
+        echo "<td>".$user_data['level']."</td>"; 
+        echo "<td><a href='edit.php?email=$user_data[id_user]'>Edit</a> | <a href='hapus.php?email=$user_data[id_user]'>hapus</a></td></tr>";        
     }
     ?>
     </table>

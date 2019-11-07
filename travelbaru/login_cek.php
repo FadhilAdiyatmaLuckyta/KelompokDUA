@@ -8,15 +8,17 @@ include 'koneksi.php';
 // menangkap data yang dikirim dari form login
 $username = $_POST['username'];
 $password = $_POST['password'];
+$password = md5($password);
  
  
 // menyeleksi data user dengan username dan password yang sesuai
-$login = mysqli_query($koneksi,"select * from tb_pengguna where username='$username' and password='$password'");
+$login = mysqli_query($koneksi,"select * from users where username='$username' and password='$password'");
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($login);
  
 // cek apakah username dan password di temukan pada database
-if($cek > 0){
+if($cek > 0)
+{
  
 	$data = mysqli_fetch_assoc($login);
  
@@ -34,18 +36,18 @@ if($cek > 0){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "pengguna";
-		// alihkan ke halaman dashboard pegawai
+		// alihkan ke halaman dashboard pengguna
 		header("location:index2.html");
  
-	
- 
+	// cek jika user login sebagai pengurus
+
 	}else{
  
 		// alihkan ke halaman login kembali
-		header("location:index.php?pesan=gagal");
+		header("location:login.php?pesan=gagal");
 	}	
 }else{
-	header("location:index.php?pesan=gagal");
+	header("location:login.php?pesan=gagal");
 }
  
 ?>

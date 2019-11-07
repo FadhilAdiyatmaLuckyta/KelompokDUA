@@ -31,7 +31,7 @@
 			<tr>
 				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="username"  class="form_login" placeholder="Masukkan Username" required></td>
+				<td><input type="text" name="username"  class="form_login" placeholder="Masukkan Username" autocomplete="off" required></td>
 			</tr>
 			<tr>
 				<td>Password</td>

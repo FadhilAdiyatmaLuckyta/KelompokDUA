@@ -4,7 +4,7 @@
  */
 
 $databaseHost = 'localhost';
-$databaseName = 'lansa_trans';
+$databaseName = 'bismillahyaallah';
 $databaseUsername = 'root';
 $databasePassword = '';
 

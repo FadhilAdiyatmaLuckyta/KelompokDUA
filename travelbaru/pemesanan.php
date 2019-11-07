@@ -1,87 +1,76 @@
-
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Pemesanan</title>
-    <link rel="stylesheet" type="text/css" href="css_pemesanan.css">
-</head>
-
-<body>
-<?php
-
-  require_once 'config.php';
-
-  $query1 = "SELECT * FROM tb_jurusan ORDER BY id_jurusan DESC";
-
-  $result = mysqli_query($mysqli, $query1);
-  
-  
-
-  ?>
-    
-    <br/><br/>
-    <div class ="kotaklogin">
-	<p class="tulisan_login">Silahkan Pesan</p>
-    <form action="pemesanan.php" method="post" name="form1">
-        <table width="25%" border="0">
-           <tr> 
-                <td>Email</td>
-                <td><input type="text" class="form_login" name="email"></td>
-            </tr>
-            <tr> 
-                <td>Jurusan</td>
-                <td><select > <?php while($data = mysqli_fetch_assoc($result) ){?>
-
-                    <option value="<?php echo $data['id_jurusan']; ?>"><?php echo $data['jurusan']; ?></option>
-                
-                   <?php } ?>
-                
-                </select></td>
-            </tr>
-            <tr> 
-                <td>Harga</td>
-                <td><input type="text" class="form_login" name="harga"></td>
-            </tr>
-            
-            <tr> 
-                <td>Keberangkatan</td>
-                <td><input type="date" min="2019-10-16"  class="form_pesan"  name="tgl_berangkat"><td>
-            </tr>
-            <tr> 
-                <td>Jumlah</td>
-                <td><input type="number" min="1" max="5"  class="form_iyo"  name="jumlah" /><td>
-            </tr>
-            <tr> 
-                <td>Alamat Jemput</td>
-                <td><textarea class="form-control" rows="5"  name="alamat_jemput"></textarea></td>
-            </tr>
-            <tr> 
-                <td></td>
-                <td><input type="submit" name="Submit" class="tombol_login" value="Pesan"> </td> 
-            </tr>
-        </table>
+	<head>
+		<title>Input Pemesanan Tiket Travel</title>
+	</head>
+	<body>
+		<h3 align="center">INPUT PEMESANAN TIKET TRAVEL</h3>
+		<center><a href="index.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
+		<fieldset style="width: 50%; margin: auto;">
+			<legend>Form Input Pemesanan Tiket Travel</legend>
+		<form action="simpan.php" method="post">
+		<table>
+		<tr>
+			<td>Nama</td>
+			<td>:</td>
+			<td><input type="text" name="nama"required=required placeholder='nama lengkap'></td>
+		</tr>
+		<tr>
+			<td>jurusan</td>
+			<td>:</td>
+			<td><select name="jurusan" id="jurusan" class="form-control" onchange='changeValue(this.value)' required>
+  			<option value="">-Pilih-</option>
+			<?php
+			$koneksi = mysqli_connect("localhost","root","","initravel");
+            $result = mysqli_query($koneksi, "SELECT * FROM JURUSAN ORDER BY JURUSAN asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM JURUSAN");    
+			$jsArray = "var prdName = new Array();\n";
+			while($row = mysqli_fetch_assoc($result))
+			
+  			 {
+				echo '<option name="JURUSAN"  value="' . $row['JURUSAN'] . '">' . $row['JURUSAN'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['JURUSAN'] . "'] = {harga:'" . addslashes($row['HARGA']) . "',jam:'". addslashes($row['JAM'])."'};\n";
+				
+			}
+		 ?>
+				   </select>
+			</td>
+			
+			<td>Jumlah Tiket</td>
+			<td>:</td>
+			<td><input type="number" name="Jumlah_Tiket"required=required placeholder='Jumlah Tiket'></td>
+		</tr>
+		<tr>
+			<td>Alamat</td>
+			<td>:</td>
+			<td><input type="text" name="berangkat"required=required placeholder='Alamat'></td>
+			<td>Tanggal</td>
+			<td>:</td>
+			<td><input type="date" name="tanggal_berangkat"required=required placeholder='ex:YYYY-MM-DD'></td>
+		</tr>
+		<tr>
+			<td>Harga</td>
+			<td>:</td>
+			<td><input class="form-control"  name="harga" id="harga" readonly placeholder='harga tiket'> </td>
+			
+			<td>jam keberangkatan</td>
+			<td>:</td>
+			<td><input class="form-control"  name="jam" id="jam" readonly placeholder='jam keberangkatan'> 	 </td>
+		</tr>
+        <tr>
+            <td><input type="submit" value="Simpan" /></td>
+            <td><input type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
+        </tr>
+		</table>
     </form>
-
-    <?php
-
-    // Check If form submitted, insert form data into users table.
-    if(isset($_POST['Submit'])) {
-        $email = $_POST['email'];
-        $jurusan= $_POST['jurusan'];
-        $harga = $_POST['harga'];
-        $tgl_berangkat = $_POST['tgl_berangkat'];
-        $jumlah = $_POST['jumlah'];
-        $alamat_jemput = $_POST['alamat_jemput'];
-
-
-        // include database connection file
-        include_once("config.php");
-
-        // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO tb_pemesanan(id_pesan,email,jurusan,tgl_berangkat,harga,jumlah,alamat_jemput) VALUES('$id_pesan','$email','$jurusan','$harga','$tgl_berangkat','$jumlah', '$alamat_jemput')");
-
-        // Show message when user added
-        echo "Selamat anda telah berhasil melakukan pemesanan, silahkan <a href='login.php'>pembayaran</a>";
-    }
-    ?>
-</body>
+	</fieldset>
+	
+	</body>
 </html>
+<script type="text/javascript"> 
+<?php echo $jsArray; ?>
+function changeValue(id){
+    document.getElementById('harga').value = prdName[id].harga;
+	document.getElementById('jam').value = prdName[id].jam;
+};
+</script>
