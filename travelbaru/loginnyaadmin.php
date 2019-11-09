@@ -2,7 +2,13 @@
 <html>
 <head>
 	<title>Login Admin</title>
-    <link rel="stylesheet" type="text/css" href="css_login.css">
+	<link rel="stylesheet" type="text/css" href="css_login.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 	
@@ -38,9 +44,11 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td><input type="submit" class="tombol_login" value="LOGIN"></td>
+				<td><button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>  </td>
 			</tr>
 		</table>			
 	</form>
+	
+  </div>
 </body>
 </html>
