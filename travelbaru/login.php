@@ -3,6 +3,7 @@
 <head>
 	<title>Login</title>
     <link rel="stylesheet" type="text/css" href="css_login.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 </head>
 <body>
@@ -25,8 +26,12 @@
 	<br/>
 	<br/>
 	<div class ="kotaklogin">
-	<p class="tulisan_login">Silahkan login</p>
+	<h3 class="tulisan_login" style="font-family:Aller;">Silahkan Login</h3>
 	<form method="post" action="login_cek.php">
+	<?php 
+			if(isset($_GET["login_error"])){ ?>
+			<h5 style="color: #FF3333; text-align: center; font-family:Aller;"" class="animated shake">Maaf Password atau username salah</h5>
+			<?php }	?>
 		<table>
 			<tr>
 				<td>Username</td>
