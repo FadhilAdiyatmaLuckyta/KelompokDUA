@@ -20,6 +20,6 @@ if($cek > 0){
 	$_SESSION['status'] = "login";
 	header("location:index3.html");
 }else{
-	header("location:loginnyaadmin.php?pesan=gagal");
+	header("location:loginnyaadmin.php?login_error");
 }
 ?>

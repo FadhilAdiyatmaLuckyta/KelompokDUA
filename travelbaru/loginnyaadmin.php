@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
 
 </head>
 <body>
@@ -27,11 +28,14 @@
 	}
 	?>
 	<br/>
-	<br/>
 	<div class ="kotaklogin">
 	<h3 class="tulisan_login" style="font-family:Aller;">Login Admin</h3>
-	<br>
+	
 	<form method="post" action="cek_loginnyaadmin.php">
+	<?php 
+			if(isset($_GET["login_error"])){ ?>
+			<h5 style="color: #FF3333; text-align: center; font-family:Aller;"" class="animated shake">Maaf Password atau username salah</h5>
+			<?php }	?>
 		<table>
 			<tr>
 				<tr>Username</tr>
