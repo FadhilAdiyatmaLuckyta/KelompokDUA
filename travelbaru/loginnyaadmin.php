@@ -3,11 +3,12 @@
 <head>
 	<title>Login Admin</title>
 	<link rel="stylesheet" type="text/css" href="css_login.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -28,23 +29,22 @@
 	<br/>
 	<br/>
 	<div class ="kotaklogin">
-	<p class="tulisan_login">Silakan login Admin</p>
+	<h3 class="tulisan_login" style="font-family:Aller;">Login Admin</h3>
+	<br>
 	<form method="post" action="cek_loginnyaadmin.php">
 		<table>
 			<tr>
-				<td>Username</td>
-				<td>:</td>
-				<td><input type="text" name="email" class="form_login" placeholder="Masukkan Username"></td>
+				<tr>Username</tr>
+				<tr><input type="text" name="email" class="form_login" placeholder="Masukkan Username"></tr>
 			</tr>
 			<tr>
-				<td>Password</td>
-				<td>:</td>
-				<td><input type="password" name="password" class="form_login" placeholder="Masukkan password"></td>
+				<tr>Password</tr>
+				<tr><input type="password" name="password" class="form_login" placeholder="Masukkan password"></tr>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
-				<td><button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>  </td>
+				<td><button class="btn btn-success" type="submit" style="font-family:Aller;">Login</button>  </td>
 			</tr>
 		</table>			
 	</form>
