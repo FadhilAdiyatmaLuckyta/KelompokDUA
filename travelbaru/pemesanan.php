@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Input Pemesanan Tiket Travel</title>
+		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 	</head>
 	<body>
 		<h3 align="center">INPUT PEMESANAN TIKET TRAVEL</h3>
@@ -21,17 +22,17 @@
 			<td><select name="jurusan" id="jurusan" class="form-control" onchange='changeValue(this.value)' required>
   			<option value="">-Pilih-</option>
 			<?php
-			$koneksi = mysqli_connect("localhost","root","","initravel");
-            $result = mysqli_query($koneksi, "SELECT * FROM JURUSAN ORDER BY JURUSAN asc");
-            $result = mysqli_query($koneksi, "SELECT *FROM JURUSAN");    
+			$koneksi = mysqli_connect("localhost","root","","bismillahyaallah");
+            $result = mysqli_query($koneksi, "SELECT * FROM jurusan ORDER BY jurusan asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM jurusan");    
 			$jsArray = "var prdName = new Array();\n";
 			while($row = mysqli_fetch_assoc($result))
-			
   			 {
-				echo '<option name="JURUSAN"  value="' . $row['JURUSAN'] . '">' . $row['JURUSAN'] . '</option>';  
-				$jsArray .= "prdName	['" . $row['JURUSAN'] . "'] = {harga:'" . addslashes($row['HARGA']) . "',jam:'". addslashes($row['JAM'])."'};\n";
+				echo '<option name="jurusan"  value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "',jam:'". addslashes($row['jam'])."'};\n";
 				
 			}
+			
 		 ?>
 				   </select>
 			</td>

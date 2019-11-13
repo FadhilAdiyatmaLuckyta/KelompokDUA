@@ -3,6 +3,7 @@
 <head>
     <title>Tambah Jurusan</title>
     <link rel="stylesheet" type="text/css" href="css_jurusan.css">
+    <link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 </head>
 
 <body>
@@ -13,8 +14,12 @@
     <form action="filejurusan.php" method="post" name="form1">
         <table width="25%" border="0">
             <tr> 
-                <td>ID Jurusan</td>
-                <td><input type="text" class="form_jurusan" name="id_jurusan" autocomplete="off" required></td>
+                <td>ID Driver</td>
+                <td><input type="text" class="form_jurusan" name="id_driver" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>ID Cars</td>
+                <td><input type="text" class="form_jurusan" name="id_car" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Jurusan</td>
@@ -51,7 +56,7 @@
         include_once("config.php");
 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO tb_jurusan(id_jurusan,jurusan,jam,harga) VALUES('$id_jurusan','$jurusan','$jam','$harga')");
+        $result = mysqli_query($mysqli, "INSERT INTO jurusan(id_jurusan,id_driver,id_car,jurusan,jam,harga) VALUES('$id_jurusan','$id_driver','$id_car','$jurusan','$jam','$harga')");
 
         // Show message when user added
         echo "Selamat anda telah mendaftar, silahkan <a href='formtambahjurusan.php'>lihat</a> kembali";

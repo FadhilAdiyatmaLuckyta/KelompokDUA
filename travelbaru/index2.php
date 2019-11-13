@@ -27,9 +27,14 @@
   </head>
   <body>
 
+    
+    
+
   <!--Navbar-->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a href="#home" class="navbar-brand page-scroll ">Lansa Trans</a>
+
+    
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -38,6 +43,20 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Pembayaran</a>
     </li>
+
+
+    <?php
+    include 'config.php';
+
+    session_start();
+
+
+    echo "haloo, Selamat Datang Lansa Trans", $_SESSION['username'];
+
+    ?>
+    <br/>
+
+    
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
@@ -138,6 +157,7 @@
             </a>
           </div>
 
+
          
 
         
@@ -187,7 +207,9 @@
       
     </section>
     <!--akhir contact-->
-
+  
+  
+  
 
     <!--footer-->
     <footer>

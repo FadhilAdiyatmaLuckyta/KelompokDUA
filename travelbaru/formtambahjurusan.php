@@ -8,6 +8,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM tb_jurusan ORDER BY id_jurusan DE
 <html>
 <head>    
     <title>Homepage</title>
+    <link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 </head>
 
 <body>

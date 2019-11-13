@@ -1,8 +1,10 @@
 
 <html>
 <head>
-    <title>Add Users</title>
+    <title>Tambah Users</title>
     <link rel="stylesheet" type="text/css" href="css_daftar.css">
+    <link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
+    
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script language="javascript">
@@ -51,10 +53,10 @@
                 <td>Jenis Kelamin</td>
                 <td><input type="radio" name="jekel"
                     <?php if (isset($jekel) && $jekel=="Perempuan") echo "checked";?>
-                        value="Perempuan">Perempuan
+                        value="Perempuan" required>Perempuan
                     <input type="radio" name="jekel"
                     <?php if (isset($jekel) && $jekel=="Laki-laki") echo "checked";?>
-                    value="Laki-laki">Laki-laki</td>
+                    value="Laki-laki" required>Laki-laki</td>
             </tr>
             <tr> 
                 <td>ID</td>
@@ -67,11 +69,11 @@
             </tr>
             <tr> 
                 <td>Nomer ID</td>
-                <td><input type="text"  class="form_login" id="tgl" name="nomer_id" autocomplete="off" required></td>
+                <td><input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="form_login" id="tgl" name="nomer_id" autocomplete="off" required></td>
             </tr>
             <tr> 
                 <td>Telepon</td>
-                <td><input type="text"  class="form_login" id="telepon" name="telepon" autocomplete="off"  required></td>
+                <td><input type="text" maxlength="13" onkeypress="return hanyaAngka(event)" class="form_login" id="telepon" name="telepon" autocomplete="off"  required></td>
             </tr>
             <tr> 
                 <td>Alamat</td>
@@ -122,6 +124,9 @@
         // include database connection file
         include_once("config.php");
 
+        
+        
+
         // Insert user data into table
         $result = mysqli_query($mysqli, "INSERT INTO users(id_user,nama,tempat_lahir,tanggal_lahir,jekel,tipe_id,nomer_id,telepon,alamat,username,password,level) VALUES('id_user','$nama','$tempat_lahir','$tanggal_lahir','$jekel','$tipe_id','$nomer_id','$telepon','$alamat','$username','$password','$level')");
 
@@ -135,7 +140,15 @@
     ?>
     
     
-   
+    <script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
+	</script>
 
     
 </body>
