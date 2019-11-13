@@ -29,7 +29,7 @@ if($cek > 0)
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "admin";
 		// alihkan ke halaman dashboard admin
-		header("location:index3.html");
+		header("location:halamanadmin.html");
  
 	// cek jika user login sebagai pengguna
 	}else if($data['level']=="pengguna"){

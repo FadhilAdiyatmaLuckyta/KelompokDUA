@@ -34,23 +34,24 @@
 			<?php }	?>
 		<table>
 			<tr>
-				<td>Username</td>
-				<td>:</td>
-				<td><input type="text" name="username"  class="form_login" placeholder="Masukkan Username" autocomplete="off" required></td>
+				<tr><p style="font-family:Arial Narrow">USERNAME</p></tr>
+				
+				<tr><input type="text" name="username"  class="form_login" placeholder="Masukkan Username" autocomplete="off" required></tr>
 			</tr>
 			<tr>
-				<td>Password</td>
-				<td>:</td>
-				<td><input type="password" name="password" class="form_login" placeholder="Masukkan password" required></td>
+				<tr><p style="font-family:Arial Narrow">PASSWORD</p></tr>
+			
+				<tr><input type="password" name="password" class="form_login" placeholder="Masukkan password" required></tr>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
-				<td><input type="submit" class="tombol_login" value="LOGIN"></td>
+				<tr><input type="submit" class="tombol_login" value="LOGIN"></tr>
+				<tr><p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="filetambah.php">Daftar</a></p></tr>
 			</tr>
 		</table>
 		<br>	
-		<center><a href="filetambah.php">Daftar</a></center>
+		<!--<center><a href="filetambah.php">Daftar</a></center>-->
 
 	</form>
 	</div>	
