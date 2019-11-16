@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,7 @@
 	<br/>
 	<div class ="kotaklogin">
 	<h3 class="tulisan_login" style="font-family:Aller;">Silahkan Login</h3>
-	<form method="post" action="login_cek.php">
+	<form action="login_cek.php" method="post" >
 	<?php 
 			if(isset($_GET["login_error"])){ ?>
 			<h5 style="color: #FF3333; text-align: center; font-family:Aller;"" class="animated shake">Maaf Password atau username salah</h5>
@@ -46,12 +48,12 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<tr><input type="submit" class="tombol_login" value="LOGIN"></tr>
-				<tr><p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="filetambah.php">Daftar</a></p></tr>
+				<tr><input type="submit" class="tombol_login" name="login" value="Login"></tr>
+				<tr><p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="tambahusers.php">Daftar</a></p></tr>
 			</tr>
 		</table>
 		<br>	
-		<!--<center><a href="filetambah.php">Daftar</a></center>-->
+		<!--<center><a href="tambahusers.php">Daftar</a></center>-->
 
 	</form>
 	</div>	

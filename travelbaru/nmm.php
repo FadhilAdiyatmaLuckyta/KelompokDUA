@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Input Pemesanan Tiket Travel</title>
+		<title>Tambah Jurusan</title>
 		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 	</head>
 	<body>
-		<h3 align="center">INPUT PEMESANAN TIKET TRAVEL</h3>
-		<center><a href="index.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
+		<h3 align="center">Tambah Jurusan</h3>
+		<center><a href="index.php">&Lt; Tambah Jurusan</a></center></br>
 		<fieldset style="width: 50%; margin: auto;">
 			<legend>Tambah Jurusan</legend>
 		<form action="nmm.php" method="post">

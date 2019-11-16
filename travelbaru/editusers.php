@@ -7,18 +7,18 @@
  
 	<h2>CRUD DATA MAHASISWA - WWW.MALASNGODING.COM</h2>
 	<br/>
-	<a href="index.html">KEMBALI</a>
+	<a href="formtambah.php">KEMBALI</a>
 	<br/>
 	<br/>
 	<h3>EDIT DATA MAHASISWA</h3>
  
 	<?php
-	include_once("config.php");
+	include ("config.php");
 	$id_user = $_GET['id_user'];
 	$data = mysqli_query($mysqli,"SELECT * FROM users where id_user='$id_user'");
-	while($d = mysqli_fetch_array($data)){
+	while ($d = mysqli_fetch_array($data)){
 		?>
-		<form method="post" action="updateusers.php">
+		<form method="post" action="editusers.php">
 			<table>
 				<tr>			
 					<td>Nama</td>
