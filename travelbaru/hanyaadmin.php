@@ -105,8 +105,8 @@ if( isset($_POST["submit"]) ){
             <tr> 
                 <td></td>
                 <td><input type="checkbox" name="level" id="setuju" class="ok" required
-                <?php if (isset($level) && $level=="pengguna") echo "checked";?>
-                value="pengguna">Saya Pengguna Baru</td>
+                <?php if (isset($level) && $level=="admin") echo "checked";?>
+                value="admin">Saya Admin Baru</td>
             </tr>
             <tr> 
             

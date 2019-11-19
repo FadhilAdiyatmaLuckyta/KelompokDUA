@@ -110,6 +110,7 @@ function ubah ($data) {
     $email = htmlspecialchars($_POST['email']);
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
+    $password = md5($password) ;
     $level = htmlspecialchars($_POST["level"]);
 
     //query ubah data
@@ -146,5 +147,89 @@ function cari($keyword) {
                 alamat LIKE '$keyword%' 
             ";
     return query($query);
+}
+//INI FUNCTION PUNYA DRIVERS YA....
+function tambahkan($data) {
+    global $conn;
+    $nama_driver= htmlspecialchars($_POST["nama_driver"]);
+    $tempat_lahirdriver = htmlspecialchars($_POST["tempat_lahirdriver"]);
+    $tanggal_lahirdriver = htmlspecialchars($_POST["tanggal_lahirdriver"]);
+    $jenis_kelamin = htmlspecialchars($_POST["jenis_kelamin"]);
+    $no_sim = htmlspecialchars($_POST["no_sim"]);
+    $telp = htmlspecialchars($_POST["telp"]);
+    $alamat_driver = htmlspecialchars($_POST["alamat_driver"]);
+
+    //CEK NO TELP APAKAH SUDAH ADA APA BELOM
+    $result = mysqli_query($conn, "SELECT telp FROM drivers WHERE telp='$telp'");
+
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script>
+            alert ('Nomer telepon telah terdaftar')
+            </script>";
+        return false;
+    }
+
+    //CEK NO SIM APAKAH SUDAH ADA APA BELOM
+    $result2 = mysqli_query($conn, "SELECT no_sim FROM drivers WHERE no_sim='$no_sim'");
+
+    if( mysqli_fetch_assoc($result2) ) {
+        echo "<script>
+            alert ('Nomer SIM telah terdaftar')
+            </script>";
+        return false;
+    }
+
+    //query insert data
+    $query = "INSERT INTO drivers
+               VALUES
+               ('', '$nama_driver', '$tempat_lahirdriver', '$tanggal_lahirdriver', '$jenis_kelamin', '$no_sim', '$telp', '$alamat_driver')";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+function ubahdriver($data) {
+    global $conn;
+    $driver =$data["id_driver"];
+    $nama_driver = htmlspecialchars($_POST["nama_driver"]);
+    $tempat_lahirdriver = htmlspecialchars($_POST["tempat_lahirdriver"]);
+    $tanggal_lahirdriver = htmlspecialchars($_POST["tanggal_lahirdriver"]);
+    $jenis_kelamin = htmlspecialchars($_POST["jenis_kelamin"]);
+    $no_sim = htmlspecialchars($_POST["no_sim"]);
+    $telp = htmlspecialchars($_POST["telp"]);
+    $alamat_driver = htmlspecialchars($_POST["alamat_driver"]);
+
+    //query ubahdriver 
+    $query = "UPDATE drivers SET
+                nama_driver = '$nama_driver',
+                tempat_lahirdriver = '$tempat_lahirdriver',
+                tanggal_lahirdriver = '$tanggal_lahirdriver',
+                jenis_kelamin = '$jenis_kelamin',
+                no_sim = '$no_sim',
+                telp = '$telp',
+                alamat_driver = '$alamat_driver',
+                WHERE id_driver = $driver
+                ";
+}
+
+
+function havus ($id_driver) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM drivers WHERE id_driver= $id_driver");
+
+    return mysqli_affected_rows($conn);
+}
+function carii($keyword) {
+    $query = "SELECT * FROM drivers
+                WHERE
+                nama_driver LIKE '$keyword%' OR
+                tempat_lahirdriver LIKE '$keyword%' OR
+                no_sim LIKE '$keyword%' OR
+                telp LIKE '$keyword%' OR
+                alamat_driver LIKE '$keyword%' 
+            ";
+    return query($query);
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
 }
 ?>
