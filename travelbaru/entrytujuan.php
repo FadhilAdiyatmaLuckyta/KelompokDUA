@@ -25,7 +25,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a class="navbar-brand"><i class="fas fa-car"></i> Halaman Jurusan</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -122,7 +122,7 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="entrytujuan.php">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="#">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
@@ -161,6 +161,72 @@
 
         <div class="main-content">
           <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
+          <br/><br/>
+          <div class="container">
+    <div class="table table-hover">
+	<h5>Silahkan Tambah Jurusan</h5>
+    <form action="entrytujuan.php" method="post" name="form1">
+        <table>
+            <tr> 
+                <td>ID Jurusan</td>
+                <td><input type="text" class="form_jurusan" name="ID_JURUSAN" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>ID Pengemudi</td>
+                <td><input type="text" class="form_jurusan" name="ID_PENGEMUDI" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>ID Kendaraan</td>
+                <td><input type="text" class="form_jurusan" name="ID_KENDARAAN" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Jurusan</td>
+                <td><input type="text" class="form_jurusan" name="JURUSAN" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Jam</td>
+                <td><input type="text" class="form_jurusan" name="JAM_BRKT" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td>Harga</td>
+                <td><input type="text" class="form_jurusan" name="HARGA" autocomplete="off" required></td>
+            </tr>
+            <tr> 
+                <td></td>
+                <td><input type="submit" name="Submit" class="btn btn-success" value="Tambahkan" required> </td> 
+            </tr>
+         </div>
+        </div>
+
+        </table>
+
+    </form>
+
+    <?php
+
+    // Check If form submitted, insert form data into users table.
+    if(isset($_POST['Submit'])) {
+        
+        $id_jurusan = $_POST['ID_JURUSAN'];
+        $id_pengemudi = $_POST['ID_PENGEMUDI'];
+        $id_kendaraan = $_POST['ID_KENDARAAN'];
+        $jurusan = $_POST['JURUSAN'];
+        $jurusan = $_POST['JAM_BRKT'];
+        $harga = $_POST['HARGA'];
+        
+
+
+        // include database connection file
+        include_once("koneksi2.php");
+
+        // Insert user data into table
+        $result = mysqli_query($mysqli, "INSERT INTO jurusan(ID_JURUSAN,ID_PENGEMUDI,ID_KENDARAAN,JURUSAN,JAM_BRKT,HARGA) VALUES('$id_jurusan', '$id_pengemudi','$id_kendaraan','$jurusan','$jam_brkt','$HARGA')");
+
+        // Show message when user added
+        echo "Selamat anda telah menambahkan";
+    }
+    ?>
+	</table>
         </div>
 
             

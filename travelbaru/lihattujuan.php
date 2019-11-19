@@ -25,7 +25,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a class="navbar-brand"><i class="fas fa-car"></i> Halaman Jurusan</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -125,7 +125,7 @@
                                             <a class="nav-link" href="entrytujuan.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="#">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -161,6 +161,42 @@
 
         <div class="main-content">
           <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
+
+        <table class="table">
+        <thead class="thead-dark">
+		<tr>
+            <th>ID</th>
+            <th>ID Pengemudi</th>
+            <th>ID Kendaraan</th>
+			<th>Jurusan</th>
+			<th>Jam</th>
+            <th>Harga</th>
+            <th></th>
+		</tr>
+		<?php 
+		include 'koneksi2.php';
+	    $no = 1;
+		$data = mysqli_query($koneksi,"select * from jurusan");
+		while($d = mysqli_fetch_array($data)){
+			?>
+			<tr>
+                <!--<td><?php echo $no++; ?></td>-->
+                <td><?php echo $d['ID_JURUSAN']; ?></td>
+                <td><?php echo $d['ID_PENGEMUDI']; ?></td>
+                <td><?php echo $d['ID_KENDARAAN']; ?></td>
+				<td><?php echo $d['JURUSAN']; ?></td>
+                <td><?php echo $d['JAM_BRKT']; ?></td>
+                <td><?php echo $d['HARGA']; ?></td>
+                <td>
+					<a href="edit.php?id=<?php echo $d['id']; ?>">EDIT</a>
+					<a href="hapus.php?id=<?php echo $d['id']; ?>">HAPUS</a>
+				</td>
+				
+			</tr>
+			<?php 
+		}
+		?>
+	</table>
         </div>
 
             
