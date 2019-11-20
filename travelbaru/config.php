@@ -190,13 +190,13 @@ function tambahkan($data) {
 function ubahdriver($data) {
     global $conn;
     $driver =$data["id_driver"];
-    $nama_driver = htmlspecialchars($_POST["nama_driver"]);
-    $tempat_lahirdriver = htmlspecialchars($_POST["tempat_lahirdriver"]);
-    $tanggal_lahirdriver = htmlspecialchars($_POST["tanggal_lahirdriver"]);
-    $jenis_kelamin = htmlspecialchars($_POST["jenis_kelamin"]);
-    $no_sim = htmlspecialchars($_POST["no_sim"]);
-    $telp = htmlspecialchars($_POST["telp"]);
-    $alamat_driver = htmlspecialchars($_POST["alamat_driver"]);
+    $nama_driver = htmlspecialchars($data["nama_driver"]);
+    $tempat_lahirdriver = htmlspecialchars($data["tempat_lahirdriver"]);
+    $tanggal_lahirdriver = htmlspecialchars($data["tanggal_lahirdriver"]);
+    $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
+    $no_sim = htmlspecialchars($data["no_sim"]);
+    $telp = htmlspecialchars($data["telp"]);
+    $alamat_driver = htmlspecialchars($data["alamat_driver"]);
 
     //query ubahdriver 
     $query = "UPDATE drivers SET
@@ -232,4 +232,89 @@ function carii($keyword) {
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+function nambah($data) {
+    global $conn;
+    $merk= htmlspecialchars($data["merk"]);
+    $warna = htmlspecialchars($data["warna"]);
+    $nopol = htmlspecialchars($data["nopol"]);
+    $kursi = htmlspecialchars($data["kursi"]);
+    
+    //upload foto
+    
+    $gambar = upload(); 
+    if( !$gambar ) {
+        return false;
+    }
+   
+    //query insert data
+    $query = "INSERT INTO cars
+                VALUES
+                ('', '$merk', '$warna', '$nopol', '$kursi', '$gambar')";
+    
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+
+   
+}
+
+function upload() {
+    $namaFile= $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    
+
+    //cek apakah gak ada gambar yg diupload
+    if( $error === 4 ) {
+        echo "<script>
+        alert('pilih foto dulu');
+        </script>";
+        return false;
+    }
+
+   
+    //cek apa benar yg diupload gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if( !in_array($ekstensiGambar, $ekstensiGambarValid) ){
+    echo "<script>
+        alert('yang kamu upload bukan gambar sayang!');
+        </script>";
+        return false;
+    }
+
+    // cek ukuran gambar
+    if( $ukuranFile > 1000000) {
+        echo "<script>
+        alert('ukuran gambar terlalu besar!');
+        </script>";
+        return false;
+    }
+    //siap diupload
+    move_uploaded_file($tmpName,"img/".$namaFile);
+
+    return $namaFile;
+}
+function kirim($data) {
+    global $conn;
+    $pengirim= htmlspecialchars($_POST["pengirim"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $no_telp = htmlspecialchars($_POST["no_telp"]);
+    $pesan = htmlspecialchars($_POST["pesan"]);
+    $tgl_contact = date("Y-m-d H:i:s");
+    
+
+     //query insert data
+     $query = "INSERT INTO contact_us
+     VALUES
+     ('', '$pengirim', '$email', '$no_telp', '$pesan', '$tgl_contact')";
+
+        mysqli_query($conn, $query);
+
+        return mysqli_affected_rows($conn);
+}
+
 ?>

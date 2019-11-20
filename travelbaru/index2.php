@@ -1,3 +1,35 @@
+<?php
+require 'config.php';
+
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek data berhasil ditambah apa gak
+    if( kirim ($_POST) > 0 ) {
+      echo "
+      <script>
+          alert('pesan terkirim');
+          document.location.href = 'index2.php';
+      </script>
+  ";
+          
+  }else {
+      echo "
+      <script>
+          alert('maaf pesan gagal dikirim!');
+          document.location.href = 'index2.php';
+      </script>
+  ";
+  }
+
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>
@@ -45,15 +77,8 @@
     </li>
 
 
-    <?php
-    include 'config.php';
 
-    session_start();
-
-
-    echo "haloo, Selamat Datang Lansa Trans", $_SESSION['username'];
-
-    ?>
+    
     <br/>
 
     
@@ -166,6 +191,7 @@
     <!--akhir Galeri-->
 
     <!--Kontak Kami-->
+    
     <section class="contact" id="contact">
       <div class="container">
           <div class="row">
@@ -182,25 +208,25 @@
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <form >
+          <form action="" method="post" >
             <div class="form-group">
               <label form="nama">Nama</label>
-              <input type="text"id="nama" class="form-control" placeholder="masukkan nama">
+              <input type="text"id="nama" name ="pengirim" class="form-control" required autocomplete="off" placeholder="masukkan nama">
             </div>
             <div class="form-group">
                 <label form="email">Email</label>
-                <input type="email"id="email" class="form-control" placeholder="masukkan email">
+                <input type="email"id="email" name="email" class="form-control" required autocomplete="off" placeholder="masukkan email">
             </div>
             <div class="form-group">
                 <label form="tel">No Telp</label>
-                <input type="text"id="telp" class="form-control" placeholder="masukkan no telepon">
+                <input type="text"id="telp" maxlength="12" onkeypress="return hanyaAngka(event)"  name="no_telp" class="form-control" required autocomplete="off" placeholder="masukkan no telepon">
             </div>
             
             <div class="form-group">
               <label form="pesan">Pesan</label>
-                <textarea class="form-control" row="10" placeholder="masukkan pesan"></textarea>
+              <textarea class="form-control" name="pesan" row="10" placeholder="masukkan pesan" autocomplete="off" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+            <button type="submit" name="submit" class="btn btn-primary">Kirim Pesan</button>
           </form>
         </div>
       </div>
@@ -232,5 +258,15 @@
 
     <script src="js/script.js"></script>
      
+    <script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
+	</script>
+    
   </body>
 </html>

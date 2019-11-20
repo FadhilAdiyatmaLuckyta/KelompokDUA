@@ -92,7 +92,7 @@ if( isset($_POST["submit"]) ){
             </tr>
             <tr> 
                 <td><label for="email">Email</td>
-                <td><input type="text"   class="form_login" id="email" name="email" autocomplete="off" placeholder="Masukkan email anda" required></td>
+                <td><input type="email"   class="form_login" id="email" name="email" autocomplete="off" placeholder="Masukkan email anda" required></td>
             </tr>
             <tr> 
                 <td><label for="username">Username</td>
