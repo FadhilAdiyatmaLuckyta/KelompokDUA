@@ -49,7 +49,7 @@
 				<td></td>
 				<td></td>
 				<tr><input type="submit" class="tombol_login" name="login" value="Login"></tr>
-				<tr><p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="tambahusers.php">Daftar</a></p></tr>
+				<tr><p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="daftar.php">Daftar</a></p></tr>
 			</tr>
 		</table>
 		<br>	

@@ -53,7 +53,7 @@ table {
 </head>
 
 <body>
-    <center><h1> Tambah Data Pengguna<h1></center>
+    <center><h1>Edit Data Pengguna<h1></center>
 
     <form action="" method ="post">
     <table width="35%" border="0">
