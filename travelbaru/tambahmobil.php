@@ -12,11 +12,11 @@ if( isset($_POST["submit"]) ){
     //cek data berhasil ditambah apa gak
     if( nambah ($_POST) > 0 ) {
        echo "
-       Selamat anda telah mendaftar, silahkan <a href='login.php'>login</a> kembali";
+       Tambah mobil berhasil, silahkan <a href='daftarmobil.php'>login</a> disini";
             
     }else {
         echo "
-        Maaf daftar gagal, mohon coba lagi"; 
+        Maaf tambah mobil gagal, mohon coba lagi"; 
     }
 
 } 
