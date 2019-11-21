@@ -187,6 +187,34 @@ function tambahkan($data) {
 
     return mysqli_affected_rows($conn);
 }
+
+function driverubah($data) {
+    global $conn;
+    $driver =$data["id_driver"];
+    $nama_driver = htmlspecialchars($data["nama_driver"]);
+    $tempat_lahirdriver = htmlspecialchars($data["tempat_lahirdriver"]);
+    $tanggal_lahirdriver = htmlspecialchars($data["tanggal_lahirdriver"]);
+    $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
+    $no_sim = htmlspecialchars($data["no_sim"]);
+    $telp = htmlspecialchars($data["telp"]);
+    $alamat_driver = htmlspecialchars($data["alamat_driver"]);
+
+    //query updatenya
+    $query = "UPDATE drivers SET
+                nama_driver = '$nama_driver',
+                tempat_lahirdriver = '$tempat_lahirdriver',
+                tanggal_lahirdriver = '$tanggal_lahirdriver',
+                jenis_kelamin = '$jenis_kelamin',
+                no_sim = '$no_sim',
+                telp = '$telp',
+                alamat_driver = '$alamat_driver'
+                WHERE id_driver = $driver
+                ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+
+}
 function havus ($id_driver) {
     global $conn;
     mysqli_query($conn, "DELETE FROM drivers WHERE id_driver= $id_driver");
@@ -207,6 +235,7 @@ function carii($keyword) {
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+//ini punya mobil
 function nambah($data) {
     global $conn;
     $merk= htmlspecialchars($data["merk"]);
@@ -290,32 +319,6 @@ function kirim($data) {
         mysqli_query($conn, $query);
 
         return mysqli_affected_rows($conn);
-}
-function driverubah($data) {
-    global $conn;
-    $driver =$data["id_driver"];
-    $nama_driver = htmlspecialchars($data["nama_driver"]);
-    $tempat_lahirdriver = htmlspecialchars($data["tempat_lahirdriver"]);
-    $tanggal_lahirdriver = htmlspecialchars($data["tanggal_lahirdriver"]);
-    $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
-    $no_sim = htmlspecialchars($data["no_sim"]);
-    $telp = htmlspecialchars($data["telp"]);
-    $alamat_driver = htmlspecialchars($data["alamat_driver"]);
-
-    //query updatenya
-    $query = "UPDATE drivers SET
-                nama_driver = '$nama_driver',
-                tempat_lahirdriver = '$tempat_lahirdriver',
-                tanggal_lahirdriver = '$tanggal_lahirdriver',
-                jenis_kelamin = '$jenis_kelamin',
-                no_sim = '$no_sim',
-                telp = '$telp',
-                alamat_driver = '$alamat_driver'
-                WHERE id_driver = $driver
-                ";
-
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
 }
 
 
