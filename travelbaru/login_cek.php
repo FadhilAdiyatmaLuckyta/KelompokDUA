@@ -44,10 +44,10 @@ if($cek > 0)
 	}else{
  
 		// alihkan ke halaman login kembali
-		header("location:login.php?login_error");
+		header("location:login2.php?login_error");
 	}	
 }else{
-	header("location:login.php?login_error");
+	header("location:login2.php?login_error");
 }
  
 ?>

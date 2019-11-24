@@ -6,8 +6,9 @@
 	<title>Login</title>
     <link rel="stylesheet" type="text/css" href="css_login.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	
 </head>
-</head>
+
 <body>
 
 
