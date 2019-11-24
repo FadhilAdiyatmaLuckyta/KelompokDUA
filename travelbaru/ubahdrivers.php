@@ -16,7 +16,7 @@ if( isset($_POST["submit"]) ){
     
 
     //cek data berhasil diubah apa gak
-    if( ubahdriver($_POST) > 0 ) {
+    if( driverubah($_POST) > 0 ) {
         echo "
         <script>
             alert('data berhasi diubah');
