@@ -72,15 +72,6 @@ function tambah($data) {
         return false;
 
     }
-    
-   
-   
-    
-    
-    
-
-    
-
     //query insert data
     $query = "INSERT INTO users
                VALUES
@@ -90,9 +81,35 @@ function tambah($data) {
     return mysqli_affected_rows($conn);
 }
 
+function tambahjurusan($data){
+global $conn;
+$id_driver = htmlspecialchars($_POST["id_driver"]);
+$id_car = htmlspecialchars($_POST["id_car"]);
+$jurusan = htmlspecialchars($_POST["jurusan"]);
+$jam = htmlspecialchars($_POST["jam"]);
+$harga = htmlspecialchars($_POST["harga"]);
+
+//query insert data
+$query = "INSERT INTO jurusan
+            VALUES
+            ('',' $id_driver', '$id_car', '$jurusan', '$jam', '$harga')";
+
+mysqli_query($conn, $query);
+
+return mysqli_affected_rows($conn);
+
+}
+
 function hapus ($id_user) {
     global $conn;
     mysqli_query($conn, "DELETE FROM users WHERE id_user= $id_user");
+
+    return mysqli_affected_rows($conn);
+}
+
+function hapusjurusan ($id_user) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM jurusan WHERE id_jurusan= $id_jurusan");
 
     return mysqli_affected_rows($conn);
 }
@@ -134,6 +151,30 @@ function ubah ($data) {
     return mysqli_affected_rows($conn);
 }
 
+function ubahjurusan ($data) {
+    global $conn;
+    $jurusann = $data["id_jurusan"];
+    $id_driver = htmlspecialchars($_POST["id_driver"]);
+    $id_car = htmlspecialchars($_POST["id_car"]);
+    $jurusan = htmlspecialchars($_POST["jurusan"]);
+    $jam = htmlspecialchars($_POST["jam"]);
+    $harga = htmlspecialchars($_POST["harga"]);
+
+    //query ubah data
+    $query = "UPDATE jurusan SET 
+               
+                id_driver = '$id_driver',
+                id_car = '$id_car',
+                jurusan = '$jurusan',
+                jam = '$jam',
+                harga = '$harga'
+                WHERE id_jurusan = $jurusann
+
+                ";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+}
+
 function cari($keyword) {
     $query = "SELECT * FROM users
                 WHERE
@@ -145,6 +186,18 @@ function cari($keyword) {
                 username LIKE '$keyword%' OR
                 level LIKE '$keyword%' OR
                 alamat LIKE '$keyword%' 
+            ";
+    return query($query);
+}
+
+function carijurusan($keyword) {
+    $query = "SELECT * FROM jurusan
+                WHERE
+                
+                jurusan LIKE '$keyword%' OR
+                jam LIKE '$keyword%' OR
+                harga LIKE '$keyword%' 
+                
             ";
     return query($query);
 }
