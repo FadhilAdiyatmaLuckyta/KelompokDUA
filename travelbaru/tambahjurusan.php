@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Input Pemesanan Tiket Travel</title>
+		<title>Tambah Jurusan Baru</title>
 		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 	</head>
 	<body>
-		<h3 align="center">INPUT PEMESANAN TIKET TRAVEL</h3>
+		<h3 align="center">Tambah Jurusan Baru</h3>
 		<center><a href="index.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
 		<fieldset style="width: 50%; margin: auto;">
-			<legend>Form Input Pemesanan Tiket Travel</legend>
+			<legend>Form Tambah Jurusan Baru</legend>
 		<form action="simpan.php" method="post">
 		<table>
 		<tr>
-			<td>Nama</td>
+			<td>Nama Driver</td>
 			<td>:</td>
-			<td><input type="text" name="nama"required=required placeholder='nama lengkap'></td>
-		</tr>
-		<tr>
-			<td>jurusan</td>
-			<td>:</td>
-			<td><select name="jurusan" id="jurusan" class="form-control" onchange='changeValue(this.value)' required>
+			<td><select name="nama_driver" id="nama_driver" class="form-control" onchange='changeValue(this.value)' required>
   			<option value="">-Pilih-</option>
 			<?php
 			$koneksi = mysqli_connect("localhost","root","","bismillahyaallah");
-            $result = mysqli_query($koneksi, "SELECT * FROM jurusan ORDER BY jurusan asc");
-            $result = mysqli_query($koneksi, "SELECT *FROM jurusan");    
+            $result = mysqli_query($koneksi, "SELECT * FROM drivers ORDER BY drivers asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM drivers");    
 			$jsArray = "var prdName = new Array();\n";
 			while($row = mysqli_fetch_assoc($result))
   			 {
-				echo '<option name="jurusan"  value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';  
-				$jsArray .= "prdName	['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "', id_jurusan:'" . addslashes($row['id_jurusan']) . "',jam:'". addslashes($row['jam'])."'};\n";
+				echo '<option name="nama_driver"  value="' . $row['nama_driver'] . '">' . $row['nama_driver'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['nama_driver'] . "'] = {id_driver:'" . addslashes($row['id_driver']) . "'};\n";
 				
 			}
 			
-		 ?>
+		     ?>
 				   </select>
 			</td>
-			
-			<td>Jumlah Tiket</td>
-			<td>:</td>
-			<td><input type="number" min="1" max="4" name="Jumlah_Tiket"required=required placeholder='Jumlah Tiket'></td>
+           
+			</td>
 		</tr>
 		<tr>
 			<td>Alamat</td>
@@ -50,10 +43,13 @@
 			<td><input type="date" name="tanggal_berangkat"required=required placeholder='ex:YYYY-MM-DD'></td>
 		</tr>
 		<tr>
-			<td>Harga</td>
+			<td>ID</td>
 			<td>:</td>
-			<td><input class="form-control"  name="harga" id="harga" readonly placeholder='harga tiket'> </td>
+			<td><input class="form-control"  name="id_driver" id="id_driver" readonly placeholder='harga tiket'> </td>
 			
+            <td>ID Car</td>
+			<td>:</td>
+			<td><input class="form-control"  name="id_car" id="id_car" readonly placeholder='harga tiket'> </td>
 			
 			
 		
@@ -79,8 +75,10 @@
 <script type="text/javascript"> 
 <?php echo $jsArray; ?>
 function changeValue(id){
-    document.getElementById('harga').value = prdName[id].harga;
-	document.getElementById('id_jurusan').value = prdName[id].id_jurusan;
-	document.getElementById('jam').value = prdName[id].jam;
+    document.getElementById('id_driver').value = prdName[id].id_driver;
+	
+	
 };
+<?php echo $jsArray1; ?>
+
 </script>

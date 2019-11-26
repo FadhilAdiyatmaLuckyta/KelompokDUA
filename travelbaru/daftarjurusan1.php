@@ -28,12 +28,12 @@ if (isset($_POST["cari"]) ) {
 
     <tr>
         <th>Aksi</th>
-        <th>id_jurusan</th>
-        <th>id_driver</th>
-        <th>id_car</th>
-        <th>jurusan</th>
-        <th>jam</th>
-        <th>harga</th>
+        <th>ID Jurusan</th>
+        <th>ID Driver</th>
+        <th>ID Car</th>
+        <th>Jurusan</th>
+        <th>Jam</th>
+        <th>Harga</th>
        
     </tr>   
     <php $i = 1; ?>
