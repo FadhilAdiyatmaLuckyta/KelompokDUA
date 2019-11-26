@@ -1,3 +1,27 @@
+<?php
+require 'config.php';
+
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek pesan berhasil ditambah apa gak
+    if( kirim ($_POST) > 0 ) {
+       echo "
+       Terima kasih pesan telah terkirim ke pihak Lansa Trans";
+            
+    }else {
+        echo "
+        Maaf daftar gagal, mohon coba lagi"; 
+    }
+
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>
@@ -44,7 +68,7 @@
               <li><a href="#about" class="page-scroll" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-home"></span> Profil Kami</a></li>
               <li><a href="#portfolio" class="page-scroll" style="font-family:Berlin Sans FB"><i class="fa fa-fw fa-photo"></i> Galeri</a></li>
               <li><a href="#contact" class="page-scroll" style="font-family:Berlin Sans FB"><i class="fa fa-fw fa-envelope"></i> Kontak Kami</a></li>
-              <li><a href="login.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+              <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-user"></span> Login</a></li>
             </ul>
           </div>
           
@@ -159,20 +183,20 @@
           <form >
             <div class="form-group">
               <label form="nama">Nama</label>
-              <input type="text"id="nama" class="form-control" placeholder="masukkan nama">
+              <input type="text"  class="form-control" id ="nama" name="pengirim" autocomplete="off" placeholder="Masukkan nama anda" required>
             </div>
             <div class="form-group">
                 <label form="email">Email</label>
-                <input type="email"id="email" class="form-control" placeholder="masukkan email">
+                <td><input type="text"  class="form-control" id="tmpt" name="email" autocomplete="off" placeholder="Masukkan tempat lahir anda" required>
             </div>
             <div class="form-group">
                 <label form="tel">No Telp</label>
-                <input type="text"id="telp" class="form-control" placeholder="masukkan no telepon">
+                <input type="text"  class="form-control" id="tgl" name="no_telp" autocomplete="off" placeholder="Masukkan tanggal lahir anda" required>
             </div>
             
             <div class="form-group">
               <label form="pesan">Pesan</label>
-                <textarea class="form-control" row="10" placeholder="masukkan pesan"></textarea>
+              <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="form-control" id="nod" name="nomer_id" placeholder="Masukkan nomer ID" autocomplete="off" required>
             </div>
             <button type="submit" class="btn btn-primary">Kirim Pesan</button>
           </form>

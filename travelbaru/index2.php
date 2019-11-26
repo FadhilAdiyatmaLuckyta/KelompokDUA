@@ -238,6 +238,7 @@ if( isset($_POST["submit"]) ){
   
 
     <!--footer-->
+    
     <footer>
       <div class="container text-center">
         <div class="row">

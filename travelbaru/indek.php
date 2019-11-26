@@ -154,35 +154,63 @@ if( isset($_POST["submit"]) ){
               <img src="img/portfolio/foto7.jpeg">
             </a>
           </div>
+    
 
          <!--Kontak Kami-->
-    
-    <form action="" method ="post">
-    <table width="25%" border="0">
+         <section class="contact" id="contact">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm 12 text-center">
+                <h2>Kontak Kami</h2>
+                <hr>
+              </div>
+            
+          </div>
+                
+              
+            
+      </div>
+      <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+      <form action="" method ="post">
+      <table width="25%" border="0">
+      <div class="form-group">
             <tr> 
                 <td><label for="nama">Nama</label></td>
                 <td><input type="text"  class="form_login" id ="nama" name="pengirim" autocomplete="off" placeholder="Masukkan nama anda" required></td>
             </tr>
+      </div>
+      <div class="form-group">
             <tr> 
                 <td><label for="tmpt">Email</td>
                 <td><input type="text"  class="form_login" id="tmpt" name="email" autocomplete="off" placeholder="Masukkan tempat lahir anda" required></td>
             </tr>
+      </div>
+      <div class="form-group">
             <tr> 
                 <td><label for="tgl">Telepon</td>
                 <td><input type="text"  class="form_login" id="tgl" name="no_telp" autocomplete="off" placeholder="Masukkan tanggal lahir anda" required></td>
             </tr>
+      </div>
+      <div class="form-group">
             <tr> 
                 <td><label for="nod">Pesan</td>
                 <td><input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="form_login" id="nod" name="nomer_id" placeholder="Masukkan nomer ID" autocomplete="off" required></td>
             </tr>
+      </div>
+      <div class="form-group">
             <tr> 
             
                 <td></td>
 				<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Daftar" disabled></td>
             </tr>
+      </div>
+      </div>
+      </div>
         </table>
         ?>
     </form>
+    
      
 
         
@@ -219,5 +247,7 @@ if( isset($_POST["submit"]) ){
      <?php
     
      ?>
+
+     
   </body>
 </html>
