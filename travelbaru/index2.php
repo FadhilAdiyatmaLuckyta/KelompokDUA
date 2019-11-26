@@ -196,7 +196,7 @@ if( isset($_POST["submit"]) ){
       <div class="container">
           <div class="row">
               <div class="col-sm 12 text-center">
-                <h2>Kontak Kami</h2>
+                <h2>Kritik dan Saran </h2>
                 <hr>
               </div>
             

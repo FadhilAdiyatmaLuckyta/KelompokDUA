@@ -17,19 +17,19 @@
 			<td><input type="text" name="nama"required=required placeholder='nama lengkap'></td>
 		</tr>
 		<tr>
-			<td>jurusan</td>
+			<td>Sopir</td>
 			<td>:</td>
-			<td><select name="jurusan" id="jurusan" class="form-control" onchange='changeValue(this.value)' required>
+			<td><select name="nama_driver" id="nama_driver" class="form-control" onchange='changeValue(this.value)' required>
   			<option value="">-Pilih-</option>
 			<?php
 			$koneksi = mysqli_connect("localhost","root","","bismillahyaallah");
-            $result = mysqli_query($koneksi, "SELECT * FROM jurusan ORDER BY jurusan asc");
-            $result = mysqli_query($koneksi, "SELECT *FROM jurusan");    
+            $result = mysqli_query($koneksi, "SELECT * FROM drivers ORDER BY drivers asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM drivers");    
 			$jsArray = "var prdName = new Array();\n";
 			while($row = mysqli_fetch_assoc($result))
   			 {
-				echo '<option name="jurusan"  value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';  
-				$jsArray .= "prdName	['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "', id_jurusan:'" . addslashes($row['id_jurusan']) . "',jam:'". addslashes($row['jam'])."'};\n";
+				echo '<option name="nama_driver"  value="' . $row['nama_driver'] . '">' . $row['nama_driver'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['nama_driver'] . "'] = {id_driver:'" . addslashes($row['id_driver']) . "'};\n";
 				
 			}
 			
@@ -49,10 +49,11 @@
 			<td>:</td>
 			<td><input type="date" name="tanggal_berangkat"required=required placeholder='ex:YYYY-MM-DD'></td>
 		</tr>
+        
 		<tr>
-			<td>Harga</td>
+			<td>id</td>
 			<td>:</td>
-			<td><input class="form-control"  name="harga" id="harga" readonly placeholder='harga tiket'> </td>
+			<td><input class="form-control"  name="id_driver" id="id_driver" readonly placeholder='harga tiket'> </td>
 			
 			
 			
@@ -79,8 +80,9 @@
 <script type="text/javascript"> 
 <?php echo $jsArray; ?>
 function changeValue(id){
-    document.getElementById('harga').value = prdName[id].harga;
-	document.getElementById('id_jurusan').value = prdName[id].id_jurusan;
-	document.getElementById('jam').value = prdName[id].jam;
+    document.getElementById('id_driver').value = prdName[id].id_driver;
+    
+	
 };
+
 </script>

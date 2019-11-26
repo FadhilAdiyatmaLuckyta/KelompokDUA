@@ -1,19 +1,19 @@
 <?php
 require 'config.php';
-$id_driver = $_GET["id_driver"];
+$id_car = $_GET["id_car"];
 
-if ( hapus($id_driver) > 0 ) {
+if ( hapuzz($id_car) > 0 ) {
     echo "
         <script>
             alert('data berhasi dihapus');
-            document.location.href = 'daftardrivers.php';
+            document.location.href = 'daftarmobil.php';
         </script>
     ";
 }else {
     echo "
     <script>
         alert('data gagal dihapus');
-        document.location.href = 'daftardrivers.php';
+        document.location.href = 'daftarmobil.php';
     </script>
     ";
 }

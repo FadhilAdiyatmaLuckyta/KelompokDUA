@@ -16,7 +16,7 @@
 	include ("config.php");
 	$id_user = $_GET['id_user'];
 	$data = mysqli_query($mysqli,"SELECT * FROM users where id_user='$id_user'");
-	while ($d = mysqli_fetch_array($data)){
+	while ($data = mysqli_fetch_array($data)){
 		?>
 		<form method="post" action="editusers.php">
 			<table>

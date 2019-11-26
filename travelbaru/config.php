@@ -72,15 +72,6 @@ function tambah($data) {
         return false;
 
     }
-    
-   
-   
-    
-    
-    
-
-    
-
     //query insert data
     $query = "INSERT INTO users
                VALUES
@@ -90,12 +81,16 @@ function tambah($data) {
     return mysqli_affected_rows($conn);
 }
 
+
+
 function hapus ($id_user) {
     global $conn;
     mysqli_query($conn, "DELETE FROM users WHERE id_user= $id_user");
 
     return mysqli_affected_rows($conn);
 }
+
+
 
 function ubah ($data) {
     global $conn;
@@ -134,6 +129,7 @@ function ubah ($data) {
     return mysqli_affected_rows($conn);
 }
 
+
 function cari($keyword) {
     $query = "SELECT * FROM users
                 WHERE
@@ -148,6 +144,8 @@ function cari($keyword) {
             ";
     return query($query);
 }
+
+
 //INI FUNCTION PUNYA DRIVERS YA....
 function tambahkan($data) {
     global $conn;
@@ -298,10 +296,63 @@ function upload() {
         return false;
     }
     //siap diupload
-    move_uploaded_file($tmpName,"img/".$namaFile);
+    $namaFileBaru = uniqid();
+    $namaFileBaru .='.';
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmpName,'img/'.$namaFileBaru);
 
-    return $namaFile;
+    return $namaFileBaru;
 }
+
+function mobilrubah($data) {
+    global $conn;
+    $mobil =$data["id_car"];
+    $merk = htmlspecialchars($data["merk"]);
+    $warna = htmlspecialchars($data["warna"]);
+    $nopol = htmlspecialchars($data["nopol"]);
+    $kursi = htmlspecialchars($data["kursi"]);
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
+     
+    // cek pilih gambar baru ta gak
+    if( $_FILES['gambar']['error'] === 4 ) {
+            $gambar = $gambarLama;
+    } else{
+        $gambar = upload();
+    }
+    
+    //query updatenya
+    $query = "UPDATE cars SET
+                merk = '$merk',
+                warna = '$warna',
+                nopol = '$nopol',
+                kursi = '$kursi',
+                gambar = '$gambar'
+                WHERE id_car = $mobil
+                ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
+function hapuzz ($id_car) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM cars WHERE id_car= $id_car");
+
+    return mysqli_affected_rows($conn);
+}
+function cary($keyword) {
+    $query = "SELECT * FROM cars
+                WHERE
+                merk LIKE '$keyword%' OR
+                warna LIKE '$keyword%' OR
+                nopol LIKE '$keyword%' 
+                
+            ";
+    return query($query);
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
+// PUNYA CONTACT US
 function kirim($data) {
     global $conn;
     $pengirim= htmlspecialchars($_POST["pengirim"]);
@@ -320,6 +371,83 @@ function kirim($data) {
 
         return mysqli_affected_rows($conn);
 }
+function cariik($keyword) {
+    $query = "SELECT * FROM contact_us
+                WHERE
+                pengirim LIKE '$keyword%' OR
+                email LIKE '$keyword%' OR
+                no_telp LIKE '$keyword%' 
+                
+            ";
+    return query($query);
 
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
+function hapudz ($kode) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM contact_us WHERE kode= $kode");
 
+    return mysqli_affected_rows($conn);
+}
+
+// PUNYA JURUSAN
+function tambahjurusan($data){
+    global $conn;
+    $id_driver = htmlspecialchars($_POST["id_driver"]);
+    $id_car = htmlspecialchars($_POST["id_car"]);
+    $jurusan = htmlspecialchars($_POST["jurusan"]);
+    $jam = htmlspecialchars($_POST["jam"]);
+    $harga = htmlspecialchars($_POST["harga"]);
+    
+    //query insert data
+    $query = "INSERT INTO jurusan
+                VALUES
+                ('',' $id_driver', '$id_car', '$jurusan', '$jam', '$harga')";
+    
+    mysqli_query($conn, $query);
+    
+    return mysqli_affected_rows($conn);
+    
+}
+function ubahjurusan ($data) {
+    global $conn;
+    $jurusann = $data["id_jurusan"];
+    $id_driver = htmlspecialchars($_POST["id_driver"]);
+    $id_car = htmlspecialchars($_POST["id_car"]);
+    $jurusan = htmlspecialchars($_POST["jurusan"]);
+    $jam = htmlspecialchars($_POST["jam"]);
+    $harga = htmlspecialchars($_POST["harga"]);
+
+    //query ubah data
+    $query = "UPDATE jurusan SET 
+               
+                id_driver = '$id_driver',
+                id_car = '$id_car',
+                jurusan = '$jurusan',
+                jam = '$jam',
+                harga = '$harga'
+                WHERE id_jurusan = $jurusann
+
+                ";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+}
+function carijurusan($keyword) {
+    $query = "SELECT * FROM jurusan
+                WHERE
+                
+                jurusan LIKE '$keyword%' OR
+                jam LIKE '$keyword%' OR
+                harga LIKE '$keyword%' 
+                
+            ";
+    return query($query);
+}
+function hapusjurusan ($id_user) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM jurusan WHERE id_jurusan= $id_jurusan");
+
+    return mysqli_affected_rows($conn);
+}
 ?>

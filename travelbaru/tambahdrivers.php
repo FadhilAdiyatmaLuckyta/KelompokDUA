@@ -73,7 +73,7 @@ if( isset($_POST["submit"]) ){
             <tr> 
             
                 <td></td>
-				<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Tambahkan"></td>
+				<td><input href= "prosesubah1.php "type="submit" name= "submit"  id="button" class="tombol_login" value="Tambahkan"></td>
             </tr>
         </table>
         

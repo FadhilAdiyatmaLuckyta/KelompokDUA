@@ -4,7 +4,7 @@ $car = query("SELECT * FROM cars");
 
 //TOMBOL CARI DIKLIK
 if (isset($_POST["cari"]) ) {
-    $car = cari ($_POST["keyword"]);
+    $car = cary ($_POST["keyword"]);
 }
 ?>
 
@@ -42,8 +42,8 @@ if (isset($_POST["cari"]) ) {
     <tr>
         
         <td>
-            <a href="ubah.php?id_car=<?= $row["id_car"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');">Ubah</a>
-            <a href="hapus.php?id_car=<?= $row["id_car"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');">Hapus</a>
+            <a href="ubahmobil.php?id_car=<?= $row["id_car"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');">Ubah</a>
+            <a href="hapusmobil.php?id_car=<?= $row["id_car"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');">Hapus</a>
         </td>
         <td><?= $row["id_car"]; ?></td>
         <td><?= $row["merk"]; ?></td>
