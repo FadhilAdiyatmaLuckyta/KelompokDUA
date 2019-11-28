@@ -1,10 +1,10 @@
 <?php
 require 'config.php';
-$users = query("SELECT * FROM users");
+$contact = query("SELECT * FROM contact_us");
 
 //TOMBOL CARI DIKLIK
 if (isset($_POST["cari"]) ) {
-    $users = cari ($_POST["keyword"]);
+    $contact  = cariik ($_POST["keyword"]);
 }
 ?>
 
@@ -23,7 +23,7 @@ if (isset($_POST["cari"]) ) {
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
    
     
-    <title>DAFTAR USERS</title>
+    <title>Contact Us</title>
 </head>
 
 <body>
@@ -148,18 +148,17 @@ if (isset($_POST["cari"]) ) {
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">Entry Data User</a>
+                                            <a class="nav-link" href="#">Entry Data User</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Lihat Data User</a>
+                                            <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
-                            </li>
-                            <li class="nav-item">
+                            </li><li class="nav-item">
                                 <a class="nav-link" href="contact.php" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-phone"></i>Contact Us</a>
                             </li>
                         </ul>
@@ -175,51 +174,44 @@ if (isset($_POST["cari"]) ) {
         <!-- ============================================================== -->
         <br>
 <div class="main-content">
-          <h1>DAFTAR USERS</h1>
+<h1>CONTACT US</h1>
+
 <form action="" method="post">
 
-    <input type="text" name="keyword" size="30" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
+<input type="text" name="keyword" size="40" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
     <button type="submit" name="cari">Cari</button>
+    
 
 </form>
 <br>
 <table class="table">
 <thead class="thead-dark">
+
     <tr>
         <th>Aksi</th>
-        <th>ID User</th>
-        <th>Nama</th>
-        <th>Tempat Lahir</th>
-        <th>Tanggal Lahir</th>
-        <th>Jenis Kelamin</th>
-        <th>Nomer ID</th>
-        <th>Telepon</th>
-        <th>Alamat</th>
+        <th>Kode</th>
+        <th>Pengirim</th>
         <th>Email</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Level</th>
+        <th>Telepon</th>
+        <th>Kritik dan Saran</th>
+        <th>Tanggal</th>
+        
+
     </tr>   
     <php $i = 1; ?>
-    <?php foreach( $users as $row ) : ?>
+    <?php foreach( $contact as $row ) : ?>
     <tr>
         
         <td>
-            <a href="ubah.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i></a>
-            <a href="hapus.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i></a>
+            
+            <a href="hapussaran.php?kode=<?= $row["kode"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');">Hapus</a>
         </td>
-        <td><?= $row["id_user"]; ?></td>
-        <td><?= $row["nama"]; ?></td>
-        <td><?= $row["tempat_lahir"]; ?></td>
-        <td><?= $row["tanggal_lahir"]; ?></td>
-        <td><?= $row["jekel"]; ?></td>
-        <td><?= $row["nomer_id"]; ?></td>
-        <td><?= $row["telepon"]; ?></td>
-        <td><?= $row["alamat"]; ?></td>
+        <td><?= $row["kode"]; ?></td>
+        <td><?= $row["pengirim"]; ?></td>
         <td><?= $row["email"]; ?></td>
-        <td><?= $row["username"]; ?></td>
-        <td><?= $row["password"]; ?></td>
-        <td><?= $row["level"]; ?></td>
+        <td><?= $row["no_telp"]; ?></td>
+        <td><?= $row["pesan"]; ?></td>
+        <td><?= $row["tgl_contact"]; ?></td>
     </tr>
     <php $i++; ?>
     <?php endforeach; ?>

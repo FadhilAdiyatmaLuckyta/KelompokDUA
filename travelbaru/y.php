@@ -11,12 +11,12 @@ if (isset($_POST["cari"]) ) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DAFTAR DRIVERS</title>
+    <title>Contact Us</title>
 </head>
 
 <body>
 
-<h1>DAFTAR DRIVERS</h1>
+<h1>CONTACT US</h1>
 
 <form action="" method="post">
 
