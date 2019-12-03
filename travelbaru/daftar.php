@@ -13,7 +13,7 @@ if( isset($_POST["submit"]) ){
     //cek data berhasil ditambah apa gak
     if( tambah ($_POST) > 0 ) {
        echo "
-       Selamat anda telah mendaftar, silahkan <a href='login.php'>login</a> kembali";
+       Selamat anda telah mendaftar, silahkan <a href='login2.php'>login</a> kembali";
             
     }else {
         echo "
