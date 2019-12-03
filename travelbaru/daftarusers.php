@@ -205,7 +205,7 @@ if (isset($_POST["cari"]) ) {
     <tr>
         
         <td>
-            <a href="ubah.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i></a>
+            <a href="ubah2.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i></a>
             <a href="hapus.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i></a>
         </td>
         <td><?= $row["id_user"]; ?></td>
