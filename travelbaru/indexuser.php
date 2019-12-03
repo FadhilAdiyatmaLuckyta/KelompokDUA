@@ -267,16 +267,20 @@ if( isset($_POST["submit"]) ){
     <footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<h2>Lansa Trans</h2>
-                <p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
-                <p>© 2014 BS3 UI Kit, All rights reserved</p>
+              <h2>Lansa Trans</h2>
+              <div align="justify">
+                <p>Lansa Trans adalah jasa travel yang berkantor pusat di Jl.Slamet Riyadi No.155, Jember. Kami melayani rute antara lain :
+					         Jember-Surabaya, Jember-Malang, Jember-Denpasar. Kami melakukan perjalanan setiap harinya. Harga untuk perjalanan sangatlah
+					         terjangkau dan kami melakukan penjemputan sesuai pesanan pelanggan. Kepuasan Pelanggan adalah nomor satu </p> 
+                <p>© Copyright 2019 | Built by Kelompok 2. </p>
+               </div>
             </div>
         	<div class="col-md-4 footer-nav animated fadeInUp">
             	<h4>Tentang —</h4>
             	<div class="col-md-6">
               <ul class="list">
-                        <li><a ><i class="fas fa-road"></i> Jl.Slamet Riyadi No.155, Jember.</a></li>
-                        <li><a ><i class="fas fa-phone"></i> 085372881134</a></li>
+                        <li><a ><i class="fas fa-road"></i> Jl.Slamet Riyadi No.155, Jember, Jawa Timur</a></li>
+                        <li><a ><i class="fas fa-phone"></i> 082132632620 | Khunika Maulana</a></li>
                         <li><a >Terms & Condition</a></li>
                         <li><a >Privacy Policy</a></li>
                     </ul>
@@ -285,12 +289,12 @@ if( isset($_POST["submit"]) ){
         	<div class="col-md-2 footer-social animated fadeInDown">
             	<h4>Follow Us</h4>
             	<ul>
-                	<li><a href="#">Instagram</a></li>
+                	<li><a href="https://www.instagram.com/lansatrans/?hl=id">Instagram</a></li>
                 </ul>
             </div>
         </div>
     </footer>
-    <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="http://enfoplus.net">Prince J. Sargbah</a></p></section>
+    <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="#">KELOMPOK 2</a></p></section>
 
 </div>
 </footer>
