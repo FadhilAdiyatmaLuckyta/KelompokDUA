@@ -37,7 +37,7 @@ if($cek > 0)
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "pengguna";
 		// alihkan ke halaman dashboard pengguna
-		header("location:index2.php");
+		header("location:indexuser.php");
  
 	// cek jika user login sebagai pengurus
 

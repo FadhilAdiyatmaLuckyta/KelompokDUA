@@ -34,6 +34,7 @@ if( isset($_POST["submit"]) ){
 <html lang="en" id="home">
   <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -46,6 +47,7 @@ if( isset($_POST["submit"]) ){
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
+    <link href="css2/style.css" rel="stylesheet">
     
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -54,11 +56,11 @@ if( isset($_POST["submit"]) ){
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
 
     
     
+  </head>
+  <body>
 
   <!--Navbar-->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -67,9 +69,6 @@ if( isset($_POST["submit"]) ){
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a>
-    </li>
     <li class="nav-item">
       <a class="nav-link" href="#" style="font-family:Berlin Sans FB"><i class="fas fa-cash-register"></i> Pembayaran</a>
     </li>
@@ -93,7 +92,38 @@ if( isset($_POST["submit"]) ){
   
     
   <!-- Links -->
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
   
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    
+    <div class="carousel-item active">
+      <img src="img/p1.jpg" alt="Los Angeles" width="1300" height="600">
+    </div>
+    <div class="carousel-item">
+      <img src="img/p2.jpg" alt="Chicago" width="1300" height="600">
+    </div>
+    <div class="carousel-item">
+      <img src="img/p3.jpg" alt="New York" width="1300" height="600">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
 
     <!-- Dropdown -->
     
@@ -114,24 +144,78 @@ if( isset($_POST["submit"]) ){
     <!--akhir Galeri-->
 
     <!--Kontak Kami-->
-    <div class="main content">
+  
 
-    <div class="container">
-         <div class="row">
-             <div class="col-sm-12">
-                 <h2 class ="text-center">Profil Kami</h2>
-                 <hr>
-             </div>
-         </div>  
-        <div class="row">
-            <div class="col-sm-6">
-            </justify><p class="pKiri">Lansa Trans adalah jasa travel yang berkantor pusat di Jl.Slamet Riyadi No.155, Jember. Kami melayani rute antara lain :
-              Jember-Surabaya, Jember-Malang, Jember-Denpasar. Kami melakukan perjalanan setiap harinya. Harga untuk perjalanan sangatlah
-              terjangkau dan kami melakukan penjemputan sesuai pesanan pelanggan. Kepuasan Pelanggan adalah nomor satu
-            </p>
-            </div>  
-        </div>
-       </div> 
+   
+    <!--pemesanan-->
+    <div id="colorlib-reservation">
+			<!-- <div class="container"> -->
+				<div class="row">
+					<div class="search-wrap">
+						<div class="container">
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#car" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a></li>
+							</ul>
+						</div>
+
+						<!--Harga-->
+
+						<div class="tab-content">
+							<div id="car" class="tab-pane fade in active">
+								<form method="post" class="colorlib-form">
+				              	<div class="row">
+				              	 <div class="col-md-3">
+				              	 	<div class="form-group">
+				                    <label for="date" style="font-family:Berlin Sans FB">Tujuan </label>
+				                    <div class="form-field">
+											<i class="icon icon-arrow-down3"></i>
+											<select name="people" id="people" class="form-control"  > 
+											  <option style="color: black;" value="">Jember - Surabaya (Rp 120000)</option>
+											  <option style="color: black;" value="#">Malang</option>
+                        <option style="color: black;" value="#">Denpasar</option>
+											</select>
+				                    </div>
+				                  </div>
+								   </div>
+
+				                <div class="col-md-2">
+				                  <div class="form-group">
+				                    <label for="date" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-calendar2"></i>
+				                      <input type="text" id="date" class="form-control date" placeholder="Tanggal">
+				                    </div>
+				                  </div>
+				                </div>
+				                <div class="col-md-2">
+				                  <div class="form-group">
+				                    <label for="date" style="font-family:Berlin Sans FB">Jumlah tiket</label>
+				                    <div class="form-field">
+				                      <input type="text" id="location" class="form-control" placeholder="Jumlah">
+				                    </div>
+				                  </div>
+				                </div>
+				                <div class="col-md-3">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">Harga tiket</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
+				                  </div>
+				                </div>
+				                <div class="col-md-2">
+				                  <input style="font-family:Berlin Sans FB" type="submit" name="submit" id="submit" value="Pesan" class="btn btn-primary btn-block">
+				                </div>
+				              </div>
+				            </form>
+				         </div>
+			         </div>
+					</div>
+				</div>
+			</div>
+    </div>
+    <!--akhir pemesanan-->
+    <br>
      
        <!--akhir galeri-->
       <div class="container">
