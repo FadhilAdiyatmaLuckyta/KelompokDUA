@@ -62,7 +62,10 @@ body {
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 			<form action="login_cek.php" method ="post">
-			
+			<?php 
+			if(isset($_GET["login_error"])){ ?>
+			<h5 style="color: #FF3333; text-align: center; font-family:Aller;" class="animated shake">Maaf Password atau username salah</h5>
+			<?php }	?>
 			<br>
 				<form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">

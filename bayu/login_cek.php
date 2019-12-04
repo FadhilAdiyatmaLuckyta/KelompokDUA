@@ -42,7 +42,7 @@ if($cek > 0)
 		$_SESSION['id_user'] = $data['id_user'];
 
 		// alihkan ke halaman dashboard pengguna
-		header("location:index2.php");
+		header("location:indexuser.php");
 		exit;
 
 		
