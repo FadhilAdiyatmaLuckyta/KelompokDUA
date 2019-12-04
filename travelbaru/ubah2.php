@@ -63,22 +63,7 @@ if( isset($_POST["submit"]) ){
 <!--===============================================================================================-->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script language="javascript">
-        jQuery(document).ready(function()
-        {
-            jQuery("#setuju").click(function(){
-                if(jQuery("#button").is(":enabled"))
-            {
-                jQuery("#button").prop("disabled",true);
-            }
-            else
-            {
-                jQuery("#button").prop("disabled",false);
-            }
-        });
-        }
-        );
-        </script>
+  
 
 </head>
 <body>
@@ -87,11 +72,12 @@ if( isset($_POST["submit"]) ){
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 			<form action="" method ="post">
+			<div class="row">
 				<form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">
 						Daftar User
 					</span>
-
+					<input type="hidden" name="id_user" value="<?= $user["id_user"]; ?>">
 					<span class="txt1 p-b-11">
 						Nama
 					</span>
@@ -116,8 +102,7 @@ if( isset($_POST["submit"]) ){
 					<span class="txt1 p-b-11">
 						Jenis Kelamin
 					</span>
-					<div class="wrap-input100 validate-input m-b-36">	
-                    <input type="radio" name="jekel" 
+					<div class="wrap-input100 validate-input m-b-36" 
 						<?php if ($user['jekel'] == 'Laki-laki') { 
 							$laki = 'checked="checked"';
 							$perempuan = '';
@@ -125,7 +110,7 @@ if( isset($_POST["submit"]) ){
 							$perempuan = 'checked="checked"';
 							$laki = '';
 						} ?>
-
+                         >
 						<input type="radio" name="jekel" value="Laki-laki" <?= $laki ?>> Laki-laki
 						<input type="radio" name="jekel" value="Perempuan" <?= $perempuan ?>> Perempuan
 					</div>
@@ -154,7 +139,7 @@ if( isset($_POST["submit"]) ){
 						Email
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-					<input type="text"  class="input100" id="email" name="email" autocomplete="off" required value="<?= $user["email"]; ?>"
+					<input type="text"  class="input100" id="email" name="email" autocomplete="off" required value="<?= $user["email"]; ?>">
 						<span class="focus-input100"></span>
 					</div>
 					<span class="txt1 p-b-11">
@@ -177,22 +162,12 @@ if( isset($_POST["submit"]) ){
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<input type="submit" name= "submit"  id="button" class="login100-form-btn" value="Daftar" disabled>
+						<input type="submit" name= "submit"  id="button" class="login100-form-btn" value="Ubah">
 					</div>
-
 				</form>
-				<script>
-		function hanyaAngka(evt) {
-		  var charCode = (evt.which) ? evt.which : event.keyCode
-		   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
-		    return false;
-		  return true;
-		}
-	</script>
-				
 			</div>
 		</div>
+	</div>
 	</div>
 	
 	

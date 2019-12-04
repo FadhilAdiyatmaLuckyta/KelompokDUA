@@ -85,7 +85,7 @@ if( isset($_POST["submit"]) ){
     </li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
-      <li><a href="#" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
 </nav>
 
@@ -183,7 +183,7 @@ if( isset($_POST["submit"]) ){
 				                    <label for="date" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Tanggal">
+				                      <input type="date" id="date" class="form-control date" placeholder="Tanggal">
 				                    </div>
 				                  </div>
 				                </div>

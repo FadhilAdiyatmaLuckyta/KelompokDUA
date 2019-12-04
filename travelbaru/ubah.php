@@ -57,7 +57,7 @@ table {
 
     <form action="" method ="post">
     <table width="35%" border="0">
-            <input type="hidden" name="id_user" value="<?= $user["id_user"]; ?>"
+            <input type="hidden" name="id_user" value="<?= $user["id_user"]; ?>">
             <tr> 
                 <td>Nama</td>
                 <td><input type="text"  class="form_login" id ="nama" name="nama" autocomplete="off" required value="<?= $user["nama"]; ?>"></td>
