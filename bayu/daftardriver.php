@@ -1,13 +1,27 @@
+<?php
+require 'config.php';
+$driver = query("SELECT * FROM drivers");
 
+//TOMBOL CARI DIKLIK
+if (isset($_POST["cari"]) ) {
+    $driver  = carii ($_POST["keyword"]);
+}
+?>
 
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+	<title>Daftar Driver</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animatetb.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar-tb/perfect-scrollbar.css">
+<!-- Required meta tags -->
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -16,19 +30,9 @@
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <title>Halaman Admin</title>
-
-    <?php
-    include 'confiq.php';
-
-    session_start();
-
-    echo "Hai, Selamat datang ". $_session['id_user'];
-    
-  ?>
 </head>
-
 <body>
+
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -101,8 +105,9 @@
                     </ul>
                 </div>
             </nav>
-        </div>
-        <!-- ============================================================== -->
+		</div>
+		
+		 <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -164,20 +169,58 @@
                 </nav>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
-        <br>
+<br>
+<div class="main-content">
+<div class="container">
+<table class="table">
+    <thead class="thead-dark">
+	<tr>
+	<th class="column1">Aksi</th>
+	<th class="column2">ID Driver</th>
+	<th class="column3">Nama</th>
+	<th class="column4">Tempat Lahir</th>
+	<th class="column5">Tanggal Lahir</th>
+	<th class="column6">Jenis Kelamin</th>
+	<th class="column3">Nomor SIM</th>
+	<th class="column3">Telepon</th>
+	<th class="column3">Alamat</th>
+	</tr>
+		<php $i = 1; ?>
+         <?php foreach( $driver as $row ) : ?>
+</thead>
+<tbody>
+	<tr>
+		<td>
+		<a href="ubahdrivers.php?id_driver=<?= $row["id_driver"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i> Ubah</a>
+		<a> | </a>
+        <a href="hapusdriver.php?id_driver=<?= $row["id_driver"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i> Hapus</a>
+		</td>
+		<td><?= $row["id_driver"]; ?></td>
+        <td><?= $row["nama_driver"]; ?></td>
+        <td><?= $row["tempat_lahirdriver"]; ?></td>
+        <td><?= $row["tanggal_lahirdriver"]; ?></td>
+        <td><?= $row["jenis_kelamin"]; ?></td>
+        <td><?= $row["no_sim"]; ?></td>
+        <td><?= $row["telp"]; ?></td>
+        <td><?= $row["alamat_driver"]; ?></td>
+    </tr>
+	</tbody>
+						<php $i++; ?>
+                        <?php endforeach; ?>
+					</table>
+</div>
 
-        <div class="main-content">
-          <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
-        </div>
 
-            
-    <!-- Optional JavaScript -->
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
@@ -198,6 +241,6 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+
 </body>
- 
 </html>
