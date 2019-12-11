@@ -1,15 +1,40 @@
+<?php
+require 'config.php';
 
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek data berhasil ditambah apa gak
+    if( kirim ($_POST) > 0 ) {
+      echo "
+      <script>
+          alert('pesan terkirim');
+          document.location.href = 'index2.php';
+      </script>
+  ";
+          
+  }else {
+      echo "
+      <script>
+          alert('maaf pesan gagal dikirim!');
+          document.location.href = 'index2.php';
+      </script>
+  ";
+  }
+
+} 
+?>
 
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Lansa Trans</title>
@@ -27,71 +52,95 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    
+    <style>
+img{
+  width:100%;
+  max-width:100%;
+}
+
+.navbar{
+  position:fixed;
+  width:100%;
+  background-color:#000;
+  z-index:10;
+  border-radius:0;
+  border-color:transparent;
+}
+.navbar-default .navbar-nav > li > a{
+  color:#fff;
+  
+}
+</style>
     
   </head>
   <body>
 
   <!--Navbar-->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#"  style="font-family:Berlin Sans FB">Lansa Trans</a>
+  
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Lansa Trans</a>
+    </div>
 
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#" style="font-family:Berlin Sans FB"><i class="fas fa-cash-register"></i> Pembayaran</a>
-    </li>
-
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="font-family:Berlin Sans FB">
-      <i class="far fa-calendar-alt"></i> Jadwal
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-      </div>
-    </li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-      <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-    </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Pembayaran</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+      </ul>
+     
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 
-  
-    
-  <!-- Links -->
-  <div id="demo" class="carousel slide" data-ride="carousel">
-
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  
-  
-  <!-- The slideshow -->
-  <div class="carousel-inner">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="https://source.unsplash.com/3IEZsaXmzzs/1500x1200" alt="..." class="img-responsive">
+      <div class="carousel-caption">
+        Caption 1
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://source.unsplash.com/z55CR_d0ayg/1500x1200" alt="..." class="img-responsive">
+      <div class="carousel-caption">
+       caption 2
+      </div>
+    </div>
+    <div class="item active">
+      <img src="https://source.unsplash.com/3IEZsaXmzzs/1500x1200" alt="..." class="img-responsive">
+      <div class="carousel-caption">
+        Caption 1
+      </div>
+    </div>
     
-    <div class="carousel-item active">
-      <img src="img/p1.jpg" alt="Los Angeles" width="1300" height="600">
-    </div>
-    <div class="carousel-item">
-      <img src="img/p2.jpg" alt="Chicago" width="1300" height="600">
-    </div>
-    <div class="carousel-item">
-      <img src="img/p3.jpg" alt="New York" width="1300" height="600">
-    </div>
   </div>
-  
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
   </a>
 </div>
 
