@@ -148,10 +148,10 @@ if (isset($_POST["cari"]) ) {
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">Entry Data User</a>
+                                            <a class="nav-link" href="pages/chart-chartist.html">Lihat Data User</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Lihat Data User</a>
+                                            <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
                                         </li>
                                     </ul>
                                 </div>
