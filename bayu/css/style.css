@@ -9,7 +9,7 @@ body {
 
 .jumbotron {
     
-    background-image: url('../img/c.jpg');
+    background-image: url('../img/ku.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: 0 -100px;
@@ -20,7 +20,7 @@ body {
 
 
 .jumbotron img{
-    width: 200px;
+    width: 315px;
     border : 5px solid #eaeaea;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 
