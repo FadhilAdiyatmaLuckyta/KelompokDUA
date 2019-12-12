@@ -6,6 +6,25 @@ $driver = query("SELECT * FROM drivers");
 if (isset($_POST["cari"]) ) {
     $driver  = carii ($_POST["keyword"]);
 }
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek data berhasil ditambah apa gak
+    if( tambahkan ($_POST) > 0 ) {
+       echo "
+       Berhasil menambahkan driver, silahkan <a href='daftardrivers.php'>lihat</a> disini";
+            
+    }else {
+        echo "
+        Maaf tambah driver gagal, mohon coba lagi"; 
+    }
+
+} 
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +49,91 @@ if (isset($_POST["cari"]) ) {
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <style>
+    .form-style-1 {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 20px 12px 10px 20px;
+	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=number],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=number]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+.form-style-1 .field-divided{
+	width: 49%;
+}
+
+.form-style-1 .field-long{
+	width: 100%;
+}
+.form-style-1 .field-select{
+	width: 100%;
+}
+.form-style-1 .field-textarea{
+	height: 100px;
+}
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	background: #4B99AD;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+}
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+	background: #4691A4;
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}
+.form-style-1 .required{
+	color:red;
+}
+    </style>
 </head>
 <body>
 
@@ -172,6 +276,74 @@ if (isset($_POST["cari"]) ) {
 <br>
 <div class="main-content">
 <div class="container">
+  <h2>Daftar Driver</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <i class="fas fa-user-plus"></i> Tambah
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Tambah Driver</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="" method ="post">
+          
+<ul class="form-style-1">
+    <li><label>Nama <span class="required">*</span></label>
+    <input type="text"  class="field-long" id ="nama" name="nama_driver" autocomplete="off" placeholder="Masukkan nama anda" required> 
+    </li>
+    <li>
+        <label>Tempat dan Tanggal Lahir <span class="required">*</span></label>
+        <input type="text"  class="field-divided" id="tmpt" name="tempat_lahirdriver" autocomplete="off" placeholder="Masukkan tempat lahir anda" required>
+        <input type="date"  class="field-divided" id="tgl" name="tanggal_lahirdriver" autocomplete="off" placeholder="Masukkan tanggal lahir anda" required>
+    </li>
+    <li>
+        <label>Jenis Kelamin <span class="required">*</span></label>
+        <select name="field4" class="field-select">
+        <?php if (isset($jekel) && $jekel=="Laki-laki") echo "checked";?>
+        <option value="Laki-laki">Laki-laki</option>
+        <?php if (isset($jekel) && $jekel=="Perempuan") echo "checked";?>
+        <option value="Perempuan">Perempuan</option>
+        </select>
+    </li>
+    <li><label>Nomor SIM <span class="required">*</span></label>
+    <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="field-long" id="nod" name="no_sim" placeholder="Masukkan nomer ID" autocomplete="off" required> 
+    </li>
+    <li><label>Telepon <span class="required">*</span></label>
+    <input type="text" maxlength="12" onkeypress="return hanyaAngka(event)" class="field-long" id="telepon" name="telp" autocomplete="off" placeholder="Masukkan nomer telepon anda" required> 
+    </li>
+    <li><label>Alamat <span class="required">*</span></label>
+    <input type="text"  class="field-long" id="alamat" name="alamat_driver" autocomplete="off" placeholder="Masukkan alamat anda" required> 
+    </li>
+</ul>
+
+        
+    </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        <input href= "prosesubah1.php" type="submit" name= "submit"  id="button" class="btn btn-success" value="Tambahkan">
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<br>
+<div class="container">
 <table class="table">
     <thead class="thead-dark">
 	<tr>
@@ -241,6 +413,15 @@ if (isset($_POST["cari"]) ) {
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
+	</script>
 
 </body>
 </html>
