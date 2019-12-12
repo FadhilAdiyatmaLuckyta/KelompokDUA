@@ -92,10 +92,10 @@ if (isset($_POST["cari"]) ) {
                         </li>
                        
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/user1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                                
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <a class="dropdown-item" href="#"><i class="far fa-edit mr-2"></i>  Edit Profil</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -202,7 +202,7 @@ if (isset($_POST["cari"]) ) {
     <tr>
         
         <td>
-            <a href="ubah.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i></a>
+            <a href="ubahuser.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i></a>
             <a href="hapus.php?id_user=<?= $row["id_user"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i></a>
         </td>
         <td><?= $row["id_user"]; ?></td>

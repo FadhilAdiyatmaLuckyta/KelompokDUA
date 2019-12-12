@@ -87,14 +87,14 @@ img{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Lansa Trans</a>
+      <a class="navbar-brand" href="#" style="font-family:Berlin Sans FB">Lansa Trans</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Pembayaran</a></li>
-        <li><a href="#">Link</a></li>
+        <li><a href="#" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
+        <li><a href="#"style="font-family:Berlin Sans FB" ><i class="fas fa-car-alt"></i> Tujuan</a></li>
         <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
       </ul>
      
@@ -107,29 +107,24 @@ img{
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+   
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="https://source.unsplash.com/3IEZsaXmzzs/1500x1200" alt="..." class="img-responsive">
+      <img src="https://images.wallpaperscraft.com/image/indonesia_island_java_volcano_bromo_hills_altitude_blue_pink_sky_clouds_90613_1280x720.jpg" alt="Tujuan" class="img-responsive">
       <div class="carousel-caption">
-        Caption 1
+        ...
       </div>
     </div>
     <div class="item">
-      <img src="https://source.unsplash.com/z55CR_d0ayg/1500x1200" alt="..." class="img-responsive">
+      <img src="https://images.wallpaperscraft.com/image/feet_bus_trip_136181_1280x720.jpg" alt="Tujuan" class="img-responsive">
       <div class="carousel-caption">
-       caption 2
+      ...
       </div>
     </div>
-    <div class="item active">
-      <img src="https://source.unsplash.com/3IEZsaXmzzs/1500x1200" alt="..." class="img-responsive">
-      <div class="carousel-caption">
-        Caption 1
-      </div>
-    </div>
+    
     
   </div>
 
@@ -187,12 +182,13 @@ img{
 				              	 	<div class="form-group">
 				                    <label for="date" style="font-family:Berlin Sans FB">Tujuan </label>
 				                    <div class="form-field">
-											<i class="icon icon-arrow-down3"></i>
+                           
 											<select name="people" id="people" class="form-control"  > 
 											  <option style="color: black;" value="">Jember - Surabaya (Rp 120000)</option>
 											  <option style="color: black;" value="#">Malang</option>
                         <option style="color: black;" value="#">Denpasar</option>
-											</select>
+                      </select>
+                      
 				                    </div>
 				                  </div>
 								   </div>
