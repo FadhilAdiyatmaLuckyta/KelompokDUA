@@ -1,3 +1,27 @@
+<?php
+require 'config.php';
+
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek pesan berhasil ditambah apa gak
+    if( kirim ($_POST) > 0 ) {
+       echo "
+       Terima kasih pesan telah terkirim ke pihak Lansa Trans";
+            
+    }else {
+        echo "
+        Maaf daftar gagal, mohon coba lagi"; 
+    }
+
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>
@@ -56,8 +80,8 @@
     <!--jumbotron-->
     <div class="jumbotron text-center">
         <img src ="img/t.jpeg"  class="img-circle">
-        <h1 style="font-family:Berlin Sans FB; color:white;">Lansa Trans</h1>
-        <p style="font-family:Berlin Sans FB; color:white;">Tour & Travel</p>
+        <h1 style="font-family:Berlin Sans FB; color:rgb(12, 12, 12);">Lansa Trans</h1>
+        <p style="font-family:Berlin Sans FB; color:rgb(10, 10, 10);">Tour & Travel</p>
     </div>
     <!--akhir jumbotron-->
 
@@ -66,15 +90,16 @@
        <div class="container">
          <div class="row">
              <div class="col-sm-12">
-                 <h2 class ="text-center">Profil Kami</h2>
+                 <h2 class ="text-center" style="font-family:Berlin Sans FB">Profil Kami</h2>
                  <hr>
              </div>
          </div>  
         <div class="row">
             <div class="col-sm-6">
-            </justify><p class="pKiri">Lansa Trans adalah jasa travel yang berkantor pusat di Jl.Slamet Riyadi No.155, Jember. Kami melayani rute antara lain :
-              Jember-Surabaya, Jember-Malang, Jember-Denpasar. Kami melakukan perjalanan setiap harinya. Harga untuk perjalanan sangatlah
-              terjangkau dan kami melakukan penjemputan sesuai pesanan pelanggan. Kepuasan Pelanggan adalah nomor satu
+                <div class="container">
+            <center><p class="pKiri" style="font-family:Berlin Sans FB; font-size:20px;">Mitra kegiatan PKM-T ini yaitu biro travel yang bernama Lansa Trans. Biro ini masih menggunakan sistem manual untuk pemesanan tiket. Pelanggan harus datang ke kantor untuk melihat atau menanyakan apa saja fasilitias yang ada apa travel ini. Biro Travel yang berlokasi di Jl.Slamet Riyadi No.151 Jember, Jawa Timur. Travel ini didirikan pada tahun 2017 yang sempat bernama Nirwana Travel , lalu pada tahun 2018 berganti nama Lansa Trans. Biro travel ini mempunyai beberapa seperti Mobil Elf, Mobil Kecil (seperti Avanza,xenia,dll) dan juga mempunyai 5 supir, serta beberapa pegawai yang bekerja di kantor Lansa Travel. Travel ini mempunyai jurusan yaitu Jember – Malang , Jember – Surabaya , Jember – Denpasar.
+            Pada Lansa Travel ini mempunyai kekurangan seperti pemesanan yang kurang efektif dan beberapa fitur yang masih menggunakan system manual. Kelompok PKM-T ini mempunyai inisiatif untuk merubah sistim yang ada pada Lansa Trans agar lebih efektif dan mudah untuk pengguna jasa travel ini. Perubahan system yang dilakukan kelompok PKM-T ini agar pengguna bisa melihat fitur fitur apa saja yang dimiliki oleh Lansa Trans secara online seperti jurusan,harga,jenis mobil,supir,waktu pemberangkatan dan beberapa paket yang disediakan oleh Lansa Trans.
+            </center>
             </p>
             </div>  
             
@@ -147,38 +172,34 @@
                 <h2>Kontak Kami</h2>
                 <hr>
               </div>
-            
           </div>
-                
-              
-            
-      </div>
-
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <form >
+          <form action="" method="post" >
             <div class="form-group">
               <label form="nama">Nama</label>
-              <input type="text"id="nama" class="form-control" placeholder="masukkan nama">
+              <input type="text"id="nama" name ="pengirim" class="form-control" required autocomplete="off" placeholder="masukkan nama">
             </div>
             <div class="form-group">
                 <label form="email">Email</label>
-                <input type="email"id="email" class="form-control" placeholder="masukkan email">
+                <input type="email"id="email" name="email" class="form-control" required autocomplete="off" placeholder="masukkan email">
             </div>
             <div class="form-group">
                 <label form="tel">No Telp</label>
-                <input type="text"id="telp" class="form-control" placeholder="masukkan no telepon">
+                <input type="text"id="telp" maxlength="12" onkeypress="return hanyaAngka(event)"  name="no_telp" class="form-control" required autocomplete="off" placeholder="masukkan no telepon">
             </div>
             
             <div class="form-group">
               <label form="pesan">Pesan</label>
-                <textarea class="form-control" row="10" placeholder="masukkan pesan"></textarea>
+              <textarea class="form-control" name="pesan" row="10" placeholder="masukkan pesan" autocomplete="off" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+            <button type="submit" name="submit" class="btn btn-primary">Kirim Pesan</button>
           </form>
         </div>
       </div>
+    </div>
       
+    <!--akhir contact-->
     </section>
     <!--akhir contact-->
 

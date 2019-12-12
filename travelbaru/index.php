@@ -80,8 +80,8 @@ if( isset($_POST["submit"]) ){
     <!--jumbotron-->
     <div class="jumbotron text-center">
         <img src ="img/t.jpeg"  class="img-circle">
-        <h1 style="font-family:Berlin Sans FB; color:white;">Lansa Trans</h1>
-        <p style="font-family:Berlin Sans FB; color:white;">Tour & Travel</p>
+        <h1 style="font-family:Berlin Sans FB; color:black;">Lansa Trans</h1>
+        <p style="font-family:Berlin Sans FB; color:black;">Tour & Travel</p>
     </div>
     <!--akhir jumbotron-->
 
@@ -90,15 +90,16 @@ if( isset($_POST["submit"]) ){
        <div class="container">
          <div class="row">
              <div class="col-sm-12">
-                 <h2 class ="text-center">Profil Kami</h2>
+                 <h2 class ="text-center" style="font-family:Berlin Sans FB; color:black;">Profil Kami</h2>
                  <hr>
              </div>
          </div>  
         <div class="row">
             <div class="col-sm-6">
-            </justify><p class="pKiri">Lansa Trans adalah jasa travel yang berkantor pusat di Jl.Slamet Riyadi No.155, Jember. Kami melayani rute antara lain :
+            <div class="container">
+            <center><p class="pKiri" style="font-family:Berlin Sans FB; color:black;">Lansa Trans adalah jasa travel yang berkantor pusat di Jl.Slamet Riyadi No.155, Jember. Kami melayani rute antara lain :
               Jember-Surabaya, Jember-Malang, Jember-Denpasar. Kami melakukan perjalanan setiap harinya. Harga untuk perjalanan sangatlah
-              terjangkau dan kami melakukan penjemputan sesuai pesanan pelanggan. Kepuasan Pelanggan adalah nomor satu
+              terjangkau dan kami melakukan penjemputan sesuai pesanan pelanggan. Kepuasan Pelanggan adalah nomor satu</center>
             </p>
             </div>  
             

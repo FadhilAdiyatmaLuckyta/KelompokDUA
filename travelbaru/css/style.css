@@ -9,7 +9,7 @@ body {
 
 .jumbotron {
     
-    background-image: url('../img/c.jpg');
+    background-image: url('../img/ku.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: 0 -100px;
@@ -20,14 +20,14 @@ body {
 
 
 .jumbotron img{
-    width: 200px;
-    border : 5px solid #eaeaea;
+    width: 315px;
+    border : 5px solid #d44d4d;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 
 }
 
 .jumbotron h1, .jumbotron p{
-    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 10px rgba(209, 20, 20, 0.5);
 }
 hr{
     width: 250px ;
@@ -55,7 +55,7 @@ section{
     transform: translate(0,0);
 }
 .portfolio{
-    background-color : #eee;
+    background-color : rgb(216, 211, 211);
 }
 
 .portfolio .thumbnail {

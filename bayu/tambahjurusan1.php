@@ -52,29 +52,18 @@ if( isset($_POST["submit"]) ){
 				$jsArray .= "prdName	['" . $row['nama_driver'] . "'] = {id_driver:'" . addslashes($row['id_driver']) . "'};\n";
 				
 			}
-			
 		 ?>
 				   </select>
-			</td>
-			
-			
+			</td>	
 		</tr>
-		
 			</td>
 		</tr>
 		<tr>
-
 			<td>ID Driver</td>
 			<td>:</td>
 			<td><input  class="form-control"  name="id_driver" id="id_driver" readonly></td>
-
-
-
-
-
 		</tr>
 		<tr>
-
 			<td>Mobil</td>
 			<td>:</td>
 			<td><input type="text" class="form-control"  name="mobil" id="mobil"  placeholder='harga tiket'> </td>
@@ -86,9 +75,6 @@ if( isset($_POST["submit"]) ){
 			<td>Kursi</td>
 			<td>:</td>
 			<td><input type="number" max="4" min="1" class="form-control"  name="kursi" id="kursi"  placeholder='harga tiket'> </td>
-
-
-
 
 			<td>Jurusan</td>
 			<td>:</td>
@@ -104,12 +90,8 @@ if( isset($_POST["submit"]) ){
 
 			<td>Foto Mobil</td>
 			<td>:</td>
-			<td><input type="file" class="form-control"  name="gambar" id="gambar"  placeholder='harga tiket'> </td>
-
-				
+			<td><input type="file" class="form-control"  name="gambar" id="gambar"  placeholder='harga tiket'> </td>	
 		</tr>
-		
-		
         <tr>
 			<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Tambahkan"></td>
             <td><input type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
