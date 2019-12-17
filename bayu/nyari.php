@@ -1,8 +1,17 @@
+<?php
+        session_start();
+        // cek apakah yang mengakses halaman ini sudah login
+        if($_SESSION['level']==""){
+				header("location:index.php?pesan=gagal");
+		}
+		
+		
+      ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Login V14</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -61,17 +70,8 @@ body {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-			<form action="login_cek.php" method ="post">
-
-			<?php
-			if(isset($_GET["salah_login"])){ ?>
-				<h5 style="color :#FF333; text-align: center; font-family:Aller;"class="animated shake">username atau password anda salah</h5>
-				<?php } ?>
-			<?php
-			if(isset($_GET["belom_login"])){ ?>
-				<h5 style="color :#FF333; text-align: center; font-family:Aller;"class="animated shake">Anda Belom Login</h5>
-				<?php } ?>
-
+			<form action="carikode.php" method ="post">
+			
 			<br>
 				<form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">
@@ -79,27 +79,17 @@ body {
 					</span>
 
 					<span class="txt1 p-b-11">
-						Username
+						Kode payment
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-					<input type="text" name="username"  class="input100" placeholder="Masukkan Username" autocomplete="off" required>
+					<input type="text" name="kode_payment"  class="input100" placeholder="Masukkan Kode Booking Anda" autocomplete="off" required>
 						<span class="focus-input100"></span>
 					</div>
 					
-					<span class="txt1 p-b-11">
-						Password
-					</span>
-					<div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-						<input class="input100" type="password" name="password" placeholder="Masukkan password">
-						<span class="focus-input100"></span>
-					</div>
-
+					
 					<br>
 					<div class="container-login100-form-btn">
-						<input type="submit" name= "login" class="login100-form-btn" value="login">
+						<input type="submit" name= "login" class="login100-form-btn" value="cari">
 					</div>
 
 					<br>

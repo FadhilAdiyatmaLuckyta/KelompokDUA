@@ -130,6 +130,7 @@ function ubah ($data) {
 }
 
 
+
 function cari($keyword) {
     $query = "SELECT * FROM users
                 WHERE
@@ -450,20 +451,69 @@ function pesan($data) {
         $id_jurusan= htmlspecialchars($data["id_jurusan"]);
         $id_user = htmlspecialchars($data["id_user"]);
         $tgl_berangkat = htmlspecialchars($data["tgl_berangkat"]);
-        $jumlah_pesan = htmlspecialchars($data["jumlah_pesan"]);
         $jemput = htmlspecialchars($data["jemput"]);
-        $status_pesan = htmlspecialchars($_POST["status_pesan"]);
-       
         $tgl_pesan =  date("Y-m-d H:i:s");
         //query insert data
        
-       $query = "INSERT INTO pesan
+       $query = "INSERT INTO pesanan
                 VALUES
-        ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat', '$jumlah_pesan',  '$jemput', '$tgl_pesan', '$status_pesan')";
+        ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat',  '$jemput', '$tgl_pesan')";
 
         mysqli_query($conn, $query);
 
         return mysqli_affected_rows($conn);
 }
+function bayar($data){
 
+    global $conn;
+    $kode_payment = htmlspecialchars($_POST["kode_payment"]);
+    $id_pesanan = htmlspecialchars($_POST["id_pesanan"]);   
+    $tgl_payment = date("Y-m-d H:i:s");
+    $status_bayar = htmlspecialchars($_POST["status_bayar"]);
+    $gambar = upload(); 
+    if( !$gambar ) {
+        return false;
+    }
+    
+
+    
+   
+    //query insert data
+    $query = "INSERT INTO payment
+                VALUES
+                ('', '$kode_payment','$id_pesanan', '$tgl_payment',  '$status_bayar', '$gambar')";
+
+                mysqli_query($conn, $query);
+                return mysqli_affected_rows($conn);
+}
+function hapuspesanan ($id_pesanan) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM pesanan WHERE id_pesanan= $id_pesanan");
+
+    return mysqli_affected_rows($conn);
+}
+function ubahstatus ($data) {
+    global $conn;
+    $payment = $data["id_payment"];
+    $kode_payment = htmlspecialchars($data["kode_payment"]);
+    $id_pesanan = htmlspecialchars($data["id_pesanan"]);
+    $tgl = htmlspecialchars($data["tgl_payment"]);
+    $status = htmlspecialchars($_POST["status_bayar"]);
+    $gambar = htmlspecialchars($data["gambar"]);
+
+    
+    //query updatenya
+    $query = "UPDATE payment SET
+                id_payment = '$payment',
+                kode_payment = '$kode_payment',
+                id_pesanan = '$id_pesanan',
+                tgl_payment = '$tgl',
+                status_bayar = '$status',
+                bukti = '$gambar'
+                WHERE id_payment = $payment
+                ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
 ?>

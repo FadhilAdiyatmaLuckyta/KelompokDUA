@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-	$carikode= mysqli_query($conn, "SELECT max(kode_booking) FROM pesanan"); 
+	$carikode= mysqli_query($conn, "SELECT max(kode_booking) FROM pesan"); 
 	$datakode = mysqli_fetch_array($carikode);
 	if($datakode) {
 		$nilaikode = substr($datakode[0], 1);
@@ -13,35 +13,22 @@ require 'config.php';
 		$hasilkode = "C001";
 	}
 //APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
-if(isset($_POST['submit'])){
-	$kode_booking   = $_POST['kode_booking'];
-	$id_jurusan	= $_POST['id_jurusan'];
-	$id_user 	= $_POST['id_user'];
-	$tgl_berangkat 	= $_POST['tgl_berangkat'];
-	$jemput 	= $_POST['jemput'];
-	$tgl_pesan =  date("Y-m-d H:i:s");
-	$id_kursi = $_POST['id_kursi'];
-	$harga = $_POST['harga'];
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
 
-	$result = mysqli_query($conn, "SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND id_kursi= '$id_kursi' AND tgl_berangkat = '$tgl_berangkat'");
+    
 
-    if( mysqli_fetch_assoc($result) ) {
-        echo "<script>
-            alert ('Maaf, Kursi telah terpakai, mohon pilih kursi lain')
-            </script>";
-        return false;
+    //cek data berhasil ditambah apa gak
+    if( pesan($_POST) > 0 ) {
+       echo "
+       Berhasil pesan, silahkan <a href='pemesanan2.php'>bayar</a> disini";
+            
+    }else {
+        echo "
+        Maaf pesan gagal, mohon coba lagi"; 
     }
 
-	$query3 = mysqli_query($conn,"SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND tgl_berangkat = '$tgl_berangkat'");
-	$count = mysqli_num_rows($query3);
-		if($count > 1 ){
-			echo '<script>alert("Maaf Kursi telah terpakai semua, mohon pilih tanggal lain");</script>';
-			
-		}else{
-			$query4=mysqli_query($conn,"INSERT INTO pesanan VALUES ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat',  '$jemput', '$tgl_pesan', '$id_kursi', '$harga')");
-			echo "
-			Selamat anda berhasil pesan, silahkan <a href='pembayaran.php'>bayar pesanan anda</a>";
-		}
 } 
 ?>
 <?php
@@ -58,7 +45,24 @@ if(isset($_POST['submit'])){
 		<title>Input Pemesanan Tiket Travel</title>
 		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 
-		
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script language="javascript">
+        jQuery(document).ready(function()
+        {
+            jQuery("#setuju").click(function(){
+                if(jQuery("#button").is(":enabled"))
+            {
+                jQuery("#button").prop("disabled",true);
+            }
+            else
+            {
+                jQuery("#button").prop("disabled",false);
+            }
+        });
+        }
+        );
+        </script>
 	</head>
 	<body>
 
@@ -96,13 +100,20 @@ if(isset($_POST['submit'])){
 		 ?>
 				   </select>
 			</td>
-			</tr>
+			
+			<td>Jumlah Tiket</td>
+			<td>:</td>
+			<td><input type="number" min="1" max="7" name="jumlah_pesan" required=required placeholder='Jumlah Tiket'></td>
+			
+	
+
+		</tr>
 		<tr>
 			<td>Jemput</td>
 			<td>:</td>
 			<td><input type="text" name="jemput" ><required=required placeholder='Alamat'></td>
 
-			<td>ID User</td>
+			<td>ID user</td>
 			<td>:</td>
 			<td><input type="text" name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
 			
@@ -121,44 +132,26 @@ if(isset($_POST['submit'])){
 			<td>tgl</td>
 			<td>:</td>
 			<td><for="shootdate"></td>
-			<td><input required type="date" name="tgl_berangkat" id="shootdate" title="Choose your desired date" min="<?php echo date('Y-m-d', strtotime('+24 hours')); ?>"/></td>
+			<td><input required type="date" name="tgl_berangkat" id="shootdate" title="Choose your desired date" min="<?php echo date('Y-m-d'); ?>"/></td>
 			
 			<td>jam keberangkatan</td>
 			<td>:</td>
 			<td><input class="form-control"  name="jam_beranngkat" id="jam_beranngkat" readonly placeholder='jam keberangkatan'> 	 </td>
 		
-			<td>id_kursi</td>
+			<td>Total</td>
 			<td>:</td>
-			<td><input class="form-control"  name="id_kursi" id="id_kursi" readonly placeholder='jam keberangkatan'> 	 </td>
-
-			
+			<td><input class="form-control"  name="total" id="total" readonly placeholder='harga tiket'> </td>
+			<tr> 
+                <td></td>
+                <td><input type="checkbox" name="status_pesan" id="setuju" class="ok" required
+                <?php if (isset($status_pesan) && $status_pesan=="berhasil") echo "checked";?>
+                value="berhasil">Saya sudah pesan</td>
+            </tr>
 		
-		</tr>
-
-		<tr>
-			<td>Kursi</td>
-			<td>:</td>
-			<td><select name="kursi" id="kursi" class="form-control" onchange='changeValue1(this.value)' required>
-  			<option value="">-Pilih-</option>
-			<?php
-			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
-            $result = mysqli_query($koneksi, "SELECT * FROM kursi ORDER BY kursi asc");
-            $result = mysqli_query($koneksi, "SELECT *FROM kursi");    
-			while($row = mysqli_fetch_assoc($result))
-  			 {
-				echo '<option name="no_kursi"  value="' . $row['no_kursi'] . '">' . $row['no_kursi'] . '</option>';  
-				$jsArray .= "prdName	['" . $row['no_kursi'] . "'] = {id_kursi:'" . addslashes($row['id_kursi']) . "'};\n";
-				
-			}
-			
-		 ?>
-				   </select>
-			</td>
-			
 		</tr>
 		
         <tr>
-		<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Daftar"></td>
+		<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Daftar" disabled></td>
             <td><input type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
         </tr>
 
@@ -170,8 +163,7 @@ if(isset($_POST['submit'])){
       <label>Nama Lengkap User : <?php echo $_SESSION['nama']; ?></label>
       <br>
       <label>Username : <?php echo $_SESSION['username']; ?></label>
-	  <br>
-	  <label>Id User: <?php echo $_SESSION['id_user']; ?></label>
+      <p>
         <a href="index2.php">HOME</a>
 
 		</table>
@@ -191,8 +183,17 @@ function changeValue(id){
 	document.getElementById('id_jurusan').value = prdName[id].id_jurusan;
 	document.getElementById('jam_beranngkat').value = prdName[id].jam_beranngkat;
 };
-function changeValue1(id){
-    document.getElementById('id_kursi').value = prdName[id].id_kursi;
-	
-};
 </script>
+ <script type="text/javascript" language="Javascript">
+ var total=;
+ hargasatuan = document.formD.harga.value;
+ document.formD.txtDisplay.value = hargasatuan;
+ jumlah = document.formD.jmlpsn.value;
+ document.formD.txtDisplay.value = jumlah;
+ function OnChange(value){
+ hargasatuan = document.formD.harga.value;
+ jumlah = document.formD.jmlpsn.value;
+ total = hargasatuan * jumlah;
+ document.formD.txtDisplay.value = total;
+ }
+ </script>

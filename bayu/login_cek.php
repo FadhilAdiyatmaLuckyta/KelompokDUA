@@ -8,9 +8,7 @@ include 'config.php';
 // menangkap data yang dikirim dari form login 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$password = md5($password);
-$id_user = $_POST['id_user'];
- 
+$password = md5($password); 
 // menyeleksi data user dengan username dan password yang sesuai
 $login = mysqli_query($conn,"SELECT * FROM users WHERE username='$username' and password='$password'");
 // menghitung jumlah data yang ditemukan
@@ -30,8 +28,9 @@ if($cek > 0)
 		$_SESSION['level'] = "admin";
 		$_SESSION['id_user'] = $data['id_user'];
 		
+		
 		// alihkan ke halaman dashboard admin
-		header("location:halamanadmin.html");
+		header("location:halamanadmin.php");
 		exit;
  
 	// cek jika user login sebagai pengguna
@@ -40,22 +39,28 @@ if($cek > 0)
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "pengguna";
 		$_SESSION['id_user'] = $data['id_user'];
-
+		$_SESSION['nama'] = $data['nama'];
+		$_SESSION['tempat_lahir'] = $data['tempat_lahir'];
+		$_SESSION['tanggal_lahir'] = $data['tanggal_lahir'];
+		$_SESSION['jekel'] = $data['jekel'];
+		$_SESSION['nomer_id'] = $data['nomer_id'];
+		$_SESSION['telepon'] = $data['telepon'];
+		$_SESSION['alamat'] = $data['alamat'];
+		$_SESSION['email'] = $data['email'];
+		
 		// alihkan ke halaman dashboard pengguna
 		header("location:indexuser.php");
 		exit;
 
 		
 
-	// cek jika user login sebagai pengurus
- 
-	}else{
- 
+
+	}else if($data['level']==""){
 		// alihkan ke halaman login kembali
-		header("location:login2.php?login_error");
+		header("location:login2.php?belom_login");
 	}	
 }else{
-	header("location:login2.php?login_error");
+	header("location:login2.php?salah_login");
 }
  
 ?>

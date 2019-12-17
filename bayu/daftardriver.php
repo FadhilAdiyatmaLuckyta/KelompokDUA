@@ -17,7 +17,7 @@ if( isset($_POST["submit"]) ){
     //cek data berhasil ditambah apa gak
     if( tambahkan ($_POST) > 0 ) {
        echo "
-       Berhasil menambahkan driver, silahkan <a href='daftardrivers.php'>lihat</a> disini";
+       Berhasil menambahkan driver";
             
     }else {
         echo "
@@ -278,68 +278,79 @@ select{
 <div class="container">
   <h2>Daftar Driver</h2>
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  <i class="fas fa-user-plus"></i> Tambah
-  </button>
+  <button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>
+  <br>
+  <div id="addData" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Tambah Driver</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form action="" method ="post">
-          
-<ul class="form-style-1">
-    <li><label>Nama <span class="required">*</span></label>
-    <input type="text"  class="field-long" id ="nama" name="nama_driver" autocomplete="off" placeholder="Masukkan nama anda" required> 
-    </li>
-    <li>
-        <label>Tempat dan Tanggal Lahir <span class="required">*</span></label>
-        <input type="text"  class="field-divided" id="tmpt" name="tempat_lahirdriver" autocomplete="off" placeholder="Masukkan tempat lahir anda" required>
-        <input type="date"  class="field-divided" id="tgl" name="tanggal_lahirdriver" autocomplete="off" placeholder="Masukkan tanggal lahir anda" required>
-    </li>
-    <li>
-        <label>Jenis Kelamin <span class="required">*</span></label>
-        <select name="field4" class="field-select">
-        <?php if (isset($jekel) && $jekel=="Laki-laki") echo "checked";?>
-        <option value="Laki-laki">Laki-laki</option>
-        <?php if (isset($jekel) && $jekel=="Perempuan") echo "checked";?>
-        <option value="Perempuan">Perempuan</option>
-        </select>
-    </li>
-    <li><label>Nomor SIM <span class="required">*</span></label>
-    <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="field-long" id="nod" name="no_sim" placeholder="Masukkan nomer ID" autocomplete="off" required> 
-    </li>
-    <li><label>Telepon <span class="required">*</span></label>
-    <input type="text" maxlength="12" onkeypress="return hanyaAngka(event)" class="field-long" id="telepon" name="telp" autocomplete="off" placeholder="Masukkan nomer telepon anda" required> 
-    </li>
-    <li><label>Alamat <span class="required">*</span></label>
-    <input type="text"  class="field-long" id="alamat" name="alamat_driver" autocomplete="off" placeholder="Masukkan alamat anda" required> 
-    </li>
-</ul>
-
-        
-    </form>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-        <input href= "prosesubah1.php" type="submit" name= "submit"  id="button" class="btn btn-success" value="Tambahkan">
-         
-        </div>
-        
-      </div>
-    </div>
+    <!-- Modal content Add Data-->
+    <form action="process/add-data.php" method="post">
+	    <div class="modal-content">
+	      <div class="modal-header">
+          <h4 class="modal-title">Tambah Data Member</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+			<fieldset>
+		    <div class="form-group">
+		      <label for="inputNama" class="col-lg-3 control-label">Nama</label>
+		      <div class="col-lg-10">
+              <input type="text"  class="form-control" id ="nama" name="nama_driver" autocomplete="off" placeholder="Masukkan nama anda" required>
+		      </div>
+		    </div>
+            <div class="form-group">
+		      <label for="inputTempat" class="col-lg-4 control-label">Tempat Lahir</label>
+		      <div class="col-lg-10">
+              <input type="text"  class="form-control" id="tmpt" name="tempat_lahirdriver" autocomplete="off" placeholder="Masukkan tempat lahir anda" required>
+		      </div>
+		    </div>
+            <div class="form-group">
+		      <label for="inputLahir" class="col-lg-4 control-label">Tanggal Lahir</label>
+		      <div class="col-lg-10">
+              <input type="date"  class="form-control" id="tgl" name="tanggal_lahirdriver" autocomplete="off" placeholder="Masukkan tanggal lahir anda" required>
+		      </div>
+		    </div>
+			
+			<div class="form-group">
+		      <label for="select" class="col-lg-4 control-label">Jenis Kelamin</label>
+		      <div class="col-lg-10">
+		        <select class="form-control" name="tipe" id="select">
+		          <option value="laki-laki">Laki-laki</option>
+		          <option value="perempuan">Perempuan</option>
+		        </select>
+		      </div>
+		    </div>
+            <div class="form-group">
+		      <label for="inputNoSIM" class="col-lg-4 control-label">No SIM</label>
+		      <div class="col-lg-10">
+              <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="form-control" id="nod" name="no_sim" placeholder="Masukkan nomer ID" autocomplete="off" required>
+		      </div>
+		    </div>
+            <div class="form-group">
+		      <label for="inputTelepon" class="col-lg-4 control-label">Telepon</label>
+		      <div class="col-lg-10">
+              <input type="text" maxlength="12" onkeypress="return hanyaAngka(event)" class="form-control" id="telepon" name="telp" autocomplete="off" placeholder="Masukkan nomer telepon anda" required>
+		      </div>
+		    </div>
+			<div class="form-group">
+		      <label for="inputAlamat" class="col-lg-4 control-label">Alamat</label>
+		      <div class="col-lg-10">
+              <input type="text"  class="form-control" id="alamat" name="alamat_driver" autocomplete="off" placeholder="Masukkan alamat anda" required>
+		      </div>
+		    </div>
+            <div>
+            <button type="submit" name="btn" class="btn btn-primary btn-sm"><span class="fa fa-save"></span> Simpan</button>
+            </div>
+			
+		    </fieldset>
+			
+	      </div>
+	      <div class="modal-footer">
+	       
+	      </div>
+	    </div>
+	</form>
   </div>
-  
 </div>
 
 <br>
@@ -381,6 +392,8 @@ select{
                         <?php endforeach; ?>
 					</table>
 </div>
+
+
 
 
 	
