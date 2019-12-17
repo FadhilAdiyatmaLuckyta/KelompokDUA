@@ -1,34 +1,58 @@
+
 <?php
 require 'config.php';
 
+	$carikode= mysqli_query($conn, "SELECT max(kode_booking) FROM pesanan"); 
+	$datakode = mysqli_fetch_array($carikode);
+	if($datakode) {
+		$nilaikode = substr($datakode[0], 1);
+		$kode = (int) $nilaikode;
+		$kode = $kode + 1;
+		$hasilkode = "C".str_pad($kode, 3, "0", STR_PAD_LEFT);
 
+	}else {
+		$hasilkode = "C001";
+	}
 //APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
-if( isset($_POST["submit"]) ){
-    //ambil data dari tiap elemen form
-    
+if(isset($_POST['submit'])){
+	$kode_booking   = $_POST['kode_booking'];
+	$id_jurusan	= $_POST['id_jurusan'];
+	$id_user 	= $_POST['id_user'];
+	$tgl_berangkat 	= $_POST['tgl_berangkat'];
+	$jemput 	= $_POST['jemput'];
+	$tgl_pesan =  date("Y-m-d H:i:s");
+	$id_kursi = $_POST['id_kursi'];
+	$harga = $_POST['harga'];
 
-    
+	$result = mysqli_query($conn, "SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND id_kursi= '$id_kursi' AND tgl_berangkat = '$tgl_berangkat'");
 
-    //cek data berhasil ditambah apa gak
-    if( kirim ($_POST) > 0 ) {
-      echo "
-      <script>
-          alert('pesan terkirim');
-          document.location.href = 'index2.php';
-      </script>
-  ";
-          
-  }else {
-      echo "
-      <script>
-          alert('maaf pesan gagal dikirim!');
-          document.location.href = 'index2.php';
-      </script>
-  ";
-  }
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script>
+            alert ('Maaf, Kursi telah terpakai, mohon pilih kursi lain')
+            </script>";
+        return false;
+    }
 
+	$query3 = mysqli_query($conn,"SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND tgl_berangkat = '$tgl_berangkat'");
+	$count = mysqli_num_rows($query3);
+		if($count > 1 ){
+			echo '<script>alert("Maaf Kursi telah terpakai semua, mohon pilih tanggal lain");</script>';
+			
+		}else{
+			$query4=mysqli_query($conn,"INSERT INTO pesanan VALUES ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat',  '$jemput', '$tgl_pesan', '$id_kursi', '$harga')");
+			echo "
+			Selamat anda berhasil pesan, silahkan <a href='pembayaran.php'>bayar pesanan anda</a>";
+		}
 } 
 ?>
+<?php
+        session_start();
+        // cek apakah yang mengakses halaman ini sudah login
+        if($_SESSION['level']==""){
+                header("location:index.php?pesan=gagal");
+        }
+      ?>
+
 
 <!DOCTYPE html>
 <html lang="en" id="home">
@@ -69,6 +93,9 @@ img{
 .navbar-default .navbar-nav > li > a{
   color:#fff;
   
+}
+.f{
+  float: right;
 }
 </style>
     
@@ -184,23 +211,93 @@ img{
 
 						<div class="tab-content">
 							<div id="car" class="tab-pane fade in active">
-								<form method="post" class="colorlib-form">
+								<form method="post" action="" class="colorlib-form">
+                <h3><font face="Berlin Sans FB" color="white">
+        Selamat Datang <?php echo $_SESSION['level']; ?>
+</h3>
+ 
+      <label>Nama User : <?php echo $_SESSION['nama']; ?></label>
+      <br>
+      <label>Username : <?php echo $_SESSION['username']; ?></label>
+	  <br>
+	  <label>Id User: <?php echo $_SESSION['id_user']; ?></label>
+        <a href="index2.php">HOME</a>
+
+
 				              	<div class="row">
-				              	 <div class="col-md-3">
+                        <div class="col-md-2">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">ID Booking</label>
+										<div class="form-field">
+                    <input class="form-control" type="text" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
+										</div>  
+				                  </div>
+                        </div>
+                        
+				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
 				                    <label for="date" style="font-family:Berlin Sans FB">Tujuan </label>
 				                    <div class="form-field">
                            
 											<select name="people" id="people" class="form-control"  > 
-											  <option style="color: black;" value="">Jember - Surabaya (Rp 120000)</option>
-											  <option style="color: black;" value="#">Malang</option>
-                        <option style="color: black;" value="#">Denpasar</option>
+                     
+                        <option style="color: black;" value="">-Pilih-</option>
+											  <?php
+			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
+            $result = mysqli_query($koneksi, "SELECT * FROM jurusan ORDER BY jurusan asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM jurusan");    
+			$jsArray = "var prdName = new Array();\n";
+			while($row = mysqli_fetch_assoc($result))
+  			 {
+				echo '<option name="jurusan"  value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "', id_jurusan:'" . addslashes($row['id_jurusan']) . "',jam_beranngkat:'". addslashes($row['jam_beranngkat'])."'};\n";
+				
+			}
+			
+		 ?>
                       </select>
                       
 				                    </div>
 				                  </div>
-								   </div>
+                   </div>
+                   <div class="row">
+                   <div class="col-md-2">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">Jemput</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
+				                  </div>
+                        </div>
 
+                        <div class="col-md-2">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">ID User</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
+				                  </div>
+                        </div>
+</div>
+
+                        <div class="col-md-2">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">Harga tiket</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
+				                  </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+				                  <div class="form-group">
+										<label for="date" style="font-family:Berlin Sans FB">ID Jurusan</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
+				                  </div>
+                        </div>
+                        
 				                <div class="col-md-2">
 				                  <div class="form-group">
 				                    <label for="date" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
@@ -209,23 +306,35 @@ img{
 				                      <input type="date" id="date" class="form-control date" placeholder="Tanggal">
 				                    </div>
 				                  </div>
-				                </div>
-				                <div class="col-md-2">
+                        </div>
+
+                        <div class="col-md-2">
 				                  <div class="form-group">
-				                    <label for="date" style="font-family:Berlin Sans FB">Jumlah tiket</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Jumlah">
-				                    </div>
+										<label for="date" style="font-family:Berlin Sans FB">Jam Keberangkatan</label>
+										<div class="form-field">
+										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+										</div>  
 				                  </div>
-				                </div>
-				                <div class="col-md-3">
+                        </div>
+
+                        <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">Harga tiket</label>
+										<label for="date" style="font-family:Berlin Sans FB">ID Kursi</label>
 										<div class="form-field">
 										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
 										</div>  
 				                  </div>
 				                </div>
+                        
+				                <div class="col-md-2">
+				                  <div class="form-group">
+				                    <label for="date" style="font-family:Berlin Sans FB">Kursi</label>
+				                    <div class="form-field">
+				                      <input type="text" id="location" class="form-control" placeholder="Jumlah">
+				                    </div>
+				                  </div>
+				                </div>
+				            
 				                <div class="col-md-2">
 				                  <input style="font-family:Berlin Sans FB" type="submit" name="submit" id="submit" value="Pesan" class="btn btn-primary btn-block">
 				                </div>
