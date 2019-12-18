@@ -1,21 +1,7 @@
 <?php
 
 require 'config.php';
-	//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
-	if( isset($_POST["submit"]) ){
-    //ambil data dari tiap elemen form
-
-    //cek data berhasil ditambah apa gak
-    if( bayar($_POST) > 0 ) {
-       echo "
-       Berhasil mengunggah bukti pembayaran, mohon tunggu verifikasi pembayaran";
-            
-    }else {
-        echo "
-        Maaf anda gagal mengunggah bukti pembayaran, mohon coba lagi"; 
-    }
-
-} 
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +30,7 @@ require 'config.php';
 		<center><a href="index.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
 		<fieldset style="width: 50%; margin: auto;">
 			<legend>Form Input Pemesanan Tiket Travel</legend>
-		<form action="" method="post" enctype="multipart/form-data">
+		<form action="session_pesan.php" method="post">
 		<table>
 
 		<tr>
@@ -61,15 +47,15 @@ require 'config.php';
         <tr>
 				<td>id_payment</td>
 				<td>:</td>
-				<td><input type="text" name="id_pesanan"  value="<?php echo $_SESSION["id_payment"]; ?>"/></td>
+				<td><input type="text" name="ok"  value="<?php echo $_SESSION["id_payment"]; ?>"/></td>
 		</tr>		
         <tr>
 				<td>status</td>
 				<td>:</td>
-				<td><input type="text" name="id_pesanan"  value="<?php echo $_SESSION["status_bayar"]; ?>"/></td>
+				<td><input type="text" name="ok"  value="<?php echo $_SESSION["status_bayar"]; ?>"/></td>
 		</tr>
         <tr>
-		<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Daftar"></td>
+		<td><input type="submit" name= "login"  id="button" class="tombol_login" value="cari"></td>
             <td><input type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
         </tr>
       <p>

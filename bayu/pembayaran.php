@@ -92,13 +92,7 @@ require 'config.php';
 				<td>:</td>
 				<td><input type="text" name="id_pesanan"  value="<?php echo $data["id_pesanan"]; ?>"/></td>
 		</tr>
-		
-		<tr>
-			<td>Jurusan</td>
-			<td>:</td>
-			
-			</td>
-			</tr>
+	
 		<tr>
 			<td>Jemput</td>
 			<td>:</td>

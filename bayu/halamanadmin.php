@@ -1,5 +1,14 @@
+<?php
+require 'config.php';
 
-
+?>
+ <?php
+        session_start();
+        // cek apakah yang mengakses halaman ini sudah login
+        if($_SESSION['level']==""){
+                header("location:login2.php?belom_login");
+        }
+      ?>
 
 
 <!doctype html>
@@ -22,6 +31,7 @@
 </head>
 
 <body>
+
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -85,10 +95,10 @@
                         </li>
                        
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/user1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                <a class="dropdown-item" href="logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -131,7 +141,7 @@
                                             <a class="nav-link" href="entrytujuan.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -141,7 +151,10 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftarusers.php">Entry Data User</a>
+                                            <a class="nav-link" href="#">Entry Data Driver</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
@@ -166,14 +179,7 @@
         <br>
 
         <div class="main-content">
-        <?php
-    include 'confiq.php';
-
-    session_start();
-
-    echo "Hai, Selamat datang ". $_session['id_user'];
-    
-  ?>
+        
           <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
         </div>
 

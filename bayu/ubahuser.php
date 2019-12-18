@@ -46,7 +46,7 @@ if( isset($_POST["submit"]) ){
 }
 
 body{
-    background-image: url(p2.jpg);
+    background-image: url(car1.jpg);
 }
 
 input[type=text], select, textarea {

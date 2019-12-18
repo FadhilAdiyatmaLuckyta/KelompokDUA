@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
 		}else{
 			$query4=mysqli_query($conn,"INSERT INTO pesanan VALUES ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat',  '$jemput', '$tgl_pesan', '$id_kursi', '$harga')");
 			echo "
-			Selamat anda berhasil pesan, silahkan <a href='pembayaran.php'>bayar pesanan anda</a>";
+			Selamat anda berhasil pesan, silahkan melakukan pembayaran</a>";
 		}
 } 
 ?>
@@ -120,9 +120,10 @@ img{
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
+        <li><a href="pembayarann.php" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
         <li><a href="#"style="font-family:Berlin Sans FB" ><i class="fas fa-car-alt"></i> Tujuan</a></li>
         <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+        <li><a ><font face="Berlin Sans FB" color="#b0c4de">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
      
     </div><!-- /.navbar-collapse -->
@@ -217,8 +218,6 @@ img{
 </h3>
  
       <label>Nama User : <?php echo $_SESSION['nama']; ?></label>
-      <br>
-      <label>Username : <?php echo $_SESSION['username']; ?></label>
 	  <br>
 	  <label>Id User: <?php echo $_SESSION['id_user']; ?></label>
         <a href="index2.php">HOME</a>
@@ -227,19 +226,18 @@ img{
 				              	<div class="row">
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">ID Booking</label>
+										<label for="idbooking" style="font-family:Berlin Sans FB">ID Booking</label>
 										<div class="form-field">
-                    <input class="form-control" type="text" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
+                    <input type="text" class="form-control" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
 										</div>  
 				                  </div>
                         </div>
-                        
 				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
-				                    <label for="date" style="font-family:Berlin Sans FB">Tujuan </label>
+				                    <label for="tujuan" style="font-family:Berlin Sans FB">Tujuan </label>
 				                    <div class="form-field">
                            
-											<select name="people" id="people" class="form-control"  > 
+											<select name="people" id="people" class="form-control" onchange='changeValue(this.value)' required> > 
                      
                         <option style="color: black;" value="">-Pilih-</option>
 											  <?php
@@ -263,18 +261,18 @@ img{
                    <div class="row">
                    <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">Jemput</label>
+										<label for="jemput" style="font-family:Berlin Sans FB">Jemput</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <td><input type="text" class="form-control"  name="jemput" ><required=required placeholder='Alamat'></td>
 										</div>  
 				                  </div>
                         </div>
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">ID User</label>
+										<label for="iduser" style="font-family:Berlin Sans FB">ID User</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <td><input type="text" class="form-control"  name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
 										</div>  
 				                  </div>
                         </div>
@@ -282,61 +280,78 @@ img{
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">Harga tiket</label>
+										<label for="hargatiket" style="font-family:Berlin Sans FB">Harga tiket</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <td><input class="form-control" class="form-control"   name="harga" id="harga" readonly placeholder='harga tiket'> </td>
 										</div>  
 				                  </div>
                         </div>
                         
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">ID Jurusan</label>
+										<label for="idjurusan" style="font-family:Berlin Sans FB">ID Jurusan</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <td><input class="form-control" class="form-control"   name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'>
 										</div>  
 				                  </div>
                         </div>
                         
 				                <div class="col-md-2">
 				                  <div class="form-group">
-				                    <label for="date" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
+				                    <label for="tglberangkat" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="date" id="date" class="form-control date" placeholder="Tanggal">
+                              <td><input required type="date" class="form-control"  name="tgl_berangkat" id="shootdate" title="Choose your desired date" min="<?php echo date('Y-m-d', strtotime('+24 hours')); ?>"/></td>
 				                    </div>
 				                  </div>
                         </div>
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">Jam Keberangkatan</label>
+										<label for="jamberangkat" style="font-family:Berlin Sans FB">Jam Keberangkatan</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <input class="form-control"  name="jam_beranngkat" id="jam_beranngkat" readonly placeholder='jam keberangkatan'>
 										</div>  
 				                  </div>
                         </div>
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="date" style="font-family:Berlin Sans FB">ID Kursi</label>
+										<label for="idkursi" style="font-family:Berlin Sans FB">ID Kursi</label>
 										<div class="form-field">
-										  <input type="text" id="location" class="form-control" placeholder="Harga" disabled>
+                    <input class="form-control"  name="id_kursi" id="id_kursi" readonly placeholder='ID Kursi'>
 										</div>  
 				                  </div>
 				                </div>
                         
 				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date" style="font-family:Berlin Sans FB">Kursi</label>
+				              	 	<div class="form-group">
+				                    <label for="kursi" style="font-family:Berlin Sans FB">kursi </label>
 				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Jumlah">
-				                    </div>
-				                  </div>
+                           
+											<select name="people" id="people" class="form-control"  onchange='changeValue1(this.value)' required> > 
+                     
+                        <option style="color: black;" value="">-Pilih-</option>
+                        <?php
+			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
+            $result = mysqli_query($koneksi, "SELECT * FROM kursi ORDER BY kursi asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM kursi");    
+			while($row = mysqli_fetch_assoc($result))
+  			 {
+				echo '<option name="no_kursi"  value="' . $row['no_kursi'] . '">' . $row['no_kursi'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['no_kursi'] . "'] = {id_kursi:'" . addslashes($row['id_kursi']) . "'};\n";
+				
+			}
+		 ?>
+  </select>
+                      </div>
 				                </div>
-				            
+                        </div>
 				                <div class="col-md-2">
-				                  <input style="font-family:Berlin Sans FB" type="submit" name="submit" id="submit" value="Pesan" class="btn btn-primary btn-block">
+                        <input type="submit" name= "submit"  id="button" class="btn btn-primary btn-block" value="Pesan">
+                        </div>
+                        <div class="col-md-2">
+                        <input type="reset" value="Reset" class="btn btn-primary btn-block" onclick="return confirm('hapus data yang telah diinput?')">
 				                </div>
 				              </div>
 				            </form>
@@ -430,6 +445,8 @@ img{
 
 </div>
 </footer>
+</body> 
+</html>
 <!-- Footer -->
     <!--akhir footer-->
 
@@ -450,7 +467,18 @@ img{
 		    return false;
 		  return true;
 		}
-	</script>
     
-  </body>
-</html>
+  </script>
+  <script type="text/javascript"> 
+<?php echo $jsArray; ?>
+function changeValue(id){
+    document.getElementById('harga').value = prdName[id].harga;
+	document.getElementById('id_jurusan').value = prdName[id].id_jurusan;
+	document.getElementById('jam_beranngkat').value = prdName[id].jam_beranngkat;
+};
+function changeValue1(id){
+    document.getElementById('id_kursi').value = prdName[id].id_kursi;
+	
+};
+  </script>
+    

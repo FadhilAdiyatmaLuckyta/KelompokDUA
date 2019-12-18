@@ -147,11 +147,14 @@ if (isset($_POST["cari"]) ) {
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-user"></i>Users</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Lihat Data User</a>
+                                    <li class="nav-item">
+                                            <a class="nav-link" href="#">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Lihat Data User</a>
                                         </li>
                                     </ul>
                                 </div>
