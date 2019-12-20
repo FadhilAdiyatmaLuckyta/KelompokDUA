@@ -71,18 +71,21 @@ body {
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 			<form action="carikode.php" method ="post">
-			
+			<?php
+			if(isset($_GET["belumkonfirmasi"])){ ?>
+				<h5 style="color :#FF333; text-align: center; font-family:Aller;"class="animated shake">Anda belum melakukan pembayaran, silahkan melakukan pembayaran sesuai tagihan ke nomor rekening 3214789087678798 BRI</h5>
+				<?php } ?>
 			<br>
 				<form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">
-						Login
+						Cari Kode Pembayaran
 					</span>
 
 					<span class="txt1 p-b-11">
 						Kode payment
 					</span>
 					<div class="wrap-input100 validate-input m-b-36">
-					<input type="text" name="kode_payment"  class="input100" placeholder="Masukkan Kode Booking Anda" autocomplete="off" required>
+					<input type="text" name="kode_payment"  class="input100" placeholder="Masukkan Kode Payment" autocomplete="off" required>
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -92,10 +95,7 @@ body {
 						<input type="submit" name= "login" class="login100-form-btn" value="cari">
 					</div>
 
-					<br>
-					<div>
-					<p style="font-family:Calibri">Belum memiliki akun? <a style="font-family:Calibri" href="daftar.php">Daftar</a></p>
-					</div>
+					
 
 					
 

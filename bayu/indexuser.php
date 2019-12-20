@@ -121,8 +121,8 @@ img{
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="pembayarann.php" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
-        <li><a href="#"style="font-family:Berlin Sans FB" ><i class="fas fa-car-alt"></i> Tujuan</a></li>
-        <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+        <li><a href="nyari.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cari Kode Bayar</a></li>
+        <li><a href="index.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
         <li><a ><font face="Berlin Sans FB" color="#b0c4de">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
      
@@ -214,13 +214,10 @@ img{
 							<div id="car" class="tab-pane fade in active">
 								<form method="post" action="" class="colorlib-form">
                 <h3><font face="Berlin Sans FB" color="white">
-        Selamat Datang <?php echo $_SESSION['level']; ?>
+        Selamat Datang <?php echo $_SESSION['nama']; ?>
 </h3>
- 
-      <label>Nama User : <?php echo $_SESSION['nama']; ?></label>
 	  <br>
-	  <label>Id User: <?php echo $_SESSION['id_user']; ?></label>
-        <a href="index2.php">HOME</a>
+       
 
 
 				              	<div class="row">
@@ -228,7 +225,7 @@ img{
 				                  <div class="form-group">
 										<label for="idbooking" style="font-family:Berlin Sans FB">ID Booking</label>
 										<div class="form-field">
-                    <input type="text" class="form-control" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
+                    <input type="hidden" type="text" class="form-control" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
 										</div>  
 				                  </div>
                         </div>

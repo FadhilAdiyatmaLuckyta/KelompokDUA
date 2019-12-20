@@ -31,7 +31,7 @@ if($cek > 0)
 	// cek jika user login sebagai pengguna
 	}else{
 		// alihkan ke halaman login kembali
-		header("location:index.php?pesan=Maaf Pembayaran Anda Sedang Diverifikasi Oleh Admin");
+		header("location:nyari.php?belumkonfirmasi");
 	}	
 }
 ?>

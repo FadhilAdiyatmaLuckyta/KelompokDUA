@@ -59,7 +59,7 @@ if( isset($_POST["submit"]) ){
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-            <a href="#home" class="navbar-brand page-scroll " style="font-family:Berlin Sans FB">Lansa Trans</a>
+            <a href="#home" class="navbar-brand page-scroll  style="font-family:Berlin Sans FB">Lansa Trans</a>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,7 +97,7 @@ if( isset($_POST["submit"]) ){
         <div class="row">
             <div class="col-sm-6">
                 <div class="container">
-            <center><p class="pKiri" style="font-family:Berlin Sans FB; font-size:20px;">Mitra kegiatan PKM-T ini yaitu biro travel yang bernama Lansa Trans. Biro ini masih menggunakan sistem manual untuk pemesanan tiket. Pelanggan harus datang ke kantor untuk melihat atau menanyakan apa saja fasilitias yang ada apa travel ini. Biro Travel yang berlokasi di Jl.Slamet Riyadi No.151 Jember, Jawa Timur. Travel ini didirikan pada tahun 2017 yang sempat bernama Nirwana Travel , lalu pada tahun 2018 berganti nama Lansa Trans. Biro travel ini mempunyai beberapa seperti Mobil Elf, Mobil Kecil (seperti Avanza,xenia,dll) dan juga mempunyai 5 supir, serta beberapa pegawai yang bekerja di kantor Lansa Travel. Travel ini mempunyai jurusan yaitu Jember – Malang , Jember – Surabaya , Jember – Denpasar.
+            <center><p class="pKiri" style="font-family:Berlin Sans FB; font-size:15px;">Mitra kegiatan PKM-T ini yaitu biro travel yang bernama Lansa Trans. Biro ini masih menggunakan sistem manual untuk pemesanan tiket. Pelanggan harus datang ke kantor untuk melihat atau menanyakan apa saja fasilitias yang ada apa travel ini. Biro Travel yang berlokasi di Jl.Slamet Riyadi No.151 Jember, Jawa Timur. Travel ini didirikan pada tahun 2017 yang sempat bernama Nirwana Travel , lalu pada tahun 2018 berganti nama Lansa Trans. Biro travel ini mempunyai beberapa seperti Mobil Elf, Mobil Kecil (seperti Avanza,xenia,dll) dan juga mempunyai 5 supir, serta beberapa pegawai yang bekerja di kantor Lansa Travel. Travel ini mempunyai jurusan yaitu Jember – Malang , Jember – Surabaya , Jember – Denpasar.
             Pada Lansa Travel ini mempunyai kekurangan seperti pemesanan yang kurang efektif dan beberapa fitur yang masih menggunakan system manual. Kelompok PKM-T ini mempunyai inisiatif untuk merubah sistim yang ada pada Lansa Trans agar lebih efektif dan mudah untuk pengguna jasa travel ini. Perubahan system yang dilakukan kelompok PKM-T ini agar pengguna bisa melihat fitur fitur apa saja yang dimiliki oleh Lansa Trans secara online seperti jurusan,harga,jenis mobil,supir,waktu pemberangkatan dan beberapa paket yang disediakan oleh Lansa Trans.
             </center>
             </p>

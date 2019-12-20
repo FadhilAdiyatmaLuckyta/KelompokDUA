@@ -231,10 +231,10 @@ select{
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Pemesanan</a>
+                                            <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Pembayaran</a>
+                                            <a class="nav-link" href="#">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -279,13 +279,11 @@ select{
 <br>
 <div class="main-content">
 <div class="container">
-  <h2>Daftar Driver</h2>
+  <h1>DAFTAR DRIVER</h1>
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>
-  <br>
+  <!--<button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>-->
   
-<br>
-<div class="container">
+
 <table class="table">
     <thead class="thead-dark">
 	<tr>
@@ -322,7 +320,7 @@ select{
 						<php $i++; ?>
                         <?php endforeach; ?>
 					</table>
-</div>
+<div>
 
 
 

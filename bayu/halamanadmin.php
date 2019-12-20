@@ -125,10 +125,10 @@ require 'config.php';
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Pemesanan</a>
+                                            <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Pembayaran</a>
+                                            <a class="nav-link" href="#">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>

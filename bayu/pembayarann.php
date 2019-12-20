@@ -118,7 +118,7 @@ img{
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="indexuser.php" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a></li>
-        <li><a href="#"style="font-family:Berlin Sans FB" ><i class="fas fa-car-alt"></i> Tujuan</a></li>
+        <li><a href="nyari.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cari Kode Bayar</a></li>
         <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
         <li><a ><font face="Berlin Sans FB" color="white">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
@@ -260,15 +260,6 @@ img{
 
 						<div class="col-md-2">
 				                  <div class="form-group">
-										<p for="date" style="font-family:Berlin Sans FB">ID Jurusan</p>
-										<div class="form-field">
-										<input class="form-control"  name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'>
-										</div>  
-				                  </div>
-                        </div>
-
-						<div class="col-md-2">
-				                  <div class="form-group">
 										<p for="date" style="font-family:Berlin Sans FB">Tanggal</p>
 										<div class="form-field">
 										<for="shootdate">
@@ -277,14 +268,7 @@ img{
 				                  </div>
                         </div>
 
-						<div class="col-md-2">
-				                  <div class="form-group">
-										<p for="date" style="font-family:Berlin Sans FB">Jam Keberangkatan</p>
-										<div class="form-field">
-										<input class="form-control"  name="jam_beranngkat" id="jam_beranngkat" readonly placeholder='jam keberangkatan'>
-										</div>  
-				                  </div>
-                        </div>
+						
                         
                         <div class="col-md-2">
 				                  <div class="form-group">
@@ -316,9 +300,6 @@ img{
 				                <div class="col-md-2">
                         <input type="submit" name= "submit"  id="button" class="btn btn-primary btn-block" value="Bayar">
                         </div>
-                        <div class="col-md-2">
-                        <input type="reset" value="Reset" class="btn btn-primary btn-block" onclick="return confirm('hapus data yang telah diinput?')">
-				                </div>
 				              </div>
 				            </form>
 				         </div>

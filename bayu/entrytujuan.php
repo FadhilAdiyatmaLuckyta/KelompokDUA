@@ -125,7 +125,7 @@
                                             <a class="nav-link" href="#">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>

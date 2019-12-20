@@ -212,10 +212,10 @@ select{
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Pemesanan</a>
+                                            <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Pembayaran</a>
+                                            <a class="nav-link" href="#">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -228,7 +228,7 @@ select{
                                             <a class="nav-link" href="tambahjurusan1.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="#">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -238,7 +238,10 @@ select{
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftarusers.php">Entry Data User</a>
+                                            <a class="nav-link" href="daftarusers.php">Entry Data Driver</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftarusers.php">Lihat Data User</a>

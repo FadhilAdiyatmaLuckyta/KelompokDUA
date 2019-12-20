@@ -1,13 +1,28 @@
+<?php
+require 'config.php';
+$pesanan = query("SELECT * FROM pesanan");
+
+//TOMBOL CARI DIKLIK
+if (isset($_POST["cari"]) ) {
+    $driver  = carii ($_POST["keyword"]);
+}
+?>
 
 
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+	<title>Daftar Pesanan</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animatetb.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar-tb/perfect-scrollbar.css">
+<!-- Required meta tags -->
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -16,19 +31,10 @@
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <title>Halaman Admin</title>
-
-    <?php
-    include 'confiq.php';
-
-    session_start();
-
-    echo "Hai, Selamat datang ". $_session['id_user'];
     
-  ?>
 </head>
-
 <body>
+
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -94,15 +100,16 @@
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/user1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                                <a class="dropdown-item" href="#"><i class="far fa-edit mr-2"></i>  Edit Profil</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i> Logout</a>
+                                
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </div>
-        <!-- ============================================================== -->
+		</div>
+		
+		 <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -148,10 +155,13 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
+                                            <a class="nav-link" href="#">Entry Data Drive</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
+                                            <a class="nav-link" href="#">Lihat Data Driver</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -164,20 +174,77 @@
                 </nav>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
-        <br>
+<br>
+<div class="main-content">
+<div class="container">
+  <h1>DAFTAR PESANAN</h1>
+  <!-- Button to Open the Modal -->
+  <!--<button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>-->
+ 
 
-        <div class="main-content">
-          <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
-        </div>
+<form action="" method="post">
 
+<input type="text" name="keyword" size="40" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
+  <button class="btn btn-primary btn-xs" type="submit" name="cari"> Cari</button>
+  
+</form>
+<br>
+<div><a href="cetakdaftarpesan.php" class="btn btn-primary  btn-xs">Cetak</a></div>
+    <br>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>Aksi</th>
+        <th>ID Pesanan</th>
+        <th>Kode Booking</th>
+        <th>ID Jurusan</th>
+        <th>ID User</th>
+        <th>Tanggal Berangkat</th>
+        <th>Tempat Jemput</th>
+        <th>Tanggal Pesan</th>
+        <th>ID Kursi</th>
+        <th>Harga</th>
+
+    </tr>   
+    <php $i = 1; ?>
+    <?php foreach( $pesanan as $row ) : ?>
+    <tr>
+</thead>
+<tbody>
+	<tr>
+         <td>
             
-    <!-- Optional JavaScript -->
+        <a href="hapuspesanan.php?id_pesanan=<?= $row["id_pesanan"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i> Hapus</a>
+        </td>
+        <td><?= $row["id_pesanan"]; ?></td>
+        <td><?= $row["kode_booking"]; ?></td>
+        <td><?= $row["id_jurusan"]; ?></td>
+        <td><?= $row["id_user"]; ?></td>
+        <td><?= $row["tgl_berangkat"]; ?></td>
+        <td><?= $row["jemput"]; ?></td>
+        <td><?= $row["tgl_pesan"]; ?></td>
+        <td><?= $row["id_kursi"]; ?></td>
+        <td><?= $row["harga"]; ?></td>
+    </tr>
+	</tbody>
+    <php $i++; ?>
+    <?php endforeach; ?>
+					</table>
+
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
@@ -198,6 +265,15 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
-</body>
+    <script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
  
+		    return false;
+		  return true;
+		}
+	</script>
+
+</body>
 </html>
