@@ -12,7 +12,7 @@ include 'config.php';
   
   
   
-  <input type="submit" name="submit" value="lanjut pesan"/>
+ <td><a href="indexuser.php" ><button  type="button" id="button" class="tombol_login" value="Cetak Tiket">Index Bos</button></a></td>
 
 
 		

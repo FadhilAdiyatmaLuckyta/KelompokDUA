@@ -1,48 +1,24 @@
-
 <?php
 require 'config.php';
 
-	$carikode= mysqli_query($conn, "SELECT max(kode_booking) FROM pesanan"); 
-	$datakode = mysqli_fetch_array($carikode);
-	if($datakode) {
-		$nilaikode = substr($datakode[0], 1);
-		$kode = (int) $nilaikode;
-		$kode = $kode + 1;
-		$hasilkode = "C".str_pad($kode, 3, "0", STR_PAD_LEFT);
-
-	}else {
-		$hasilkode = "C001";
-	}
+	
 //APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
-if(isset($_POST['submit'])){
-	$kode_booking   = $_POST['kode_booking'];
-	$id_jurusan	= $_POST['id_jurusan'];
-	$id_user 	= $_POST['id_user'];
-	$tgl_berangkat 	= $_POST['tgl_berangkat'];
-	$jemput 	= $_POST['jemput'];
-	$tgl_pesan =  date("Y-m-d H:i:s");
-	$id_kursi = $_POST['id_kursi'];
-	$harga = $_POST['harga'];
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
 
-	$result = mysqli_query($conn, "SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND id_kursi= '$id_kursi' AND tgl_berangkat = '$tgl_berangkat'");
+    
 
-    if( mysqli_fetch_assoc($result) ) {
-        echo "<script>
-            alert ('Maaf, Kursi telah terpakai, mohon pilih kursi lain')
-            </script>";
-        return false;
+    //cek data berhasil ditambah apa gak
+    if( pesan($_POST) > 0 ) {
+       echo "
+       Berhasil pesan, silahkan <a href='multi.php'>pilih kursi</a> disini";
+            
+    }else {
+        echo "
+        Maaf pesan gagal, mohon coba lagi"; 
     }
 
-	$query3 = mysqli_query($conn,"SELECT * FROM pesanan WHERE id_jurusan='$id_jurusan' AND tgl_berangkat = '$tgl_berangkat'");
-	$count = mysqli_num_rows($query3);
-		if($count > 1 ){
-			echo '<script>alert("Maaf Kursi telah terpakai semua, mohon pilih tanggal lain");</script>';
-			
-		}else{
-			$query4=mysqli_query($conn,"INSERT INTO pesanan VALUES ('', '$kode_booking','$id_jurusan', '$id_user', '$tgl_berangkat',  '$jemput', '$tgl_pesan', '$id_kursi', '$harga')");
-			echo "
-			Selamat anda berhasil pesan, silahkan melakukan pembayaran</a>";
-		}
 } 
 ?>
 <?php
@@ -53,7 +29,6 @@ if(isset($_POST['submit'])){
         }
       ?>
 
-
 <!DOCTYPE html>
 <html lang="en" id="home">
   <head>
@@ -61,7 +36,8 @@ if(isset($_POST['submit'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Lansa Trans</title>
+    <title>Input Pemesanan Tiket Travel</title>
+		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -120,11 +96,10 @@ img{
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="pembayarann.php" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
+        <li><a href="indexuser.php" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a></li>
         <li><a href="nyari.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cari Kode Bayar</a></li>
-        <li><a href="mo2.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cek Kursi</a></li>
-        <li><a href="index.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
-        <li><a ><font face="Berlin Sans FB" color="#b0c4de">Username : <?php echo $_SESSION['username']; ?></a></li>
+        <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+        <li><a ><font face="Berlin Sans FB" color="white">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
      
     </div><!-- /.navbar-collapse -->
@@ -195,38 +170,24 @@ img{
     <!--akhir Galeri-->
 
     <!--Kontak Kami-->
-  
-
-   
-    <!--pemesanan-->
-    <div id="colorlib-reservation">
+   <!--pemesanan-->
+   <div id="colorlib-reservation">
 			<!-- <div class="container"> -->
 				<div class="row">
 					<div class="search-wrap">
 						<div class="container">
 							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#car" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a></li>
+								<li class="active"><a data-toggle="tab" href="#car" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Cek Kursi</a></li>
 							</ul>
 						</div>
-
 						<!--Harga-->
-
 						<div class="tab-content">
 							<div id="car" class="tab-pane fade in active">
-								<form method="post" action="" class="colorlib-form">
-                <h3><font face="Berlin Sans FB" color="white">
+								<form method="post" action="hasilkursi.php" class="colorlib-form">
+                <h4><font face="Berlin Sans FB" color="white">
         Selamat Datang <?php echo $_SESSION['nama']; ?>
-</h3>
+</h4>
 	  <br>
-				              	<div class="row">
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idbooking" style="font-family:Berlin Sans FB">ID Booking</label>
-										<div class="form-field">
-                    <input type="hidden" type="text" class="form-control" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
-										</div>  
-				                  </div>
-                        </div>
 				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
 				                    <label for="tujuan" style="font-family:Berlin Sans FB">Tujuan </label>
@@ -244,30 +205,27 @@ img{
   			 {
 				echo '<option name="jurusan"  value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';  
 				$jsArray .= "prdName	['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "', id_jurusan:'" . addslashes($row['id_jurusan']) . "',jam_beranngkat:'". addslashes($row['jam_beranngkat'])."'};\n";
-				
 			}
-			
 		 ?>
                       </select>
-                      
 				                    </div>
 				                  </div>
                    </div>
                    <div class="row">
                    <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="jemput" style="font-family:Berlin Sans FB">Jemput</label>
+										<label for="jemput" style="font-family:Berlin Sans FB">ID User</label>
 										<div class="form-field">
-                    <td><input type="text" class="form-control"  name="jemput" ><required=required placeholder='Alamat'></td>
+										<td><input type="text" name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
 										</div>  
 				                  </div>
                         </div>
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="iduser" style="font-family:Berlin Sans FB">ID User</label>
+										<label for="iduser" style="font-family:Berlin Sans FB">Harga</label>
 										<div class="form-field">
-                    <td><input type="text" class="form-control"  name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
+										<td><input class="form-control"  name="harga" id="harga" readonly placeholder='harga tiket'> </td>
 										</div>  
 				                  </div>
                         </div>
@@ -275,22 +233,12 @@ img{
 
                         <div class="col-md-2">
 				                  <div class="form-group">
-										<label for="hargatiket" style="font-family:Berlin Sans FB">Harga tiket</label>
+										<label for="hargatiket" style="font-family:Berlin Sans FB">ID Jurusan</label>
 										<div class="form-field">
-                    <td><input class="form-control" class="form-control"   name="harga" id="harga" readonly placeholder='harga tiket'> </td>
+										<td><input class="form-control"  name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'> 	 </td>
 										</div>  
 				                  </div>
                         </div>
-                        
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idjurusan" style="font-family:Berlin Sans FB">ID Jurusan</label>
-										<div class="form-field">
-                    <td><input class="form-control" class="form-control"   name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'>
-										</div>  
-				                  </div>
-                        </div>
-                        
 				                <div class="col-md-2">
 				                  <div class="form-group">
 				                    <label for="tglberangkat" style="font-family:Berlin Sans FB">Tanggal Berangkat</label>
@@ -309,52 +257,21 @@ img{
 										</div>  
 				                  </div>
                         </div>
-
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idkursi" style="font-family:Berlin Sans FB">ID Kursi</label>
-										<div class="form-field">
-                    <input class="form-control"  name="id_kursi" id="id_kursi" readonly placeholder='ID Kursi'>
-										</div>  
-				                  </div>
-				                </div>
-                        
-				                <div class="col-md-2">
-				              	 	<div class="form-group">
-				                    <label for="kursi" style="font-family:Berlin Sans FB">kursi </label>
-				                    <div class="form-field">
-                           
-											<select name="people" id="people" class="form-control"  onchange='changeValue1(this.value)' required> > 
-                     
-                        <option style="color: black;" value="">-Pilih-</option>
-                        <?php
-			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
-            $result = mysqli_query($koneksi, "SELECT * FROM kursi ORDER BY kursi asc");
-            $result = mysqli_query($koneksi, "SELECT *FROM kursi");    
-			while($row = mysqli_fetch_assoc($result))
-  			 {
-				echo '<option name="no_kursi"  value="' . $row['no_kursi'] . '">' . $row['no_kursi'] . '</option>';  
-				$jsArray .= "prdName	['" . $row['no_kursi'] . "'] = {id_kursi:'" . addslashes($row['id_kursi']) . "'};\n";
-				
-			}
-		 ?>
   </select>
-                      </div>
-				                </div>
+    <!--akhir pemesanan-->
+                 </div>
+				        <div class="col-md-2">
+						<td><button  type="submit" name="submit" id="button"  class="btn btn-primary">cek kursi</button></td>
+						
                         </div>
-				                <div class="col-md-2">
-                        <input type="submit" name= "submit"  id="button" class="btn btn-primary btn-block" value="Pesan">
-                        </div>
-                        <div class="col-md-2">
-                        <input type="reset" value="Reset" class="btn btn-primary btn-block" onclick="return confirm('hapus data yang telah diinput?')">
-				                </div>
 				              </div>
-				            </form>
+				            </form>	
 				         </div>
 			         </div>
 					</div>
 				</div>
 			</div>
+		</div>
     </div>
     <!--akhir pemesanan-->
     <br>
@@ -464,16 +381,11 @@ img{
 		}
     
   </script>
-  <script type="text/javascript"> 
+<script type="text/javascript"> 
 <?php echo $jsArray; ?>
 function changeValue(id){
     document.getElementById('harga').value = prdName[id].harga;
 	document.getElementById('id_jurusan').value = prdName[id].id_jurusan;
 	document.getElementById('jam_beranngkat').value = prdName[id].jam_beranngkat;
 };
-function changeValue1(id){
-    document.getElementById('id_kursi').value = prdName[id].id_kursi;
-	
-};
-  </script>
-    
+</script>

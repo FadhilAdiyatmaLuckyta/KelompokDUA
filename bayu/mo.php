@@ -111,7 +111,6 @@ if( isset($_POST["submit"]) ){
 		
         <tr>
 		<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="cek kursi"></td>
-            <td><input type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
         </tr>
 
 		
