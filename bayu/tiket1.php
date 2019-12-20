@@ -24,16 +24,12 @@ require 'config.php';
 		}	
       ?>
 
- <label>ID USER : <?php echo $_SESSION['id_user']; ?></label>
- <br>
- <label>jekel : <?php echo $_SESSION['tempat_lahir']; ?></label>
- <br>
- <label>Username : <?php echo $_SESSION['username']; ?></label>
+ 
 
-		<h3 align="center">TIKET</h3>
-		<center><a href="index.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
+		<h3 align="center">TIKET LANSA TRANS</h3>
+		<center><a href="indexuser.php">&Lt; Tabel Pemesanan Tiket Travel</a></center></br>
 		<fieldset style="width: 50%; margin: auto;">
-			<legend>Form Input Pemesanan Tiket Travel</legend>
+			<legend>Tiket Lansa Trans</legend>
 		<form action="" method="post" >
 		<table>
 
@@ -95,16 +91,7 @@ require 'config.php';
 		<td><a href="cetaktiket.php" target="_blank"><button  type="button" id="button" class="tombol_login" value="Cetak Tiket">Cetak Tiket</button></a></td>
             
         </tr>
-      <p>
-        Selamat Datang <?php echo $_SESSION['level']; ?>
-      </p>
- 
-      <label>Nama Lengkap User : <?php echo $_SESSION['id_user']; ?></label>
-      <br>
-      <label>Username : <?php echo $_SESSION['username']; ?></label>
-      <p>
-        <a href="index2.php">HOME</a>
-		<a href="cetaktiket.php" target="_blank"> Cetak </a>
+      
 		</table>
     </form>
 	</fieldset>

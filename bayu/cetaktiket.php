@@ -6,8 +6,25 @@ require 'config.php';
 <!DOCTYPE html>
 <html>
 	<head>	 
-		<title>TIKET</title>
+		<title>TIKET LANSA TRANS</title>
 		<link rel="icon" type="img/png" href="img/logo.png" class="rounded-circle">
+
+  <style>
+table.roundedCorners { 
+  border: 1px solid Black;
+  border-radius: 13px; 
+  border-spacing: 0;
+  }
+table.roundedCorners td, 
+table.roundedCorners th { 
+  border-bottom: 1px solid Black;
+  padding: 20px; 
+  }
+table.roundedCorners tr:last-child > td {
+  border-bottom: none;
+}
+
+</style>
 	</head>
 	<body>
 	<a href="cetaktiket.php" target="_blank"> </a>
@@ -27,26 +44,24 @@ require 'config.php';
  
 
 		<h3 align="center">TIKET</h3>
-		<fieldset style="width: 50%; margin: auto;">
+		<fieldset style="width: 40%; margin: auto;">
 		<form action="" method="post" >
-		<table>
+		<table class="roundedCorners">
 		
-		
+	
+
         <tr>
 				<td>Kode Booking</td>
 				<td>:</td>
 				<td><?php echo $_SESSION["kode_booking"]; ?></td>
-		</tr>		
-		<tr>
 				<td>Nama Penumpang</td>
 				<td>:</td>
 			<td> <?php echo $_SESSION["nama"]; ?>  </td>
-		</tr>
-        <tr>
-				<td>id pesanan</td>
+			<td>id pesanan</td>
 				<td>:</td>
 				<td><?php echo $_SESSION["id_pesanan"]; ?></td>
-		</tr>
+		</tr>		
+		
 		
         <tr>
 		<?php
@@ -61,7 +76,7 @@ require 'config.php';
 		<?php
 		} 
 		?>	
-		</tr>
+		
 		<?php
 		$kur=$_SESSION['id_kursi'];
 		$kursi=mysqli_query($conn, "SELECT * FROM kursi WHERE id_kursi='$kur'");
@@ -74,17 +89,17 @@ require 'config.php';
 		<?php
 		} 
 		?>		
-        <tr>
+        
 				<td>Tanggal Berangkat</td>
 				<td>:</td>
 			<td> <?php echo $_SESSION["tgl_berangkat"]; ?>  </td>
-		</tr>
+		
 		<tr>
 				<td>Harga</td>
 				<td>:</td>
 				<td><?php echo $_SESSION["harga"]; ?></td>
-		</tr>
-		<tr>
+		
+	
 				<td>Jemput</td>
 				<td>:</td>
 				<td><?php echo $_SESSION["jemput"]; ?></td>
