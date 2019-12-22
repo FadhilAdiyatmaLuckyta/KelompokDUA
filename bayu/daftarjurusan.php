@@ -127,7 +127,7 @@ select{
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a href="halamanadmin.php" style="color:Black;" class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -215,7 +215,7 @@ select{
                                             <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Pembayaran</a>
+                                            <a class="nav-link" href="daftarbayar.php">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -225,7 +225,7 @@ select{
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="tambahjurusan1.php">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan2.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">Lihat Data Jurusan</a>
@@ -238,7 +238,7 @@ select{
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftarusers.php">Entry Data Driver</a>
+                                            <a class="nav-link" href="tambahdriver.php">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
@@ -250,7 +250,7 @@ select{
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
+                                <a class="nav-link" href="report_bayar.php" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
                             </li>
                         </ul>
                     </div>
@@ -259,6 +259,7 @@ select{
         </div>
 <br>
 <div class="main-content">
+<h1><i class="fas fa-car"></i> DAFTAR JURUSAN</h1>
 <form action="" method="post">
 
     <input type="text" name="keyword" size="40" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
@@ -288,8 +289,8 @@ select{
     <tr>
         
         <td>
-            <a href="ubahjurusan2.php?id_jurusan=<?= $row["id_jurusan"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');">Ubah</a>
-            <a href="hapusjurusan1.php?id_jurusan=<?= $row["id_jurusan"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');">Hapus</a>
+            <a href="ubahjurusan2.php?id_jurusan=<?= $row["id_jurusan"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');"><i class="fas fa-edit"></i> Ubah</a>
+            <a href="hapusjurusan1.php?id_jurusan=<?= $row["id_jurusan"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');"><i class="fas fa-trash-alt"></i> Hapus</a>
         </td>
         <td><?= $row["id_jurusan"]; ?></td>
         <td><?= $row["jurusan"]; ?></td>
@@ -306,6 +307,26 @@ select{
     <php $i++; ?>
     <?php endforeach; ?>
 </table>
-
+ <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
 </html>

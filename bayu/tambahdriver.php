@@ -1,12 +1,6 @@
 <?php
 require 'config.php';
 
-//AMBIL DATA DI URL
-$id_driver= $_GET["id_driver"];
-
-// QUERY DATA USER BERDASARKAN ID
- $driver = query("SELECT * FROM drivers WHERE id_driver = $id_driver")[0];
-
 
 //APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
 if( isset($_POST["submit"]) ){
@@ -15,31 +9,27 @@ if( isset($_POST["submit"]) ){
 
     
 
-    //cek data berhasil diubah apa gak
-    if( driverubah($_POST) > 0 ) {
-        echo "
-        <script>
-            alert('data berhasi diubah');
-            document.location.href = 'daftardriver.php';
-        </script>
-    ";
+    //cek data berhasil ditambah apa gak
+    if( tambahkan ($_POST) > 0 ) {
+       echo "
+       <script>
+       alert('Berhasil menambahkan driver');
+       document.location.href = 'tambahdriver.php';
+   </script>";
             
-}else {
-    echo "
-    <script>
-        alert('data gagal diubah!');
-        document.location.href = 'daftardriver.php';
-    </script>
-";
-
+    }else {
+        echo "
+        Maaf tambah driver gagal, mohon coba lagi"; 
     }
+
 } 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ubah Data Drivers</title>
+    <title>Tambah Driver</title>
+  
     <style>
 * {
   box-sizing: border-box;
@@ -112,17 +102,21 @@ input[type=submit]:hover {
 </head>
 
 <body>
-    <h1 style="font-family:Calibri; color:Black;"> Ubah Data Driver<h1>
+    
+<h1 style="font-family:Calibri; color:Black;"> Tambah Driver<h1>
 
     <div class="container">
     <form action="" method ="post">
-  <input type="hidden" name="id_driver" value="<?= $driver["id_driver"]; ?>">
+  
   <div class="row">
+  
+  <br>
+  
     <div class="col-25">
       <label style="font-family:Calibri">Nama</label>
     </div>
     <div class="col-75">
-    <input type="text"  id ="nama" name="nama_driver" autocomplete="off" required value="<?= $driver["nama_driver"]; ?>">
+    <input type="text"  class="form_login" id ="nama" name="nama_driver" autocomplete="off" placeholder="Masukkan Nama" required>
     </div>
   </div>
   <div class="row">
@@ -130,7 +124,7 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Tempat Lahir</label>
     </div>
     <div class="col-75">
-      <input type="text" id="tmpt" name="tempat_lahirdriver" autocomplete="off" required value="<?= $driver["tempat_lahirdriver"]; ?>">
+    <input type="text"  class="form_login" id="tmpt" name="tempat_lahirdriver" autocomplete="off" placeholder="Masukkan Tempat Lahir" required>
     </div>
   </div>
   <div class="row">
@@ -138,7 +132,7 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Tanggal Lahir</label>
     </div>
     <div class="col-75">
-    <input type="date"  id="tgl" name="tanggal_lahirdriver" autocomplete="off" required value="<?= $driver["tanggal_lahirdriver"]; ?>">
+    <input type="date"  class="form_login" id="tgl" name="tanggal_lahirdriver" autocomplete="off" placeholder="Masukkan Tanggal Lahir" required>
     </div>
   </div>
   <div class="row">
@@ -146,15 +140,12 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Jenis Kelamin</label>
     </div>
     <div class="col-75">
-    <?php if ($driver['jenis_kelamin'] == 'Laki-laki') { 
-							$laki = 'checked="checked"';
-							$perempuan = '';
-						} else { 
-							$perempuan = 'checked="checked"';
-							$laki = '';
-                        } ?>
-                        <input type="radio" name="jenis_kelamin" value="Laki-laki" <?= $laki ?>> <label style="font-family:Calibri">Laki-laki</label>
-						<input type="radio" name="jenis_kelamin" value="Perempuan" <?= $perempuan ?>> <label style="font-family:Calibri">Perempuan</label>
+    <input type="radio" name="jenis_kelamin" 
+                    <?php if (isset($jekel) && $jekel=="Perempuan") echo "checked";?>
+                        value="Perempuan" required><label style="font-family:Calibri">Perempuan</label>
+                    <input type="radio" name="jenis_kelamin"
+                    <?php if (isset($jekel) && $jekel=="Laki-laki") echo "checked";?>
+                    value="Laki-laki" required><label style="font-family:Calibri">Laki-laki</label>
     </div>
   </div>
   <div class="row">
@@ -162,7 +153,7 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Nomor SIM</label>
     </div>
     <div class="col-75">
-    <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)"  id="nod" name="no_sim" autocomplete="off" required value="<?= $driver["no_sim"]; ?>">
+    <input type="text" maxlength="16" onkeypress="return hanyaAngka(event)" class="form_login" id="nod" name="no_sim" placeholder="Masukkan Nomer SIM" autocomplete="off" required>
     </div>
   </div>
   <div class="row">
@@ -170,7 +161,7 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Telepon</label>
     </div>
     <div class="col-75">
-    <input type="text" maxlength="13" onkeypress="return hanyaAngka(event)"  id="telepon" name="telp" autocomplete="off"  required value="<?= $driver["telp"]; ?>">
+    <input type="text" maxlength="12" onkeypress="return hanyaAngka(event)" class="form_login" id="telepon" name="telp" autocomplete="off" placeholder="Masukkan Nomer Telepon" required>
     </div>
   </div>
   <div class="row">
@@ -178,12 +169,12 @@ input[type=submit]:hover {
       <label style="font-family:Calibri">Alamat</label>
     </div>
     <div class="col-75">
-    <input type="text"  class="form_login" id="alamat" name="alamat_driver" autocomplete="off" required value="<?= $driver["alamat_driver"]; ?>">
+    <input type="text"  class="form_login" id="alamat" name="alamat_driver" autocomplete="off" placeholder="Masukkan Alamat" required>
     </div>
   </div>
   <br>
   <div class="row">
-  <input type="submit" name= "submit"  id="button" value="Ubah">
+  <input href= "prosesubah1.php" type="submit" name= "submit"  id="button" value="Tambahkan">
   </div>
   </form>
 </div>

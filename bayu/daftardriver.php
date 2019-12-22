@@ -146,7 +146,7 @@ select{
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a href="halamanadmin.php" style="color:Black;" class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -234,7 +234,7 @@ select{
                                             <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Pembayaran</a>
+                                            <a class="nav-link" href="daftarbayar.php">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -247,7 +247,7 @@ select{
                                             <a class="nav-link" href="tambahjurusan1.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -257,10 +257,10 @@ select{
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Entry Data Drive</a>
+                                            <a class="nav-link" href="tambahdriver.php">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Lihat Data Driver</a>
+                                            <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
@@ -269,7 +269,7 @@ select{
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
+                                <a class="nav-link" href="report_bayar.php"  aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
                             </li>
                         </ul>
                     </div>
@@ -279,7 +279,7 @@ select{
 <br>
 <div class="main-content">
 <div class="container">
-  <h1>DAFTAR DRIVER</h1>
+  <h1><i class="far fa-id-card"></i> DAFTAR DRIVER</h1>
   <!-- Button to Open the Modal -->
   <!--<button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>-->
   

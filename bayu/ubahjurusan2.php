@@ -42,7 +42,7 @@ if( isset($_POST["submit"]) ){
 }
 
 body{
-    background-image: url(p2.jpg);
+    background-image: url(img/car2.jpg);
 }
 
 input[type=text], select, textarea {
@@ -110,7 +110,7 @@ input[type=submit]:hover {
 
 <body>
 
-<h1 style="font-family:Calibri; color:White;"> Ubah Data Jurusan <h1>
+<h1 style="font-family:Calibri; color:Black;"> Ubah Data Jurusan <h1>
 
 <div class="container">
 <form action="" method ="post" enctype="multipart/form-data">

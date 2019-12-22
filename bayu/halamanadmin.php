@@ -41,7 +41,7 @@ require 'config.php';
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a style="color:Black;" class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -128,7 +128,7 @@ require 'config.php';
                                             <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Pembayaran</a>
+                                            <a class="nav-link" href="daftarbayar.php">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -138,7 +138,7 @@ require 'config.php';
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="entrytujuan.php">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan2.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
@@ -151,7 +151,7 @@ require 'config.php';
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Entry Data Driver</a>
+                                            <a class="nav-link" href="tambahdriver.php">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
@@ -163,7 +163,7 @@ require 'config.php';
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
+                                <a class="nav-link" href="report_bayar.php"  aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
                             </li>
                         </ul>
                     </div>

@@ -1,9 +1,55 @@
-<!doctype html>
+<?php
+require 'config.php';
+
+//AMBIL DATA DI URL
+$id_payment= $_GET["id_payment"];
+
+// QUERY DATA USER BERDASARKAN ID
+ $payment= query("SELECT * FROM payment WHERE id_payment = $id_payment")[0];
+
+
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek data berhasil diubah apa gak
+    if( ubahstatus ($_POST) > 0 ) {
+        echo "
+        <script>
+            alert('data berhasi diubah');
+            document.location.href = 'daftarusers.php';
+        </script>
+    ";
+            
+    }else {
+        echo "
+        <script>
+            alert('data gagal diubah!');
+            document.location.href = 'daftarusers.php';
+        </script>
+    ";
+    }
+
+} 
+?>
+
+<!DOCTYPE html>
 <html lang="en">
- 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+	<title>Ubah Status</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animatetb.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar-tb/perfect-scrollbar.css">
+<!-- Required meta tags -->
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -12,10 +58,94 @@
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <title>Halaman Admin</title>
-</head>
+    <style>
+    .form-style-1 {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 20px 12px 10px 20px;
+	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=number],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=number]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+.form-style-1 .field-divided{
+	width: 49%;
+}
 
+.form-style-1 .field-long{
+	width: 100%;
+}
+.form-style-1 .field-select{
+	width: 100%;
+}
+.form-style-1 .field-textarea{
+	height: 100px;
+}
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	background: #4B99AD;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+}
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+	background: #4691A4;
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}
+.form-style-1 .required{
+	color:red;
+}
+    </style>
+</head>
 <body>
+
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -25,7 +155,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-car"></i> Halaman Jurusan</a>
+                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -79,7 +209,7 @@
                         </li>
                        
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/user1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 
                                 <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
@@ -88,8 +218,9 @@
                     </ul>
                 </div>
             </nav>
-        </div>
-        <!-- ============================================================== -->
+		</div>
+		
+		 <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -109,10 +240,10 @@
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Pemesanan</a>
+                                            <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Pembayaran</a>
+                                            <a class="nav-link" href="#">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,23 +253,26 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan1.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-user"></i>Admin</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-user"></i>Users</a>
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">Entry Data Admin</a>
+                                            <a class="nav-link" href="#">Entry Data Drive</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Lihat Data Admin</a>
+                                            <a class="nav-link" href="#">Lihat Data Driver</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="daftarusers.php">Lihat Data User</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -151,86 +285,67 @@
                 </nav>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
-        <br>
+<br>
+<div class="main-content">
+<div class="container">
+  <h1>VERIFIKASI</h1>
+  <!-- Button to Open the Modal -->
+  <!--<button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>-->
+  
+    
 
-        <div class="main-content">
-          <marquee class="bg-dark text-white">Selamat Datang Admin</marquee>
-          <br/><br/>
-          <div class="container">
-    <div class="table table-hover">
-	<h5>Silahkan Tambah Jurusan</h5>
-    <form action="entrytujuan.php" method="post" name="form1">
-        <table>
+</form>
+<br>
+<table class="table">
+<input type="hidden" name="id_payment" value="<?= $payment["id_payment"]; ?>">
             <tr> 
-                <td>ID Jurusan</td>
-                <td><input type="text" class="form_jurusan" name="ID_JURUSAN" autocomplete="off" required></td>
+                <td>Kode Pembayaran</td>
+                <td><input type="text"  class="form_login" id ="kode_payment" name="kode_payment" autocomplete="off" required value="<?= $payment["kode_payment"]; ?>"></td>
             </tr>
             <tr> 
-                <td>ID Pengemudi</td>
-                <td><input type="text" class="form_jurusan" name="ID_PENGEMUDI" autocomplete="off" required></td>
+                <td>ID Pesanan</td>
+                <td><input type="text"  class="form_login" id="id_pesanan" name="id_pesanan" autocomplete="off" required value="<?= $payment["id_pesanan"]; ?>" ></td>
             </tr>
             <tr> 
-                <td>ID Kendaraan</td>
-                <td><input type="text" class="form_jurusan" name="ID_KENDARAAN" autocomplete="off" required></td>
+                <td>Tanggal Bayar</td>
+                <td><input type="date"  class="form_login" id="tgl" name="tgl_payment" autocomplete="off" required value="<?= $payment["tgl_payment"]; ?>"></td>
             </tr>
-            <tr> 
-                <td>Jurusan</td>
-                <td><input type="text" class="form_jurusan" name="JURUSAN" autocomplete="off" required></td>
-            </tr>
-            <tr> 
-                <td>Jam</td>
-                <td><input type="text" class="form_jurusan" name="JAM_BRKT" autocomplete="off" required></td>
-            </tr>
-            <tr> 
-                <td>Harga</td>
-                <td><input type="text" class="form_jurusan" name="HARGA" autocomplete="off" required></td>
-            </tr>
-            <tr> 
-                <td></td>
-                <td><input type="submit" name="Submit" class="btn btn-success" value="Tambahkan" required> </td> 
-            </tr>
-         </div>
-        </div>
-
-        </table>
-
-    </form>
-
-    <?php
-
-    // Check If form submitted, insert form data into users table.
-    if(isset($_POST['Submit'])) {
         
-        $id_jurusan = $_POST['ID_JURUSAN'];
-        $id_pengemudi = $_POST['ID_PENGEMUDI'];
-        $id_kendaraan = $_POST['ID_KENDARAAN'];
-        $jurusan = $_POST['JURUSAN'];
-        $jurusan = $_POST['JAM_BRKT'];
-        $harga = $_POST['HARGA'];
-        
+            <tr> 
+                <td>Status Bayar</td>
+                <td><input type="text"  class="form_login" id="status_bayar" name="status_bayar" autocomplete="off" required value="<?= $payment["status_bayar"]; ?>" ></td>
+            </tr>
+            <tr>
+            <td>
+            <img src="img/<?= $payment["bukti"]; ?>" height="100px" width="100px">
+            </td>
+            <td><input type="hidden" name="gambar" id="gambar" value="<?= $payment["bukti"]; ?>" ></td>
+            </tr>
+            <tr>
+				<td><input type="submit" name= "submit"  id="button" class="tombol_login" value="Ubah"></td>
+            </tr>
 
-
-        // include database connection file
-        include_once("koneksi2.php");
-
-        // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO jurusan(ID_JURUSAN,ID_PENGEMUDI,ID_KENDARAAN,JURUSAN,JAM_BRKT,HARGA) VALUES('$id_jurusan', '$id_pengemudi','$id_kendaraan','$jurusan','$jam_brkt','$HARGA')");
-
-        // Show message when user added
-        echo "Selamat anda telah menambahkan";
-    }
-    ?>
-	</table>
-        </div>
-
+            <tr> 
             
-    <!-- Optional JavaScript -->
+                <td></td>
+				
+            </tr>
+					</table>
+<div>
+
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
@@ -251,6 +366,15 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
-</body>
+    <script>
+		function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
  
+		    return false;
+		  return true;
+		}
+	</script>
+
+</body>
 </html>

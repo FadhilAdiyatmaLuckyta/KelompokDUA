@@ -38,7 +38,7 @@ if (isset($_POST["cari"]) ) {
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
+                <a href="halamanadmin.php" style="color:Black;" class="navbar-brand"><i class="fas fa-user-circle"></i> Halaman Admin</a>
                 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -122,10 +122,10 @@ if (isset($_POST["cari"]) ) {
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Pemesanan</a>
+                                            <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Pembayaran</a>
+                                            <a class="nav-link" href="daftarbayar.php">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -135,10 +135,10 @@ if (isset($_POST["cari"]) ) {
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="entrytujuan.php">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan2.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="lihattujuan.php">Lihat Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan.php">Lihat Data Jurusan</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -148,7 +148,7 @@ if (isset($_POST["cari"]) ) {
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                     <li class="nav-item">
-                                            <a class="nav-link" href="#">Entry Data Driver</a>
+                                            <a class="nav-link" href="tambahdriver.php">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
@@ -160,7 +160,7 @@ if (isset($_POST["cari"]) ) {
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
+                                <a class="nav-link" href="report_bayar.php"  aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
                             </li>
                         </ul>
                     </div>
@@ -175,7 +175,7 @@ if (isset($_POST["cari"]) ) {
         <!-- ============================================================== -->
         <br>
 <div class="main-content">
-          <h1>DAFTAR USERS</h1>
+          <h1><i class="fas fa-user"></i> DAFTAR USERS</h1>
 <form action="" method="post">
 
     <input type="text" name="keyword" size="30" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">

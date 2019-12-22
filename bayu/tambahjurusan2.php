@@ -1,19 +1,28 @@
 <?php
 require 'config.php';
-?>
-<?php
-session_start();
-// cek apakah yang mengakses halaman ini sudah login
-if($_SESSION['level']==""){
-        header("location:login2.php?belom_login");
-}
 
-$payment = query("SELECT * FROM payment");
 
-//TOMBOL CARI DIKLIK
-if (isset($_POST["cari"]) ) {
-    $payment  = carii ($_POST["keyword"]);
-}
+//APAKAH TOMBOL SUBMIT SUDAH DITEKAN APA BELUM 
+if( isset($_POST["submit"]) ){
+    //ambil data dari tiap elemen form
+    
+
+    
+
+    //cek data berhasil ditambah apa gak
+    if( jurusan($_POST) > 0 ) {
+       echo "
+       <script>
+       alert('Berhasil menambahkan jurusan');
+       document.location.href = 'tambahjurusan2.php';
+   </script>";
+            
+    }else {
+        echo "
+        Maaf tambah jurusan gagal, mohon coba lagi"; 
+    }
+
+} 
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +48,7 @@ if (isset($_POST["cari"]) ) {
     <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <style>
+
     .form-style-1 {
 	margin:10px auto;
 	max-width: 400px;
@@ -223,17 +233,17 @@ select{
                                             <a class="nav-link" href="daftarpesanan.php">Pemesanan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Pembayaran</a>
+                                            <a class="nav-link" href="daftarbayar.php">Pembayaran</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-car"></i>Jurusan</a>
+                                <a class="nav-link"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-car"></i>Jurusan</a>
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="tambahjurusan2.php">Entry Data Jurusan</a>
+                                            <a class="nav-link" href="tambahjurusan1.php">Entry Data Jurusan</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftarjurusan.php">Lihat Data Jurusan</a>
@@ -246,7 +256,7 @@ select{
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="tambahdriver.php">Entry Data Driver</a>
+                                            <a class="nav-link" href="tambahdrivers.php">Entry Data Driver</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="daftardriver.php">Lihat Data Driver</a>
@@ -258,7 +268,7 @@ select{
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="report_bayar.php"  aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
+                                <a class="nav-link" href="report_bayar.php" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-file-alt"></i>Laporan</a>
                             </li>
                         </ul>
                     </div>
@@ -267,65 +277,80 @@ select{
         </div>
 <br>
 <div class="main-content">
-<div class="container">
-  <h1><i class="fas fa-shopping-cart"></i> DAFTAR PEMBAYARAN</h1>
-  <!-- Button to Open the Modal -->
-  <!--<button type="button" class="btn btn-primary hide_on_print" data-toggle="modal" data-target="#addData"><i class="fas fa-user-plus"></i> Tambah</button>-->
-  
-  <form action="" method="post">
-
-<input type="text" name="keyword" size="40" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
-    <button type="submit" name="cari">Cari</button>
-    
-
-</form>
+<h1><i class="fas fa-car"></i> TAMBAH JURUSAN</h1>
 <br>
-<table class="table">
-    <thead class="thead-dark">
-	<tr>
-	<th class="column1">Aksi</th>
-	<th class="column2">ID Pembayaran</th>
-	<th class="column3">Kode Pembayaran</th>
-	<th class="column4">ID Pesanan</th>
-	<th class="column5">Tanggal Pembayaran</th>
-	<th class="column6">Status Pembayaran</th>
-	<th class="column3">Bukti Pembayaran</th>
-	</tr>
-    <php $i = 1; ?>
-    <?php foreach( $payment as $row ) : ?>
-</thead>
-<tbody>
-	<tr>
-		<td>
-        <a href="ubahstatus2.php?id_payment=<?= $row["id_payment"]; ?>"" onclick="return confirm('yakin nih mau ngubah ?');">Ubah</a>
-            <a href="hapusdriver.php?id_driver=<?= $row["id_driver"]; ?>"" onclick="return confirm('yakin nih mau ngehapus ?');">Hapus</a>
-		</td>
-		<td><?= $row["id_payment"]; ?></td>
-        <td><?= $row["kode_payment"]; ?></td>
-        <td><?= $row["id_pesanan"]; ?></td>
-        <td><?= $row["tgl_payment"]; ?></td>
-        <td><?= $row["status_bayar"]; ?></td>
-        <td><img src="img/<?=$row["bukti"];?>" width="100"></td>
-    </tr>
-	</tbody>
-						<php $i++; ?>
-                        <?php endforeach; ?>
-					</table>
-<div>
+<form action="" method="post" enctype="multipart/form-data">
+		<table class="table">
+		
+		<tr>
+            <td>ID Driver</td>
+			<td>:</td>
+			<td><input  class="form-control"  name="id_driver" id="id_driver" readonly></td>
 
+			<td>Nama Driver</td>
+			<td>:</td>
+			<td><select name="nama_driver" id="nama_driver" class="form-control" onchange='changeValue(this.value)' required>
+  			<option value="">-Pilih-</option>
+			<?php
+			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
+            $result = mysqli_query($koneksi, "SELECT * FROM drivers ORDER BY drivers asc");
+            $result = mysqli_query($koneksi, "SELECT *FROM drivers");    
+			$jsArray = "var prdName = new Array();\n";
+			while($row = mysqli_fetch_assoc($result))
+  			 {
+				echo '<option name="nama_driver"  value="' . $row['nama_driver'] . '">' . $row['nama_driver'] . '</option>';  
+				$jsArray .= "prdName	['" . $row['nama_driver'] . "'] = {id_driver:'" . addslashes($row['id_driver']) . "'};\n";
+				
+			}
+		 ?>
+				   </select>
+			</td>	
+			</td>
+            </td>        
+<tr>
+			<td>Mobil</td>
+			<td>:</td>
+			<td><input type="text" class="form-control"  name="mobil" id="mobil"  placeholder='Jenis Mobil'> </td>
+            <td>Plat Nomer</td>
+			<td>:</td>
+			<td><input type="text" class="form-control"  name="plat_nomor" id="plat_nomor"  placeholder='Plat Nomer'> </td>
+</tr>
 
+			
 
+<tr>
+			<td>Kursi</td>
+			<td>:</td>
+			<td><input type="number" max="4" min="1" class="form-control"  name="kursi" id="kursi"  placeholder='Jumlah Kursi'> </td>
+            <td>jam keberangkatan</td>
+			<td>:</td>
+			<td><input type= "time" class="form-control"  name="jam" id="jam"  placeholder='Jam Keberangkatan'> 
 
-	
+</tr>
+<tr>
+			<td>Jurusan</td>
+			<td>:</td>
+			<td><input type="text" class="form-control"  name="jurusan" id="jurusan"  placeholder='Jurusan'> </td>
+            </td>
+            <td>Foto Mobil</td>
+			<td>:</td>
+			<td><input type="file" class="form-control"  name="gambar" id="gambar"  placeholder='Foto Mobil'> </td>
+</tr>
+<tr>
+			<td>Harga</td>
+			<td>:</td>
+			<td><input type="text" class="form-control"  name="harga" id="harga"  placeholder='Harga'> </td>
+            <td></td>
+            <td></td>
+            <td></td>
+</tr>		
+        <tr>
+			<td><input class="btn btn-success" type="submit" name= "submit"  id="button" value="Tambahkan" ></td>
+            <td><input class="btn btn-danger" type="reset" value="Reset" onclick="return confirm('hapus data yang telah diinput?')"></td>
+        </tr>
+</table>
 
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	<!-- Optional JavaScript -->
+ <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
@@ -346,15 +371,19 @@ select{
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
-    <script>
-		function hanyaAngka(evt) {
-		  var charCode = (evt.which) ? evt.which : event.keyCode
-		   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
-		    return false;
-		  return true;
-		}
-	</script>
-
 </body>
 </html>
+<script type="text/javascript"> 
+<?php echo $jsArray; ?>
+function changeValue(id){
+    document.getElementById('id_driver').value = prdName[id].id_driver;
+	
+};
+</script>
+<script type="text/javascript"> 
+<?php  ?>
+function changeValue1(id){
+    document.getElementById('id_car').value = prdName[id].id_car;
+	
+};
+</script>

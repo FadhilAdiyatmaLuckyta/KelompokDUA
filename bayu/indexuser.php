@@ -122,7 +122,7 @@ img{
       <ul class="nav navbar-nav">
         <li><a href="pembayarann.php" style="font-family:Berlin Sans FB"><i class="fas fa-calculator"></i> Pembayaran</a></li>
         <li><a href="nyari.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cari Kode Bayar</a></li>
-        <li><a href="mo2.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cek Kursi</a></li>
+        <li><a href="mo2.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search"></i> Cek Kursi</a></li>
         <li><a href="index.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
         <li><a ><font face="Berlin Sans FB" color="#b0c4de">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
@@ -219,22 +219,17 @@ img{
 </h3>
 	  <br>
 				              	<div class="row">
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idbooking" style="font-family:Berlin Sans FB">ID Booking</label>
-										<div class="form-field">
+                        
                     <input type="hidden" type="text" class="form-control" name="kode_booking" value="<?php echo $hasilkode;?>" readonly="readonly">
-										</div>  
-				                  </div>
-                        </div>
+									
 				              	 <div class="col-md-4">
 				              	 	<div class="form-group">
 				                    <label for="tujuan" style="font-family:Berlin Sans FB">Tujuan </label>
 				                    <div class="form-field">
                            
-											<select name="people" id="people" class="form-control" onchange='changeValue(this.value)' required> > 
+											<select name="jurusan" id="jurusan" class="form-control" onchange='changeValue(this.value)' required> > 
                      
-                        <option style="color: black;" value="">-Pilih-</option>
+                        <option value="">-Pilih-</option>
 											  <?php
 			$koneksi = mysqli_connect("localhost","root","","alhamdulillah");
             $result = mysqli_query($koneksi, "SELECT * FROM jurusan ORDER BY jurusan asc");
@@ -263,15 +258,10 @@ img{
 				                  </div>
                         </div>
 
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="iduser" style="font-family:Berlin Sans FB">ID User</label>
-										<div class="form-field">
-                    <td><input type="text" class="form-control"  name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
-										</div>  
-				                  </div>
-                        </div>
-</div>
+                       
+                    <td><input type="hidden" class="form-control"  name="id_user" value="<?php echo $_SESSION['id_user']; ?>" ></td>
+									
+
 
                         <div class="col-md-2">
 				                  <div class="form-group">
@@ -282,14 +272,9 @@ img{
 				                  </div>
                         </div>
                         
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idjurusan" style="font-family:Berlin Sans FB">ID Jurusan</label>
-										<div class="form-field">
-                    <td><input class="form-control" class="form-control"   name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'>
-										</div>  
-				                  </div>
-                        </div>
+                       
+                    <td><input type="hidden" class="form-control"    name="id_jurusan" id="id_jurusan" readonly placeholder='jam keberangkatan'>
+									
                         
 				                <div class="col-md-2">
 				                  <div class="form-group">
@@ -300,7 +285,7 @@ img{
 				                    </div>
 				                  </div>
                         </div>
-
+</div>
                         <div class="col-md-2">
 				                  <div class="form-group">
 										<label for="jamberangkat" style="font-family:Berlin Sans FB">Jam Keberangkatan</label>
@@ -310,14 +295,9 @@ img{
 				                  </div>
                         </div>
 
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<label for="idkursi" style="font-family:Berlin Sans FB">ID Kursi</label>
-										<div class="form-field">
-                    <input class="form-control"  name="id_kursi" id="id_kursi" readonly placeholder='ID Kursi'>
-										</div>  
-				                  </div>
-				                </div>
+                       
+                    <input type="hidden" class="form-control"  name="id_kursi" id="id_kursi" readonly placeholder='ID Kursi'>
+									
                         
 				                <div class="col-md-2">
 				              	 	<div class="form-group">
@@ -476,4 +456,4 @@ function changeValue1(id){
 	
 };
   </script>
-    
+

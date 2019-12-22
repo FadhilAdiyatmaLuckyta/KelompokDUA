@@ -119,6 +119,7 @@ img{
       <ul class="nav navbar-nav">
         <li><a href="indexuser.php" style="font-family:Berlin Sans FB"><i class="fas fa-shopping-cart"></i> Pemesanan</a></li>
         <li><a href="nyari.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search-dollar"></i> Cari Kode Bayar</a></li>
+        <li><a href="mo2.php"style="font-family:Berlin Sans FB" ><i class="fas fa-search"></i> Cek Kursi</a></li>
         <li><a href="login2.php" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
         <li><a ><font face="Berlin Sans FB" color="white">Username : <?php echo $_SESSION['username']; ?></a></li>
       </ul>
@@ -211,15 +212,9 @@ img{
 							<div id="car" class="tab-pane fade in active">
 							<form action="" method="post" enctype="multipart/form-data">
 				              	<div class="row">
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<p for="date" style="font-family:Berlin Sans FB">Kode Booking</p>
-										<div class="form-field">
-										<input type="text" class="form-control" name="kode_booking"  value="<?php echo $data["kode_booking"]; ?>"/>
-										</div>  
-				                  </div>
-                        </div>
-                  
+                        
+										<input type="hidden" class="form-control" name="kode_booking"  value="<?php echo $data["kode_booking"]; ?>"/>
+									
                    <div class="col-md-2">
 				                  <div class="form-group">
 										<p for="date" style="font-family:Berlin Sans FB">Kode Pembayaran</p>
@@ -229,14 +224,9 @@ img{
 				                  </div>
                         </div>
 
-                        <div class="col-md-2">
-				                  <div class="form-group">
-										<p for="date" style="font-family:Berlin Sans FB">ID Pesanan</p>
-										<div class="form-field">
-										<input type="text" class="form-control" name="id_pesanan"  value="<?php echo $data["id_pesanan"]; ?>"/>
-										</div>  
-				                  </div>
-                        </div>
+                       
+										<input type="hidden" class="form-control" name="id_pesanan"  value="<?php echo $data["id_pesanan"]; ?>"/>
+									
 
 
 						<div class="col-md-2">
@@ -279,26 +269,23 @@ img{
 				                  </div>
                         </div>
                         
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <p for="date" style="font-family:Berlin Sans FB">ID Kursi</p>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-									  <input class="form-control"  name="id_kursi" id="id_kursi" value="<?php echo $data["id_kursi"]; ?>" readonly placeholder='jam keberangkatan'>
-				                    </div>
-				                  </div>
-                        </div>
+				               
+									  <input class="form-control" type="hidden" name="id_kursi" id="id_kursi" value="<?php echo $data["id_kursi"]; ?>" readonly placeholder='jam keberangkatan'>
+				                    
 
                         <div class="col-md-2">
 				                  <div class="form-group">
 										<p for="date" style="font-family:Berlin Sans FB">Bukti Pembayaran</p>
 										<div class="form-field">
-										<input type="file" name="gambar" id="gambar"  placeholder='harga tiket'>
+										<input type="file" name="gambar" id="gambar" placeholder='harga tiket'>
 										</div>  
 				                  </div>
                         </div>
+                        </div>
+                        <div class="row">
 				                <div class="col-md-2">
                         <input type="submit" name= "submit"  id="button" class="btn btn-primary btn-block" value="Bayar">
+                        </div>
                         </div>
 				              </div>
 				            </form>
