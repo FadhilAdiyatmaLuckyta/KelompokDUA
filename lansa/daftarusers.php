@@ -24,6 +24,14 @@ if (isset($_POST["cari"]) ) {
    
     
     <title>DAFTAR USERS</title>
+    <style>
+    div.ex3 {
+  background-color: white;
+  width: 970px;
+  height: 350px;
+  overflow: auto;
+}
+    </style>
 </head>
 
 <body>
@@ -185,6 +193,7 @@ if (isset($_POST["cari"]) ) {
 
 </form>
 <br>
+<div class="ex3">
 <table class="table">
 <thead class="thead-dark">
     <tr>
@@ -224,6 +233,7 @@ if (isset($_POST["cari"]) ) {
     <php $i++; ?>
     <?php endforeach; ?>
 </table>
+</div>
     </div>
       <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->

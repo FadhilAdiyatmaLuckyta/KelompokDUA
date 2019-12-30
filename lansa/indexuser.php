@@ -251,7 +251,7 @@ img{
     <div class="dropdown" style="float:right;">
   <a class="dropbtn" ><font face="Berlin Sans FB" color="white"><?php echo $_SESSION['username']; ?></a>
   <div class="dropdown-content">
-  <a href="http://localhost/bayu/ubahuser.php?id_user=<?= $_SESSION['id_user']?>" style="font-family:Berlin Sans FB; color:#black;"><i class="far fa-user-circle"></i> Lihat Profil</a>
+  <a href="http://localhost/KelompokDUA/lansa/ubahuser.php?id_user=<?= $_SESSION['id_user']?>" style="font-family:Berlin Sans FB; color:#black;"><i class="far fa-user-circle"></i> Lihat Profil</a>
   <a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
   </div>
 </div>
@@ -462,7 +462,7 @@ if (event.target == modal) {
 				                  <div class="form-group">
 										<label for="jemput" style="font-family:Berlin Sans FB">Jemput</label>
 										<div class="form-field">
-                    <td><input type="text" class="form-control"  name="jemput" ><required=required placeholder='Alamat'></td>
+                    <td><input type="text" class="form-control" autocomplete="off" name="jemput" ><required=required placeholder='Alamat'></td>
 										</div>  
 				                  </div>
                         </div>

@@ -67,7 +67,6 @@ if( isset($_POST["submit"]) ){
             <ul class="nav navbar-nav ">
               <li><a href="#about" class="page-scroll" style="font-family:Berlin Sans FB"><span class="glyphicon glyphicon-home"></span> Profil Kami</a></li>
               <li><a href="#portfolio" class="page-scroll" style="font-family:Berlin Sans FB"><i class="fa fa-fw fa-photo"></i> Galeri</a></li>
-              <li><a href="#contact" class="page-scroll" style="font-family:Berlin Sans FB"><i class="fa fa-fw fa-envelope"></i> Kontak Kami</a></li>
               <?php
               session_start();
               if (!isset($_SESSION['username'])) {
@@ -178,47 +177,9 @@ if( isset($_POST["submit"]) ){
     </section>
     <!--akhir Galeri-->
 
-    <!--Kontak Kami-->
-    <section class="contact" id="contact">
-      <div class="container">
-          <div class="row">
-              <div class="col-sm 12 text-center">
-                <h2>Kontak Kami</h2>
-                <hr>
-              </div>
-          </div>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <form action="" method="post" >
-            <div class="form-group">
-              <label form="nama">Nama</label>
-              <input type="text"id="nama" name ="pengirim" class="form-control" required autocomplete="off" placeholder="masukkan nama">
-            </div>
-            <div class="form-group">
-                <label form="email">Email</label>
-                <input type="email"id="email" name="email" class="form-control" required autocomplete="off" placeholder="masukkan email">
-            </div>
-            <div class="form-group">
-                <label form="tel">No Telp</label>
-                <input type="text"id="telp" maxlength="12" onkeypress="return hanyaAngka(event)"  name="no_telp" class="form-control" required autocomplete="off" placeholder="masukkan no telepon">
-            </div>
-            
-            <div class="form-group">
-              <label form="pesan">Pesan</label>
-              <textarea class="form-control" name="pesan" row="10" placeholder="masukkan pesan" autocomplete="off" required></textarea>
-            </div>
-            <button type="submit" name="submit" class="btn btn-primary">Kirim Pesan</button>
-          </form>
-        </div>
-      </div>
-    </div>
-      
-    <!--akhir contact-->
-    </section>
-    <!--akhir contact-->
-
-
+    <br>
     <!--footer-->
+    <div>
     <footer>
       <div class="container text-center">
         <div class="row">
@@ -228,6 +189,9 @@ if( isset($_POST["submit"]) ){
         </div>
       </div>
     </footer>
+    </div>
+
+    </br>
     <!--akhir footer-->
 
 

@@ -266,7 +266,7 @@ select{
 <form action="" method="post">
 
     <input type="text" name="keyword" size="40" autofocus placeholder="Silahkan cari  sesuatu..." autocomplete="off">
-    <button type="submit" name="cari">Cari</button>
+    <button class="btn btn-primary btn-xs" type="submit" name="cari">Cari</button>
 
 </form>
 <br>

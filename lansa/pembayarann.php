@@ -241,7 +241,7 @@ div.ex3 {
     <div class="dropdown" style="float:right;">
   <a class="dropbtn" ><font face="Berlin Sans FB" color="white"><?php echo $_SESSION['username']; ?></a>
   <div class="dropdown-content">
-  <a href="http://localhost/bayu/ubahuser.php?id_user=<?= $_SESSION['id_user']?>" style="font-family:Berlin Sans FB; color:#black;"><i class="far fa-user-circle"></i> Lihat Profil</a>
+  <a href="http://localhost/KelompokDUA/lansa/ubahuser.php?id_user=<?= $_SESSION['id_user']?>" style="font-family:Berlin Sans FB; color:#black;"><i class="far fa-user-circle"></i> Lihat Profil</a>
   <a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
   </div>
 </div>
